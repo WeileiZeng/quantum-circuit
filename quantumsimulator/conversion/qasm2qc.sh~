@@ -1,0 +1,93 @@
+#Weilei Zeng, Dec 10 2018
+#This script convert .qasm to .qc files.
+#(automatically add 300, see end of this script) A number need to be added manually in the first effectice line in the .qc file. This number is the number of qubits in the system, which should be bigger than the maximum index for the qubits in the circuit.
+#suggested modification: exclude the coment line in the file so the text is not disturbed during the conversion. This could be done by adding /^#/! to all sed cmd. eg: 
+#  sed -i '/^#/!/qubit/d' $newfile
+# haven't test it yet, but probably work in one way or theother
+
+#input and initialization
+file=$1
+#folder=~/Dropbox/quantum\ computing/
+#originalfile=~/Dropbox/quantum\ computing/weilei/qasm2circ-v1.4/$file.qasm
+oldfile=$file.qasm
+newfile=quantum_circuit/$file.qc
+# sample input:
+# file=conv4v1
+# oldfile=conv4v1.qasm
+# newfile=conv4v1.qc
+echo this program convert .qasm [$oldfile] into .qc [$newfile]. The .qasm file is created in weilei\'s mac and saved in Dropbox
+
+cp ~/Dropbox/quantum\ computing/weilei/qasm2circ-v1.4/$file.qasm $newfile
+# cp $oldfile $newfile
+
+#remove qubit initialization lines and zero lines
+sed -i '/qubit/d' $newfile
+sed -i '/zero/d' $newfile
+
+#remove tabs
+sed -i $'s/\t/ /g' $newfile
+
+#remove space in the end of a line
+sed -i 's/ *$//' $newfile
+#remove duplicate white space
+sed -i 's/  */ /g' $newfile
+#for i in {1..3..1}
+#do
+#    sed -i 's/     / /g' $newfile       
+#    sed -i 's/  / /g' $newfile
+#done
+
+#add classical bits for measure
+#less +G $newfile
+sed -i 's/\(.*measure A\)\(.*\)/measure A\2 \2/' $newfile
+#sed -i 's/\(.*measure B\)\(.*\)/measure B\2 \2/' $newfile
+#tried to change the number for AG part. failed. do it manually then.
+#less +G $newfile
+sed -i 's/A/20/g' $newfile
+sed -i 's/q//g' $newfile
+
+#change 20xx to 2xx for ancilla qubits, range 2010-2099 --> range 210-299
+for ii in {10..99}
+do
+    kk=$(( $ii + 2000 ))
+    jj=$(( $ii + 200 ))
+    #echo     $kk -to- $jj
+#    sed -i '' 's/A'$ii'/A'$(( $ii + 2 ))'/g' $newfile
+    sed -i 's/'$(( $ii + 2000 ))'/'$(( $ii + 200 ))'/g' $newfile
+#    sed -i '' 's/2010/210/g' $newfile
+done
+
+
+
+
+#change cnot, measure, and [,]; remove white space in the beginning of a line
+sed -i 's/cnot/c/g' $newfile
+sed -i 's/measure/m/g' $newfile
+sed -i 's/ c/c/g' $newfile
+sed -i 's/ m/m/g' $newfile
+sed -i 's/ h/h/g' $newfile
+sed -i 's/,/ /g' $newfile
+
+#delete double empty lines
+#sed -i 'N;/^\n$/d;P;D;N' $newfile
+
+#reduce multiple empty line to single empty line
+tempfile=$(mktemp)
+cat -s $newfile>>$tempfile
+rm $newfile
+cat $tempfile>>$newfile
+rm $tempfile
+
+#remove nop lines
+sed -i '/nop/d' $newfile
+
+#switch 2nd and 3rd words for cnot
+sed -i "s/^\([^ ]*\) \([^ ]*\) \([^ ]*\)/\1 \3 \2/" $newfile
+
+#add total number of qubit of the circuit in the beginning of the file
+sed -i '1s/^/300\n/' $newfile
+
+echo "\ \#For the last part in this file, manually change the classical bit for saving measurement result. (following example in conv5v5v2.qc). The sequence is also writen in conv5.txt. conv7 use the same sequence." >> $newfile
+
+less +G $newfile
+

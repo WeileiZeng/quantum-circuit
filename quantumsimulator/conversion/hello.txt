@@ -1,0 +1,14 @@
+#stringa
+m 16 216
+m 17 217
+
+
+#stringb
+m 0 200
+m 1 201
+
+
+this
+is 
+a
+line

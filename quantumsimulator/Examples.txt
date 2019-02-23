@@ -1,0 +1,211 @@
+Runs the quantum teleportation protocol.
+The state to be teleported is in qubit 0.
+You can specify that state at the command line by typing
+chp teleport z	  for |0>
+chp teleport Z	  for |1>
+chp teleport x	  for |0>+|1>
+chp teleport X	  for |0>-|1>
+chp teleport y	  for |0>+i|1>
+chp teleport Y	  for |0>-i|1>
+The program first prepares an EPR pair (|00>+|11>) across
+qubits 1 and 2 (1 is Alice's half and 2 is Bob's half).
+Alice then applies the teleportation circuit, and measures
+qubits 0 and 1 to obtain the two-bit error syndrome.  She
+CNOT's this syndrome into qubits 3 and 4, representing
+classical communication to Bob.  Finally, Bob uses the
+syndrome to correct the teleported state, and measures it
+in the standard basis.  When qubit 2 is measured, the
+result should be 0 if the input was z, 1 if the input was
+Z, and random if the input was x, X, y, or Y.
+#
+h 1
+c 1 2
+
+c 0 1
+h 0
+m 0
+m 1
+
+c 0 3
+c 1 4
+
+c 4 2
+h 2
+c 3 2
+h 2
+m 2
+
+Uses Simon's algorithm to learn about the "hidden
+shift" of a function f (the string s such that
+f(x)=f(y) if and only if y=x+s, where + denotes
+bitwise XOR).  The function is the following
+linear map from 5 bits to 4 bits:
+f(a,b,c,d,e)=(a+b,b+c,c+d,d+e)
+Clearly s=11111 for this function.
+The program first prepares a uniform superposition
+over 5-bit strings in qubits 0 to 4.  It then
+computes f in qubits 5 to 8, and measures those
+qubits "for pedagogical purposes."  Finally it
+performs a Fourier transform on qubits 0 to 4 and
+measures them.  The first round of measurements
+should produce a random 4-bit string; the second
+should produce a random 5-bit string y such that
+y*s=0 (that is, y has even parity).
+#
+h 0
+h 1
+h 2
+h 3
+h 4
+
+c 0 5
+c 1 5
+c 1 6
+c 2 6
+c 2 7
+c 3 7
+c 3 8
+c 4 8
+
+m 5
+m 6
+m 7
+m 8
+
+h 0
+h 1
+h 2
+h 3
+h 4
+
+m 0
+m 1
+m 2
+m 3
+m 4
+
+Uses the Bennett-Wiesner dense quantum coding
+protocol to transmit 2 classical bits using 1
+EPR pair and 1 bit of quantum communication.
+You can specify the bits to be transmitted at
+the command line by typing
+chp densecoding zz	for 00
+chp densecoding zZ	for 01
+chp densecoding Zz	for 10
+chp densecoding ZZ	for 11
+These will be stored in qubits 0 and 1.
+The program first prepares an EPR pair across
+qubits 2 and 3 (2 is Alice's half and 3 is Bob's
+half).  Alice then applies unitaries to her half
+of the EPR pair depending on qubits 0 and 1.
+Next, Alice's half is transferred to qubit 4,
+which represents the 1 bit of quantum
+communication to Bob.  Finally, Bob applies
+unitaries to his qubits (4 and 3), and then
+measures them to read Alice's message.
+#
+h 2
+c 2 3
+
+c 1 2
+h 2
+c 0 2
+h 2
+
+c 2 4
+c 4 2
+
+c 4 3
+h 4
+m 4
+m 3
+
+Encodes a qubit of your choice using the Shor 9-qubit quantum
+error-correcting code, then applies an encoded Pauli operation of
+your choice to the codeword, and finally decodes the codeword and
+measures the result.
+The qubit to be encoded is stored in qubit 0.  Qubit 1 is 1 if and
+only if an X operation should be applied to the codeword, and qubit
+2 is 1 if and only if a Z should be applied.  So for example, if
+you want to encode |0> and then apply a Y=-iXZ operation, type the
+following at the command line:
+chp qecc9 zZZ
+The output in this case should be |1>.  Or, if you want to encode
+|0>+i|1> and then apply X, type the following:
+chp qecc9 yZz
+The output in this case should be random (since the final state is
+|0>-i|1>).  In general:
+x for |0>
+X for |1>
+y for |0>+i|1>
+Y for |0>-i|1>
+z for |0>+|1>
+Z for |0>-|1>
+Note that since the measurement is in the standard basis, applying
+the Z operator should not have an observable effect.
+#
+c 0 3
+c 3 0
+
+c 3 6
+c 3 9
+h 3
+c 3 4
+c 3 5
+h 6
+c 6 7
+c 6 8
+h 9
+c 9 10
+c 9 11
+
+h 3
+h 4
+h 5
+h 6
+h 7
+h 8
+h 9
+h 10
+h 11
+c 1 3
+c 1 4
+c 1 5
+c 1 6
+c 1 7
+c 1 8
+c 1 9
+c 1 10
+c 1 11
+h 3
+h 4
+h 5
+h 6
+h 7
+h 8
+h 9
+h 10
+h 11
+
+c 2 3
+c 2 4
+c 2 5
+c 2 6
+c 2 7
+c 2 8
+c 2 9
+c 2 10
+c 2 11
+
+c 9 11
+c 9 10
+h 9
+c 6 8
+c 6 7
+h 6
+c 3 5
+c 3 4
+h 3
+c 3 9
+c 3 6
+m 3

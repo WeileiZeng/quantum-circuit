@@ -1,0 +1,15 @@
+o300
+# Zeng Weilei
+# tom 20circuit XXX XXX in shor'scode
+# are There three versions of thiscircuit 1>standard one 2>simplified one 3>more simplified
+# shows Here 1>the standard one
+
+ 200 H
+c 0 200
+c 1 200
+c 2 200
+c 3 200
+c 4 200
+c 5 200
+ 200 H
+m 0 200\ \#For the last part in this file, manually change the classical bit for saving measurement result. (following example in conv5v5v2.qc). The sequence is also writen in conv5.txt. conv7 use the same sequence.

@@ -1,0 +1,267 @@
+% Weilei Zeng, see weilei_readme.txt
+% A circuit to measure G_1
+% somehow this circuit have to start with q0 in the beginning, which could be emitted when we crop the image of the circuit.
+% 
+%   qubit	   q0
+%   qubit	   A0,0
+%   qubit	   A1,0
+%   qubit	   q0
+%   qubit	   q1
+%   qubit	   q2
+%   qubit	   A2,0
+%   qubit	   A3,0
+%   qubit	   q3
+%   qubit	   q4
+%   qubit	   q5
+%  qubit	   A4,0
+%  qubit	   A5,0
+%  qubit	   q6
+%  qubit	   q7
+%  qubit	   q8
+%  qubit	   A6,0
+%  qubit	   A7,0
+%  qubit	   q9
+%  qubit	   q10
+%  qubit	   q11
+%  qubit	   A8,0
+%  qubit	   A9,0
+%  qubit	   q12
+%  qubit	   q13
+%  qubit	   q14
+%  qubit	   A10,0
+%  qubit	   A11,0
+%  qubit	   q15
+%  qubit	   q16
+%  qubit	   q17
+%  qubit	   A12,0
+%  qubit	   A13,0
+%   qubit	   q18
+%   qubit	   q19
+%   qubit	   q20
+%   qubit	   A14,0
+%   qubit	   A15,0
+%   qubit	   q21
+%   qubit	   q22
+%   qubit	   q23
+%   qubit	   A16,0
+%   qubit	   A17,0
+% 
+% 
+%   cnot	   q0,A1
+%   cnot	   q2,A0
+%   cnot	   q2,A1
+%   cnot	   q0,A0
+%   h	   A0
+%   h	   A1
+%   cnot	   A0,q2
+%   cnot	   A1,q1
+%   cnot	   A0,q1
+%   cnot	   A1,q2
+%   h	   A0
+%   h	   A1
+% 
+%   measure  A0
+%   measure  A1
+%   zero	   A0
+%   zero	   A1
+% 
+%   cnot	   q0,A0
+%   cnot	   q2,A0
+%   h	   A0
+%   h	   A1
+%   cnot	   A0,q0
+%   cnot	   A1,q2
+%   cnot	   A0,q1
+%   cnot	   A1,q0
+%   h	   A0
+%   h	   A1
+%   measure  A0
+%   measure  A1
+%   
+% 
+% 
+
+%  Time 01:
+%    Gate 00 cnot(q0,A1)
+%    Gate 01 cnot(q2,A0)
+%  Time 02:
+%    Gate 02 cnot(q2,A1)
+%    Gate 03 cnot(q0,A0)
+%  Time 03:
+%    Gate 04 h(A0)
+%    Gate 05 h(A1)
+%  Time 04:
+%    Gate 06 cnot(A0,q2)
+%    Gate 07 cnot(A1,q1)
+%  Time 05:
+%    Gate 08 cnot(A0,q1)
+%    Gate 09 cnot(A1,q2)
+%  Time 06:
+%    Gate 10 h(A0)
+%    Gate 11 h(A1)
+%  Time 07:
+%    Gate 12 measure(A0)
+%    Gate 13 measure(A1)
+%  Time 08:
+%    Gate 14 zero(A0)
+%    Gate 15 zero(A1)
+%  Time 09:
+%    Gate 16 cnot(q0,A0)
+%    Gate 19 h(A1)
+%  Time 10:
+%    Gate 17 cnot(q2,A0)
+%  Time 11:
+%    Gate 18 h(A0)
+%    Gate 21 cnot(A1,q2)
+%  Time 12:
+%    Gate 20 cnot(A0,q0)
+%  Time 13:
+%    Gate 22 cnot(A0,q1)
+%    Gate 23 cnot(A1,q0)
+%  Time 14:
+%    Gate 24 h(A0)
+%    Gate 25 h(A1)
+%  Time 15:
+%    Gate 26 measure(A0)
+%    Gate 27 measure(A1)
+
+% Qubit circuit matrix:
+%
+% q0: gAxD, gBxD, n  , n  , n  , n  , n  , n  , gIxD, n  , n  , gLxD, gMxD, n  , n  , n  
+% A0: gAxB, gBxB, gCxB, gDxB, gExB, gFxB, gGxB, gHxB, gIxB, gJxB, gKxB, gLxB, gMxB, gNxB, gOxB, N  
+% A1: gAxC, gBxC, gCxC, gDxC, gExC, gFxC, gGxC, gHxC, gIxC, n  , gKxC, n  , gMxC, gNxC, gOxC, N  
+% q0: gAxD, gBxD, n  , n  , n  , n  , n  , n  , gIxD, n  , n  , gLxD, gMxD, n  , n  , n  
+% q1: n  , n  , n  , gDxE, gExE, n  , n  , n  , n  , n  , n  , n  , gMxE, n  , n  , n  
+% q2: gAxF, gBxF, n  , gDxF, gExF, n  , n  , n  , n  , gJxF, gKxF, n  , n  , n  , n  , n  
+% A2: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A3: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q3: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q4: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q5: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q18: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q19: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q20: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A14: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A15: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q21: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q22: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q23: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A16: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A17: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+
+\documentclass[11pt]{article}
+\input{xyqcirc.tex}
+
+% definitions for the circuit elements
+
+\def\gAxD{\b\w\A{gAxD}}
+\def\gAxC{\o\w\A{gAxC}}
+\def\gAxF{\b\w\A{gAxF}}
+\def\gAxB{\o\w\A{gAxB}}
+\def\gBxF{\b\w\A{gBxF}}
+\def\gBxC{\o\w\A{gBxC}}
+\def\gBxD{\b\w\A{gBxD}}
+\def\gBxB{\o\w\A{gBxB}}
+\def\gCxB{\op{H}\w\A{gCxB}}
+\def\gCxC{\op{H}\w\A{gCxC}}
+\def\gDxB{\b\w\A{gDxB}}
+\def\gDxF{\o\w\A{gDxF}}
+\def\gDxC{\b\w\A{gDxC}}
+\def\gDxE{\o\w\A{gDxE}}
+\def\gExB{\b\w\A{gExB}}
+\def\gExE{\o\w\A{gExE}}
+\def\gExC{\b\w\A{gExC}}
+\def\gExF{\o\w\A{gExF}}
+\def\gFxB{\op{H}\w\A{gFxB}}
+\def\gFxC{\op{H}\w\A{gFxC}}
+\def\gGxB{\meter\w\A{gGxB}}
+\def\gGxC{\meter\w\A{gGxC}}
+\def\gHxB{\z\A{gHxB}}
+\def\gHxC{\z\A{gHxC}}
+\def\gIxD{\b\w\A{gIxD}}
+\def\gIxB{\o\w\A{gIxB}}
+\def\gJxF{\b\w\A{gJxF}}
+\def\gJxB{\o\w\A{gJxB}}
+\def\gKxB{\op{H}\w\A{gKxB}}
+\def\gIxC{\op{H}\w\A{gIxC}}
+\def\gLxB{\b\w\A{gLxB}}
+\def\gLxD{\o\w\A{gLxD}}
+\def\gKxC{\b\w\A{gKxC}}
+\def\gKxF{\o\w\A{gKxF}}
+\def\gMxB{\b\w\A{gMxB}}
+\def\gMxE{\o\w\A{gMxE}}
+\def\gMxC{\b\w\A{gMxC}}
+\def\gMxD{\o\w\A{gMxD}}
+\def\gNxB{\op{H}\w\A{gNxB}}
+\def\gNxC{\op{H}\w\A{gNxC}}
+\def\gOxB{\meter\w\A{gOxB}}
+\def\gOxC{\meter\w\A{gOxC}}
+
+% definitions for bit labels and initial states
+
+\def\bA{ \q{q_{0}}}
+\def\bB{\qv{A_{0}}{0}}
+\def\bC{\qv{A_{1}}{0}}
+\def\bD{ \q{q_{0}}}
+\def\bE{ \q{q_{1}}}
+\def\bF{ \q{q_{2}}}
+\def\bG{\qv{A_{2}}{0}}
+\def\bH{\qv{A_{3}}{0}}
+\def\bI{ \q{q_{3}}}
+\def\bJ{ \q{q_{4}}}
+\def\bK{ \q{q_{5}}}
+\def\bL{ \q{q_{18}}}
+\def\bM{ \q{q_{19}}}
+\def\bN{ \q{q_{20}}}
+\def\bO{\qv{A_{14}}{0}}
+\def\bP{\qv{A_{15}}{0}}
+\def\bQ{ \q{q_{21}}}
+\def\bR{ \q{q_{22}}}
+\def\bS{ \q{q_{23}}}
+\def\bT{\qv{A_{16}}{0}}
+\def\bU{\qv{A_{17}}{0}}
+
+% The quantum circuit as an xymatrix
+
+\xymatrix@R=5pt@C=10pt{
+    \bA & \gAxD &\gBxD &\n   &\n   &\n   &\n   &\n   &\n   &\gIxD &\n   &\n   &\gLxD &\gMxD &\n   &\n   &\n  
+\\  \bB & \gAxB &\gBxB &\gCxB &\gDxB &\gExB &\gFxB &\gGxB &\gHxB &\gIxB &\gJxB &\gKxB &\gLxB &\gMxB &\gNxB &\gOxB &\N  
+\\  \bC & \gAxC &\gBxC &\gCxC &\gDxC &\gExC &\gFxC &\gGxC &\gHxC &\gIxC &\n   &\gKxC &\n   &\gMxC &\gNxC &\gOxC &\N  
+\\  \bD & \gAxD &\gBxD &\n   &\n   &\n   &\n   &\n   &\n   &\gIxD &\n   &\n   &\gLxD &\gMxD &\n   &\n   &\n  
+\\  \bE & \n   &\n   &\n   &\gDxE &\gExE &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gMxE &\n   &\n   &\n  
+\\  \bF & \gAxF &\gBxF &\n   &\gDxF &\gExF &\n   &\n   &\n   &\n   &\gJxF &\gKxF &\n   &\n   &\n   &\n   &\n  
+\\  \bG & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bH & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bI & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bJ & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bK & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bL & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bM & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bN & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bO & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bP & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bQ & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bR & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bS & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bT & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bU & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+%
+% Vertical lines and other post-xymatrix latex
+%
+\ar@{-}"gAxC";"gAxD"
+\ar@{-}"gAxB";"gAxF"
+\ar@{-}"gBxC";"gBxF"
+\ar@{-}"gBxB";"gBxD"
+\ar@{-}"gDxF";"gDxB"
+\ar@{-}"gDxE";"gDxC"
+\ar@{-}"gExE";"gExB"
+\ar@{-}"gExF";"gExC"
+\ar@{-}"gIxB";"gIxD"
+\ar@{-}"gJxB";"gJxF"
+\ar@{-}"gLxD";"gLxB"
+\ar@{-}"gKxF";"gKxC"
+\ar@{-}"gMxE";"gMxB"
+\ar@{-}"gMxD";"gMxC"
+}
+
+\end{document}

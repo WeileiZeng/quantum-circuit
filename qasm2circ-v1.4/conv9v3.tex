@@ -1,0 +1,2558 @@
+% Weilei Zeng, see weilei_readme.txt
+% somehow this circuit have to start with q0 in the beginning, which could be emitted when we crop the image of the circuit.
+%initialize
+%   qubit	   q0
+%   qubit	   A0,0
+%   qubit	   A1,0
+%   qubit	   q0
+%   qubit	   q1
+%   qubit	   q2
+%   qubit	   A2,0
+%   qubit	   A3,0
+%   qubit	   q3
+%   qubit	   q4
+%   qubit	   q5
+%   qubit	   A4,0
+%   qubit	   A5,0
+%   qubit	   q6
+%   qubit	   q7
+%   qubit	   q8
+%   qubit	   A6,0
+%   qubit	   A7,0
+%   qubit	   q9
+%   qubit	   q10
+%   qubit	   q11
+%   qubit	   A8,0
+%   qubit	   A9,0
+% 
+%   qubit	   q12
+%   qubit	   q13
+%   qubit	   q14
+%   qubit	   A10,0
+%   qubit	   A11,0
+%   qubit	   q15
+%   qubit	   q16
+%   qubit	   q17
+%   qubit	   A12,0
+%   qubit	   A13,0
+%   qubit	   q18
+%   qubit	   q19
+%   qubit	   q20
+%   qubit	   A14,0
+%   qubit	   A15,0
+%   qubit	   q21
+%   qubit	   q22
+%   qubit	   q23
+%   qubit	   A16,0
+%   qubit	   A17,0
+% 
+% 
+% 
+% 
+% 
+%measure 3rd and 4th generators  G1010-1110
+%   zero     A0
+%   zero     A1
+%   zero     A2
+%   zero     A3
+%   zero     A4
+%   zero     A5
+%   zero     A6
+%   zero     A7
+%   zero     A8
+%   zero     A9
+%   zero     A10
+%   zero     A11
+%   zero     A12
+%   zero     A13
+%   zero     A14
+%   zero     A15
+%   zero     A16
+%   zero     A17
+% 
+% 
+%1,2 generators left part, first and second for first eight
+%   cnot     q0,A1
+%   cnot     q2,A0
+%   cnot     q2,A1
+%   cnot     q0,A0
+% 
+% 
+% 
+% 
+%left block
+%       cnot	q8,A3
+%       cnot	q6,A2
+%       cnot	q8,A2
+%       cnot	q6,A3
+%       cnot	q5,A3
+%       cnot	q4,A2
+%       cnot	q0,A2
+%       cnot	q2,A2
+%       cnot	q1,A3
+%       cnot	q1,A2
+%       cnot	q0,A3
+%       cnot	q2,A3
+%left block
+%       cnot      q11,A5
+%       cnot      q9,A4
+%       cnot      q11,A4
+%       cnot      q9,A5
+%       cnot      q8,A5
+%       cnot      q7,A4
+%       cnot      q3,A4
+%       cnot      q5,A4
+%       cnot      q4,A5
+%       cnot      q4,A4
+%       cnot      q3,A5
+%       cnot      q5,A5
+%left block
+%       cnot      q14,A7
+%       cnot      q12,A6
+%       cnot      q14,A6
+%       cnot      q12,A7
+%       cnot      q11,A7
+%       cnot      q10,A6
+%       cnot      q6,A6
+%       cnot      q8,A6
+%       cnot      q7,A7
+%       cnot      q7,A6
+%       cnot      q6,A7
+%       cnot      q8,A7
+%left block
+%       cnot      q17,A9
+%       cnot      q15,A8
+%       cnot      q17,A8
+%       cnot      q15,A9
+%       cnot      q14,A9
+%       cnot      q13,A8
+%       cnot      q9,A8
+%       cnot      q11,A8
+%       cnot      q10,A9
+%       cnot      q10,A8
+%       cnot      q9,A9
+%       cnot      q11,A9
+%left block
+%       cnot      q20,A11
+%       cnot      q18,A10
+%       cnot      q20,A10
+%       cnot      q18,A11
+%       cnot      q17,A11
+%       cnot      q16,A10
+%       cnot      q12,A10
+%       cnot      q14,A10
+%       cnot      q13,A11
+%       cnot      q13,A10
+%       cnot      q12,A11
+%       cnot      q14,A11
+%left block
+%       cnot      q23,A13
+%       cnot      q21,A12
+%       cnot      q23,A12
+%       cnot      q21,A13
+%       cnot      q20,A13
+%       cnot      q19,A12
+%       cnot      q15,A12
+%       cnot      q17,A12
+%       cnot      q16,A13
+%       cnot      q16,A12
+%       cnot      q15,A13
+%       cnot      q17,A13
+%       
+% 
+%1,2 generators right block, first and second for first eight
+%   h        A0
+%   h        A1
+%   cnot     A0,q2
+%   cnot     A1,q1
+%   cnot     A0,q1
+%   cnot     A1,q2
+%   h        A0
+%   h        A1
+% 
+%fifth and sixth generators for last eight
+%   cnot     q21,A16
+%   cnot     q22,A17
+%   cnot     q22,A16
+%   cnot     q23,A16
+%   h        A17
+%   cnot     A17,q21
+%   cnot     A17,q22
+%   h        A17
+%   measure  A16
+%   measure  A17
+% 
+% 
+% 
+%right block
+%        h	A2
+%        h	A3
+%        cnot	A3,q8
+%        cnot	A2,q7
+%        cnot	A3,q7
+%        cnot	A2,q8
+%        cnot	A3,q5
+%        cnot	A2,q4
+%        cnot	A2,q5
+%        cnot	A3,q3
+%        cnot	A3,q2
+%        cnot	A3,q1
+%        cnot	A3,q0
+%        nop	A2
+%        nop	A2
+%        nop	A2
+%        h	A2
+%        h	A3
+% 
+%right block
+%        h        A4
+%        h        A5
+%        cnot     A5,q11
+%        cnot     A4,q10
+%        cnot     A5,q10
+%        cnot     A4,q11
+%        cnot     A5,q8
+%        cnot     A4,q7
+%        cnot     A4,q8
+%        cnot     A5,q6
+%        cnot     A5,q5
+%        cnot     A5,q4
+%        cnot     A5,q3
+%        nop      A4
+%        nop      A4
+%        nop      A4
+%        h        A4
+%        h        A5
+%right block
+%        h        A6
+%        h        A7
+%        cnot     A7,q14
+%        cnot     A6,q13
+%        cnot     A7,q13
+%        cnot     A6,q14
+%        cnot     A7,q11
+%        cnot     A6,q10
+%        cnot     A6,q11
+%        cnot     A7,q9
+%        cnot     A7,q8
+%        cnot     A7,q7
+%        cnot     A7,q6
+%        nop      A6
+%        nop      A6
+%        nop      A6
+%        h        A6
+%        h        A7
+%right block
+%        h        A8
+%        h        A9
+%        cnot     A9,q17
+%        cnot     A8,q16
+%        cnot     A9,q16
+%        cnot     A8,q17
+%        cnot     A9,q14
+%        cnot     A8,q13
+%        cnot     A8,q14
+%        cnot     A9,q12
+%        cnot     A9,q11
+%        cnot     A9,q10
+%        cnot     A9,q9
+%        nop      A8
+%        nop      A8
+%        nop      A8
+%        h        A8
+%        h        A9
+%right block
+%        h        A10
+%        h        A11
+%        cnot     A11,q20
+%        cnot     A10,q19
+%        cnot     A11,q19
+%        cnot     A10,q20
+%        cnot     A11,q17
+%        cnot     A10,q16
+%        cnot     A10,q17
+%        cnot     A11,q15
+%        cnot     A11,q14
+%        cnot     A11,q13
+%        cnot     A11,q12
+%        nop      A10
+%        nop      A10
+%        nop      A10
+%        h        A10
+%        h        A11
+%right block
+%        h        A12
+%        h        A13
+%        cnot     A13,q23
+%        cnot     A12,q22
+%        cnot     A13,q22
+%        cnot     A12,q23
+%        cnot     A13,q20
+%        cnot     A12,q19
+%        cnot     A12,q20
+%        cnot     A13,q18
+%        cnot     A13,q17
+%        cnot     A13,q16
+%        cnot     A13,q15
+%        nop      A12
+%        nop      A12
+%        nop      A12
+%        h        A12
+%        h        A13
+% 
+% measurement for the second round in AG
+%   measure  A0
+%   measure  A1
+%   measure  A2
+%   measure  A3
+%   measure  A4
+%   measure  A5
+%   measure  A6
+%   measure  A7
+%   measure  A8
+%   measure  A9
+%   measure  A10
+%   measure  A11
+%   measure  A12
+%   measure  A13
+% 
+% 
+%   zero	   A0
+%   zero	   A1
+%   zero	   A2
+%   zero	   A3
+%   zero	   A4
+%   zero	   A5
+%   zero	   A6
+%   zero	   A7
+%   zero	   A8
+%   zero	   A9
+%   zero	   A10
+%   zero	   A11
+%   zero	   A12
+%   zero	   A13
+%  zero	   A14
+%  zero	   A15
+%   zero	   A16
+%   zero	   A17
+% 
+% 
+%third forth,3,4 generators for first eight
+%   cnot     q0,A0
+%   cnot     q2,A0
+%   h        A0
+%   h        A1
+%   cnot     A1,q0
+%   cnot     A0,q0
+%   cnot     A1,q2
+%   cnot     A0,q1
+% 
+%   h        A0
+%   h        A1
+%   measure  A0
+%   measure  A1
+% 
+%   zero     A0
+%   zero     A1
+% 
+%seventh and eighth generator for last eight generators
+%   cnot     q21,A16
+%   cnot     q23,A17
+%   cnot     q21,A17
+%   cnot     q23,A16
+%   h        A16
+%   h        A17
+%   cnot     A16,q21
+%   cnot     A17,q22
+%   cnot     A16,q22
+%   cnot     A17,q21
+%   h        A16
+%   h        A17
+%   measure  A16
+%   measure  A17
+%   zero	   A16
+%   zero	   A17
+% 
+% 
+%left part
+%   cnot	q8,A2
+%   cnot	q7,A3
+%   cnot	q7,A2
+%   cnot 	q6,A3
+%   cnot	q5,A2
+%   cnot	q4,A2
+%   cnot	q3,A3
+% 
+%left part
+%   cnot  q11,A4
+%   cnot  q10,A5
+%   cnot  q10,A4
+%   cnot  q9,A5
+%   cnot  q8,A4
+%   cnot  q7,A4
+%   cnot  q6,A5
+%left part
+%   cnot  q14,A6
+%   cnot  q13,A7
+%   cnot  q13,A6
+%   cnot  q12,A7
+%   cnot  q11,A6
+%   cnot  q10,A6
+%   cnot  q9,A7
+%left part
+%   cnot  q17,A8
+%   cnot  q16,A9
+%   cnot  q16,A8
+%   cnot  q15,A9
+%   cnot  q14,A8
+%   cnot  q13,A8
+%   cnot  q12,A9
+%left part
+%   cnot  q20,A10
+%   cnot  q19,A11
+%   cnot  q19,A10
+%   cnot  q18,A11
+%   cnot  q17,A10
+%   cnot  q16,A10
+%   cnot  q15,A11
+%left part
+%   cnot  q23,A12
+%   cnot  q22,A13
+%   cnot  q22,A12
+%   cnot  q21,A13
+%   cnot  q20,A12
+%   cnot  q19,A12
+%   cnot  q18,A13
+% 
+% 
+% third and fourth generators for the last eight generators, left block
+%   cnot     q23,A17
+%   cnot     q22,A16
+%   cnot     q21,A16
+% 
+% 
+% 
+%right part
+%   h	A2
+%   nop	A3
+%   h	A3
+%   cnot	A3,q8
+%   cnot	A2,q6
+%   cnot	A3,q5
+%   cnot	A3,q6
+%   cnot	A2,q7
+%   cnot	A2,q5
+%   cnot	A2,q2
+%   cnot	A3,q0
+%   cnot	A3,q2
+%   cnot	A2,q1
+%   cnot	A3,q1
+%   cnot	A2,q0
+%   h	A2
+%   h	A3
+%right part
+%   h     A4
+%   nop   A5
+%   h     A5
+%   cnot  A5,q11
+%   cnot  A4,q9
+%   cnot  A5,q8
+%   cnot  A5,q9
+%   cnot  A4,q10
+%   cnot  A4,q8
+%   cnot  A4,q5
+%   cnot  A5,q3
+%   cnot  A5,q5
+%   cnot  A4,q4
+%   cnot  A5,q4
+%   cnot  A4,q3
+%   h     A4
+%   h     A5
+% 
+%right part
+%   h     A6
+%   nop   A7
+%   h     A7
+%   cnot  A7,q14
+%   cnot  A6,q12
+%   cnot  A7,q11
+%   cnot  A7,q12
+%   cnot  A6,q13
+%   cnot  A6,q11
+%   cnot  A6,q8
+%   cnot  A7,q6
+%   cnot  A7,q8
+%   cnot  A6,q7
+%   cnot  A7,q7
+%   cnot  A6,q6
+%   h     A6
+%   h     A7
+%right part
+%   h     A8
+%   nop   A9
+%   h     A9
+%   cnot  A9,q17
+%   cnot  A8,q15
+%   cnot  A9,q14
+%   cnot  A9,q15
+%   cnot  A8,q16
+%   cnot  A8,q14
+%   cnot  A8,q11
+%   cnot  A9,q9
+%   cnot  A9,q11
+%   cnot  A8,q10
+%   cnot  A9,q10
+%   cnot  A8,q9
+%   h     A8
+%   h     A9
+% 
+%right part
+%   h     A10
+%   nop   A11
+%   h     A11
+%   cnot  A11,q20
+%   cnot  A10,q18
+%   cnot  A11,q17
+%   cnot  A11,q18
+%   cnot  A10,q19
+%   cnot  A10,q17
+%   cnot  A10,q14
+%   cnot  A11,q12
+%   cnot  A11,q14
+%   cnot  A10,q13
+%   cnot  A11,q13
+%   cnot  A10,q12
+%   h     A10
+%   h     A11
+%right part
+%   h     A12
+%   nop   A13
+%   h     A13
+%   cnot  A13,q23
+%   cnot  A12,q21
+%   cnot  A13,q20
+%   cnot  A13,q21
+%   cnot  A12,q22
+%   cnot  A12,q20
+%   cnot  A12,q17
+%   cnot  A13,q15
+%   cnot  A13,q17
+%   cnot  A12,q16
+%   cnot  A13,q16
+%   cnot  A12,q15
+%   h     A12
+%   h     A13
+% 
+% third and fourth generators for the last eight generators, right block
+%   h        A16
+%   h        A17
+%   cnot     A17,q18
+%   cnot     A16,q19
+%   cnot     A17,q19
+%   cnot     A16,q20
+%   cnot     A17,q20
+%   cnot     A16,q18
+%   h        A16
+%   h        A17
+%   measure  A16
+%   measure  A17
+%   nop      A16
+%   zero     A16
+%   zero     A17
+% 
+% 
+% 
+% measurement for the third round in AG
+%   measure  A2
+%   measure  A3
+%   measure  A4
+%   measure  A5
+%   measure  A6
+%   measure  A7
+%   measure  A8
+%   measure  A9
+%   measure  A10
+%   measure  A11
+%   measure  A12
+%   measure  A13
+% 
+%fifth and sixth generators in the extra first eight genrators
+%   cnot     q1,A1
+%   cnot     q1,A0
+%   cnot     q3,A1
+%   cnot     q2,A1
+%   cnot     q0,A1
+%   cnot     q3,A0
+%   cnot     q5,A1
+%   h        A0
+%   h        A1
+%   cnot     A0,q1
+%   cnot     A0,q2
+%   cnot     A1,q0
+%   cnot     A0,q4
+%   cnot     A1,q5
+%   cnot     A0,q5
+%   cnot     A1,q4
+%   cnot     A1,q2
+%   h        A0
+%   h        A1
+% 
+%   measure  A0
+%   measure  A1
+%   zero     A0
+%   zero     A1
+% 
+%seventh and eight genertors in the extra first eight generators
+%   cnot     q0,A0
+%   cnot     q1,A1
+%   cnot     q2,A0
+%   cnot     q4,A1
+%   cnot     q5,A0
+%   cnot     q4,A0
+%   cnot     q3,A1
+% 
+%   h        A0
+%   h        A1
+%   cnot     A0,q2
+%   cnot     A1,q3
+%   cnot     A0,q3
+%   cnot     A1,q2
+%   cnot     A0,q4
+%   cnot     A0,q5
+%   h        A0
+%   nop      A1
+%   nop      A1
+%   h        A1
+%   measure  A0
+%   measure  A1
+% 
+% 
+%first and second generator for the last right generators
+%   cnot     q18,A16
+%   cnot     q19,A17
+%   cnot     q19,A16
+%   cnot     q20,A17
+%   cnot     q20,A16
+%   cnot     q18,A17
+%   cnot     q22,A16
+%   cnot     q23,A17
+%   h        A16
+%   h        A17
+%   cnot     A16,q22
+%   cnot     A17,q23
+%   cnot     A16,q23
+%   cnot     A17,q21
+%   cnot     A17,q20
+%   cnot     A17,q19
+%   cnot     A17,q18
+%   h        A16
+%   h        A17
+% 
+%   measure  A16
+%   measure  A17
+
+%  Time 01:
+%    Gate 00 zero(A0)
+%    Gate 01 zero(A1)
+%    Gate 02 zero(A2)
+%    Gate 03 zero(A3)
+%    Gate 04 zero(A4)
+%    Gate 05 zero(A5)
+%    Gate 06 zero(A6)
+%    Gate 07 zero(A7)
+%    Gate 08 zero(A8)
+%    Gate 09 zero(A9)
+%    Gate 10 zero(A10)
+%    Gate 11 zero(A11)
+%    Gate 12 zero(A12)
+%    Gate 13 zero(A13)
+%    Gate 14 zero(A14)
+%    Gate 15 zero(A15)
+%    Gate 16 zero(A16)
+%    Gate 17 zero(A17)
+%  Time 02:
+%    Gate 18 cnot(q0,A1)
+%    Gate 19 cnot(q2,A0)
+%    Gate 22 cnot(q8,A3)
+%    Gate 23 cnot(q6,A2)
+%    Gate 34 cnot(q11,A5)
+%    Gate 35 cnot(q9,A4)
+%    Gate 46 cnot(q14,A7)
+%    Gate 47 cnot(q12,A6)
+%    Gate 58 cnot(q17,A9)
+%    Gate 59 cnot(q15,A8)
+%    Gate 70 cnot(q20,A11)
+%    Gate 71 cnot(q18,A10)
+%    Gate 82 cnot(q23,A13)
+%    Gate 83 cnot(q21,A12)
+%    Gate 103 cnot(q22,A17)
+%  Time 03:
+%    Gate 20 cnot(q2,A1)
+%    Gate 21 cnot(q0,A0)
+%    Gate 24 cnot(q8,A2)
+%    Gate 25 cnot(q6,A3)
+%    Gate 36 cnot(q11,A4)
+%    Gate 37 cnot(q9,A5)
+%    Gate 48 cnot(q14,A6)
+%    Gate 49 cnot(q12,A7)
+%    Gate 60 cnot(q17,A8)
+%    Gate 61 cnot(q15,A9)
+%    Gate 72 cnot(q20,A10)
+%    Gate 73 cnot(q18,A11)
+%    Gate 84 cnot(q23,A12)
+%    Gate 85 cnot(q21,A13)
+%    Gate 106 h(A17)
+%  Time 04:
+%    Gate 26 cnot(q5,A3)
+%    Gate 27 cnot(q4,A2)
+%    Gate 38 cnot(q8,A5)
+%    Gate 39 cnot(q7,A4)
+%    Gate 50 cnot(q11,A7)
+%    Gate 51 cnot(q10,A6)
+%    Gate 62 cnot(q14,A9)
+%    Gate 63 cnot(q13,A8)
+%    Gate 74 cnot(q17,A11)
+%    Gate 75 cnot(q16,A10)
+%    Gate 86 cnot(q20,A13)
+%    Gate 87 cnot(q19,A12)
+%    Gate 94 h(A0)
+%    Gate 95 h(A1)
+%    Gate 102 cnot(q21,A16)
+%  Time 05:
+%    Gate 28 cnot(q0,A2)
+%    Gate 30 cnot(q1,A3)
+%    Gate 40 cnot(q3,A4)
+%    Gate 42 cnot(q4,A5)
+%    Gate 52 cnot(q6,A6)
+%    Gate 54 cnot(q7,A7)
+%    Gate 64 cnot(q9,A8)
+%    Gate 66 cnot(q10,A9)
+%    Gate 76 cnot(q12,A10)
+%    Gate 78 cnot(q13,A11)
+%    Gate 88 cnot(q15,A12)
+%    Gate 90 cnot(q16,A13)
+%    Gate 104 cnot(q22,A16)
+%    Gate 107 cnot(A17,q21)
+%  Time 06:
+%    Gate 29 cnot(q2,A2)
+%    Gate 32 cnot(q0,A3)
+%    Gate 41 cnot(q5,A4)
+%    Gate 44 cnot(q3,A5)
+%    Gate 53 cnot(q8,A6)
+%    Gate 56 cnot(q6,A7)
+%    Gate 65 cnot(q11,A8)
+%    Gate 68 cnot(q9,A9)
+%    Gate 77 cnot(q14,A10)
+%    Gate 80 cnot(q12,A11)
+%    Gate 89 cnot(q17,A12)
+%    Gate 92 cnot(q15,A13)
+%    Gate 105 cnot(q23,A16)
+%    Gate 108 cnot(A17,q22)
+%  Time 07:
+%    Gate 31 cnot(q1,A2)
+%    Gate 33 cnot(q2,A3)
+%    Gate 43 cnot(q4,A4)
+%    Gate 45 cnot(q5,A5)
+%    Gate 55 cnot(q7,A6)
+%    Gate 57 cnot(q8,A7)
+%    Gate 67 cnot(q10,A8)
+%    Gate 69 cnot(q11,A9)
+%    Gate 79 cnot(q13,A10)
+%    Gate 81 cnot(q14,A11)
+%    Gate 91 cnot(q16,A12)
+%    Gate 93 cnot(q17,A13)
+%    Gate 109 h(A17)
+%    Gate 110 measure(A16)
+%  Time 08:
+%    Gate 96 cnot(A0,q2)
+%    Gate 97 cnot(A1,q1)
+%    Gate 111 measure(A17)
+%    Gate 112 h(A2)
+%    Gate 113 h(A3)
+%    Gate 130 h(A4)
+%    Gate 131 h(A5)
+%    Gate 148 h(A6)
+%    Gate 149 h(A7)
+%    Gate 166 h(A8)
+%    Gate 167 h(A9)
+%    Gate 184 h(A10)
+%    Gate 185 h(A11)
+%    Gate 202 h(A12)
+%    Gate 203 h(A13)
+%    Gate 248 zero(A16)
+%  Time 09:
+%    Gate 98 cnot(A0,q1)
+%    Gate 99 cnot(A1,q2)
+%    Gate 114 cnot(A3,q8)
+%    Gate 115 cnot(A2,q7)
+%    Gate 132 cnot(A5,q11)
+%    Gate 133 cnot(A4,q10)
+%    Gate 150 cnot(A7,q14)
+%    Gate 151 cnot(A6,q13)
+%    Gate 168 cnot(A9,q17)
+%    Gate 169 cnot(A8,q16)
+%    Gate 186 cnot(A11,q20)
+%    Gate 187 cnot(A10,q19)
+%    Gate 204 cnot(A13,q23)
+%    Gate 205 cnot(A12,q22)
+%    Gate 249 zero(A17)
+%    Gate 264 cnot(q21,A16)
+%  Time 10:
+%    Gate 100 h(A0)
+%    Gate 101 h(A1)
+%    Gate 116 cnot(A3,q7)
+%    Gate 117 cnot(A2,q8)
+%    Gate 134 cnot(A5,q10)
+%    Gate 135 cnot(A4,q11)
+%    Gate 152 cnot(A7,q13)
+%    Gate 153 cnot(A6,q14)
+%    Gate 170 cnot(A9,q16)
+%    Gate 171 cnot(A8,q17)
+%    Gate 188 cnot(A11,q19)
+%    Gate 189 cnot(A10,q20)
+%    Gate 206 cnot(A13,q22)
+%    Gate 207 cnot(A12,q23)
+%  Time 11:
+%    Gate 118 cnot(A3,q5)
+%    Gate 119 cnot(A2,q4)
+%    Gate 136 cnot(A5,q8)
+%    Gate 137 cnot(A4,q7)
+%    Gate 154 cnot(A7,q11)
+%    Gate 155 cnot(A6,q10)
+%    Gate 172 cnot(A9,q14)
+%    Gate 173 cnot(A8,q13)
+%    Gate 190 cnot(A11,q17)
+%    Gate 191 cnot(A10,q16)
+%    Gate 208 cnot(A13,q20)
+%    Gate 209 cnot(A12,q19)
+%    Gate 220 measure(A0)
+%    Gate 221 measure(A1)
+%    Gate 265 cnot(q23,A17)
+%  Time 12:
+%    Gate 120 cnot(A2,q5)
+%    Gate 121 cnot(A3,q3)
+%    Gate 138 cnot(A4,q8)
+%    Gate 139 cnot(A5,q6)
+%    Gate 156 cnot(A6,q11)
+%    Gate 157 cnot(A7,q9)
+%    Gate 174 cnot(A8,q14)
+%    Gate 175 cnot(A9,q12)
+%    Gate 192 cnot(A10,q17)
+%    Gate 193 cnot(A11,q15)
+%    Gate 210 cnot(A12,q20)
+%    Gate 211 cnot(A13,q18)
+%    Gate 234 zero(A0)
+%    Gate 235 zero(A1)
+%    Gate 266 cnot(q21,A17)
+%    Gate 267 cnot(q23,A16)
+%  Time 13:
+%    Gate 122 cnot(A3,q2)
+%    Gate 125 nop(A2)
+%    Gate 140 cnot(A5,q5)
+%    Gate 143 nop(A4)
+%    Gate 158 cnot(A7,q8)
+%    Gate 161 nop(A6)
+%    Gate 176 cnot(A9,q11)
+%    Gate 179 nop(A8)
+%    Gate 194 cnot(A11,q14)
+%    Gate 197 nop(A10)
+%    Gate 212 cnot(A13,q17)
+%    Gate 215 nop(A12)
+%    Gate 253 h(A1)
+%    Gate 268 h(A16)
+%    Gate 269 h(A17)
+%  Time 14:
+%    Gate 123 cnot(A3,q1)
+%    Gate 126 nop(A2)
+%    Gate 141 cnot(A5,q4)
+%    Gate 144 nop(A4)
+%    Gate 159 cnot(A7,q7)
+%    Gate 162 nop(A6)
+%    Gate 177 cnot(A9,q10)
+%    Gate 180 nop(A8)
+%    Gate 195 cnot(A11,q13)
+%    Gate 198 nop(A10)
+%    Gate 213 cnot(A13,q16)
+%    Gate 216 nop(A12)
+%    Gate 270 cnot(A16,q21)
+%    Gate 271 cnot(A17,q22)
+%  Time 15:
+%    Gate 124 cnot(A3,q0)
+%    Gate 127 nop(A2)
+%    Gate 142 cnot(A5,q3)
+%    Gate 145 nop(A4)
+%    Gate 160 cnot(A7,q6)
+%    Gate 163 nop(A6)
+%    Gate 178 cnot(A9,q9)
+%    Gate 181 nop(A8)
+%    Gate 196 cnot(A11,q12)
+%    Gate 199 nop(A10)
+%    Gate 214 cnot(A13,q15)
+%    Gate 217 nop(A12)
+%    Gate 272 cnot(A16,q22)
+%    Gate 273 cnot(A17,q21)
+%  Time 16:
+%    Gate 128 h(A2)
+%    Gate 129 h(A3)
+%    Gate 146 h(A4)
+%    Gate 147 h(A5)
+%    Gate 164 h(A6)
+%    Gate 165 h(A7)
+%    Gate 182 h(A8)
+%    Gate 183 h(A9)
+%    Gate 200 h(A10)
+%    Gate 201 h(A11)
+%    Gate 218 h(A12)
+%    Gate 219 h(A13)
+%    Gate 250 cnot(q0,A0)
+%    Gate 274 h(A16)
+%    Gate 275 h(A17)
+%  Time 17:
+%    Gate 222 measure(A2)
+%    Gate 223 measure(A3)
+%    Gate 224 measure(A4)
+%    Gate 225 measure(A5)
+%    Gate 226 measure(A6)
+%    Gate 227 measure(A7)
+%    Gate 228 measure(A8)
+%    Gate 229 measure(A9)
+%    Gate 230 measure(A10)
+%    Gate 231 measure(A11)
+%    Gate 232 measure(A12)
+%    Gate 233 measure(A13)
+%    Gate 251 cnot(q2,A0)
+%    Gate 254 cnot(A1,q0)
+%    Gate 276 measure(A16)
+%    Gate 277 measure(A17)
+%  Time 18:
+%    Gate 236 zero(A2)
+%    Gate 237 zero(A3)
+%    Gate 238 zero(A4)
+%    Gate 239 zero(A5)
+%    Gate 240 zero(A6)
+%    Gate 241 zero(A7)
+%    Gate 242 zero(A8)
+%    Gate 243 zero(A9)
+%    Gate 244 zero(A10)
+%    Gate 245 zero(A11)
+%    Gate 246 zero(A12)
+%    Gate 247 zero(A13)
+%    Gate 252 h(A0)
+%    Gate 256 cnot(A1,q2)
+%    Gate 278 zero(A16)
+%    Gate 279 zero(A17)
+%  Time 19:
+%    Gate 255 cnot(A0,q0)
+%    Gate 259 h(A1)
+%    Gate 280 cnot(q8,A2)
+%    Gate 281 cnot(q7,A3)
+%    Gate 287 cnot(q11,A4)
+%    Gate 288 cnot(q10,A5)
+%    Gate 294 cnot(q14,A6)
+%    Gate 295 cnot(q13,A7)
+%    Gate 301 cnot(q17,A8)
+%    Gate 302 cnot(q16,A9)
+%    Gate 308 cnot(q20,A10)
+%    Gate 309 cnot(q19,A11)
+%    Gate 315 cnot(q23,A12)
+%    Gate 316 cnot(q22,A13)
+%  Time 20:
+%    Gate 257 cnot(A0,q1)
+%    Gate 261 measure(A1)
+%    Gate 282 cnot(q7,A2)
+%    Gate 283 cnot(q6,A3)
+%    Gate 289 cnot(q10,A4)
+%    Gate 290 cnot(q9,A5)
+%    Gate 296 cnot(q13,A6)
+%    Gate 297 cnot(q12,A7)
+%    Gate 303 cnot(q16,A8)
+%    Gate 304 cnot(q15,A9)
+%    Gate 310 cnot(q19,A10)
+%    Gate 311 cnot(q18,A11)
+%    Gate 317 cnot(q22,A12)
+%    Gate 318 cnot(q21,A13)
+%    Gate 322 cnot(q23,A17)
+%  Time 21:
+%    Gate 258 h(A0)
+%    Gate 263 zero(A1)
+%    Gate 284 cnot(q5,A2)
+%    Gate 286 cnot(q3,A3)
+%    Gate 291 cnot(q8,A4)
+%    Gate 293 cnot(q6,A5)
+%    Gate 298 cnot(q11,A6)
+%    Gate 300 cnot(q9,A7)
+%    Gate 305 cnot(q14,A8)
+%    Gate 307 cnot(q12,A9)
+%    Gate 312 cnot(q17,A10)
+%    Gate 314 cnot(q15,A11)
+%    Gate 319 cnot(q20,A12)
+%    Gate 321 cnot(q18,A13)
+%    Gate 323 cnot(q22,A16)
+%    Gate 428 h(A17)
+%  Time 22:
+%    Gate 260 measure(A0)
+%    Gate 285 cnot(q4,A2)
+%    Gate 292 cnot(q7,A4)
+%    Gate 299 cnot(q10,A6)
+%    Gate 306 cnot(q13,A8)
+%    Gate 313 cnot(q16,A10)
+%    Gate 320 cnot(q19,A12)
+%    Gate 324 cnot(q21,A16)
+%    Gate 326 nop(A3)
+%    Gate 343 nop(A5)
+%    Gate 360 nop(A7)
+%    Gate 377 nop(A9)
+%    Gate 394 nop(A11)
+%    Gate 411 nop(A13)
+%  Time 23:
+%    Gate 262 zero(A0)
+%    Gate 325 h(A2)
+%    Gate 327 h(A3)
+%    Gate 342 h(A4)
+%    Gate 344 h(A5)
+%    Gate 359 h(A6)
+%    Gate 361 h(A7)
+%    Gate 376 h(A8)
+%    Gate 378 h(A9)
+%    Gate 393 h(A10)
+%    Gate 395 h(A11)
+%    Gate 410 h(A12)
+%    Gate 412 h(A13)
+%    Gate 427 h(A16)
+%  Time 24:
+%    Gate 328 cnot(A3,q8)
+%    Gate 329 cnot(A2,q6)
+%    Gate 345 cnot(A5,q11)
+%    Gate 346 cnot(A4,q9)
+%    Gate 362 cnot(A7,q14)
+%    Gate 363 cnot(A6,q12)
+%    Gate 379 cnot(A9,q17)
+%    Gate 380 cnot(A8,q15)
+%    Gate 396 cnot(A11,q20)
+%    Gate 397 cnot(A10,q18)
+%    Gate 413 cnot(A13,q23)
+%    Gate 414 cnot(A12,q21)
+%  Time 25:
+%    Gate 330 cnot(A3,q5)
+%    Gate 332 cnot(A2,q7)
+%    Gate 347 cnot(A5,q8)
+%    Gate 349 cnot(A4,q10)
+%    Gate 364 cnot(A7,q11)
+%    Gate 366 cnot(A6,q13)
+%    Gate 381 cnot(A9,q14)
+%    Gate 383 cnot(A8,q16)
+%    Gate 398 cnot(A11,q17)
+%    Gate 400 cnot(A10,q19)
+%    Gate 415 cnot(A13,q20)
+%    Gate 417 cnot(A12,q22)
+%  Time 26:
+%    Gate 331 cnot(A3,q6)
+%    Gate 333 cnot(A2,q5)
+%    Gate 348 cnot(A5,q9)
+%    Gate 350 cnot(A4,q8)
+%    Gate 365 cnot(A7,q12)
+%    Gate 367 cnot(A6,q11)
+%    Gate 382 cnot(A9,q15)
+%    Gate 384 cnot(A8,q14)
+%    Gate 399 cnot(A11,q18)
+%    Gate 401 cnot(A10,q17)
+%    Gate 416 cnot(A13,q21)
+%    Gate 418 cnot(A12,q20)
+%    Gate 430 cnot(A16,q19)
+%  Time 27:
+%    Gate 334 cnot(A2,q2)
+%    Gate 335 cnot(A3,q0)
+%    Gate 351 cnot(A4,q5)
+%    Gate 352 cnot(A5,q3)
+%    Gate 368 cnot(A6,q8)
+%    Gate 369 cnot(A7,q6)
+%    Gate 385 cnot(A8,q11)
+%    Gate 386 cnot(A9,q9)
+%    Gate 402 cnot(A10,q14)
+%    Gate 403 cnot(A11,q12)
+%    Gate 419 cnot(A12,q17)
+%    Gate 420 cnot(A13,q15)
+%    Gate 429 cnot(A17,q18)
+%    Gate 432 cnot(A16,q20)
+%  Time 28:
+%    Gate 336 cnot(A3,q2)
+%    Gate 337 cnot(A2,q1)
+%    Gate 353 cnot(A5,q5)
+%    Gate 354 cnot(A4,q4)
+%    Gate 370 cnot(A7,q8)
+%    Gate 371 cnot(A6,q7)
+%    Gate 387 cnot(A9,q11)
+%    Gate 388 cnot(A8,q10)
+%    Gate 404 cnot(A11,q14)
+%    Gate 405 cnot(A10,q13)
+%    Gate 421 cnot(A13,q17)
+%    Gate 422 cnot(A12,q16)
+%    Gate 431 cnot(A17,q19)
+%    Gate 434 cnot(A16,q18)
+%  Time 29:
+%    Gate 338 cnot(A3,q1)
+%    Gate 339 cnot(A2,q0)
+%    Gate 355 cnot(A5,q4)
+%    Gate 356 cnot(A4,q3)
+%    Gate 372 cnot(A7,q7)
+%    Gate 373 cnot(A6,q6)
+%    Gate 389 cnot(A9,q10)
+%    Gate 390 cnot(A8,q9)
+%    Gate 406 cnot(A11,q13)
+%    Gate 407 cnot(A10,q12)
+%    Gate 423 cnot(A13,q16)
+%    Gate 424 cnot(A12,q15)
+%    Gate 433 cnot(A17,q20)
+%    Gate 435 h(A16)
+%  Time 30:
+%    Gate 340 h(A2)
+%    Gate 341 h(A3)
+%    Gate 357 h(A4)
+%    Gate 358 h(A5)
+%    Gate 374 h(A6)
+%    Gate 375 h(A7)
+%    Gate 391 h(A8)
+%    Gate 392 h(A9)
+%    Gate 408 h(A10)
+%    Gate 409 h(A11)
+%    Gate 425 h(A12)
+%    Gate 426 h(A13)
+%    Gate 436 h(A17)
+%    Gate 437 measure(A16)
+%    Gate 454 cnot(q1,A1)
+%  Time 31:
+%    Gate 438 measure(A17)
+%    Gate 439 nop(A16)
+%    Gate 442 measure(A2)
+%    Gate 443 measure(A3)
+%    Gate 444 measure(A4)
+%    Gate 445 measure(A5)
+%    Gate 446 measure(A6)
+%    Gate 447 measure(A7)
+%    Gate 448 measure(A8)
+%    Gate 449 measure(A9)
+%    Gate 450 measure(A10)
+%    Gate 451 measure(A11)
+%    Gate 452 measure(A12)
+%    Gate 453 measure(A13)
+%    Gate 455 cnot(q1,A0)
+%    Gate 456 cnot(q3,A1)
+%  Time 32:
+%    Gate 440 zero(A16)
+%    Gate 441 zero(A17)
+%    Gate 457 cnot(q2,A1)
+%    Gate 459 cnot(q3,A0)
+%  Time 33:
+%    Gate 458 cnot(q0,A1)
+%    Gate 461 h(A0)
+%    Gate 498 cnot(q18,A16)
+%    Gate 499 cnot(q19,A17)
+%  Time 34:
+%    Gate 460 cnot(q5,A1)
+%    Gate 463 cnot(A0,q1)
+%    Gate 500 cnot(q19,A16)
+%    Gate 501 cnot(q20,A17)
+%  Time 35:
+%    Gate 462 h(A1)
+%    Gate 464 cnot(A0,q2)
+%    Gate 502 cnot(q20,A16)
+%    Gate 503 cnot(q18,A17)
+%  Time 36:
+%    Gate 465 cnot(A1,q0)
+%    Gate 466 cnot(A0,q4)
+%    Gate 504 cnot(q22,A16)
+%    Gate 505 cnot(q23,A17)
+%  Time 37:
+%    Gate 467 cnot(A1,q5)
+%    Gate 506 h(A16)
+%    Gate 507 h(A17)
+%  Time 38:
+%    Gate 468 cnot(A0,q5)
+%    Gate 469 cnot(A1,q4)
+%    Gate 508 cnot(A16,q22)
+%    Gate 509 cnot(A17,q23)
+%  Time 39:
+%    Gate 470 cnot(A1,q2)
+%    Gate 471 h(A0)
+%    Gate 510 cnot(A16,q23)
+%    Gate 511 cnot(A17,q21)
+%  Time 40:
+%    Gate 472 h(A1)
+%    Gate 473 measure(A0)
+%    Gate 512 cnot(A17,q20)
+%    Gate 515 h(A16)
+%  Time 41:
+%    Gate 474 measure(A1)
+%    Gate 475 zero(A0)
+%    Gate 513 cnot(A17,q19)
+%    Gate 517 measure(A16)
+%  Time 42:
+%    Gate 476 zero(A1)
+%    Gate 477 cnot(q0,A0)
+%    Gate 514 cnot(A17,q18)
+%  Time 43:
+%    Gate 478 cnot(q1,A1)
+%    Gate 479 cnot(q2,A0)
+%    Gate 516 h(A17)
+%  Time 44:
+%    Gate 480 cnot(q4,A1)
+%    Gate 481 cnot(q5,A0)
+%    Gate 518 measure(A17)
+%  Time 45:
+%    Gate 482 cnot(q4,A0)
+%    Gate 483 cnot(q3,A1)
+%  Time 46:
+%    Gate 484 h(A0)
+%    Gate 485 h(A1)
+%  Time 47:
+%    Gate 486 cnot(A0,q2)
+%    Gate 487 cnot(A1,q3)
+%  Time 48:
+%    Gate 488 cnot(A0,q3)
+%    Gate 489 cnot(A1,q2)
+%  Time 49:
+%    Gate 490 cnot(A0,q4)
+%    Gate 493 nop(A1)
+%  Time 50:
+%    Gate 491 cnot(A0,q5)
+%    Gate 494 nop(A1)
+%  Time 51:
+%    Gate 492 h(A0)
+%    Gate 495 h(A1)
+%  Time 52:
+%    Gate 496 measure(A0)
+%    Gate 497 measure(A1)
+
+% Qubit circuit matrix:
+%
+% q0: n  , gBxD, gCxD, n  , gExD, gFxD, n  , n  , n  , n  , n  , n  , n  , n  , gOxD, gPxD, gQxD, n  , gSxD, n  , n  , n  , n  , n  , n  , n  , gAAxD, n  , gCAxD, n  , n  , n  , gGAxD, n  , n  , gJAxD, n  , n  , n  , n  , n  , gPAxD, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A0: gAxB, gBxB, gCxB, gDxB, n  , n  , n  , gHxB, gIxB, gJxB, gKxB, gLxB, n  , n  , n  , gPxB, gQxB, gRxB, gSxB, gTxB, gUxB, gVxB, gWxB, n  , n  , n  , n  , n  , n  , n  , gEAxB, gFAxB, gGAxB, gHAxB, gIAxB, gJAxB, n  , gLAxB, gMAxB, gNAxB, gOAxB, gPAxB, gQAxB, gRAxB, gSAxB, gTAxB, gUAxB, gVAxB, gWAxB, gXAxB, gYAxB, g@BxB, N  
+% A1: gAxC, gBxC, gCxC, gDxC, n  , n  , n  , gHxC, gIxC, gJxC, gKxC, gLxC, gMxC, n  , n  , n  , gQxC, gRxC, gSxC, gTxC, gUxC, n  , n  , n  , n  , n  , n  , n  , n  , gDAxC, gEAxC, gFAxC, gGAxC, gHAxC, gIAxC, gJAxC, gKAxC, gLAxC, gMAxC, gNAxC, gOAxC, gPAxC, gQAxC, gRAxC, gSAxC, gTAxC, gUAxC, gVAxC, gWAxC, gXAxC, gYAxC, g@BxC, N  
+% q0: n  , gBxD, gCxD, n  , gExD, gFxD, n  , n  , n  , n  , n  , n  , n  , n  , gOxD, gPxD, gQxD, n  , gSxD, n  , n  , n  , n  , n  , n  , n  , gAAxD, n  , gCAxD, n  , n  , n  , gGAxD, n  , n  , gJAxD, n  , n  , n  , n  , n  , gPAxD, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q1: n  , n  , n  , n  , gExE, n  , gGxE, gHxE, gIxE, n  , n  , n  , n  , gNxE, n  , n  , n  , n  , n  , gTxE, n  , n  , n  , n  , n  , n  , n  , gBAxE, gCAxE, gDAxE, gEAxE, n  , n  , gHAxE, n  , n  , n  , n  , n  , n  , n  , n  , gQAxE, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q2: n  , gBxF, gCxF, n  , n  , gFxF, gGxF, gHxF, gIxF, n  , n  , n  , gMxF, n  , n  , n  , gQxF, gRxF, n  , n  , n  , n  , n  , n  , n  , n  , gAAxF, gBAxF, n  , n  , n  , gFAxF, n  , n  , gIAxF, n  , n  , n  , gMAxF, n  , n  , n  , gQAxF, n  , n  , n  , gUAxF, gVAxF, n  , n  , n  , n  , n  
+% A2: gAxG, gBxG, gCxG, gDxG, gExG, gFxG, gGxG, gHxG, gIxG, gJxG, gKxG, gLxG, gMxG, gNxG, gOxG, gPxG, gQxG, gRxG, gSxG, gTxG, gUxG, gVxG, gWxG, gXxG, gYxG, gZxG, gAAxG, gBAxG, gCAxG, gDAxG, gEAxG, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% A3: gAxH, gBxH, gCxH, gDxH, gExH, gFxH, gGxH, gHxH, gIxH, gJxH, gKxH, gLxH, gMxH, gNxH, gOxH, gPxH, gQxH, gRxH, gSxH, gTxH, gUxH, gVxH, gWxH, gXxH, gYxH, gZxH, gAAxH, gBAxH, gCAxH, gDAxH, gEAxH, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% q3: n  , n  , n  , n  , gExI, gFxI, n  , n  , n  , n  , n  , gLxI, n  , n  , gOxI, n  , n  , n  , n  , n  , gUxI, n  , n  , n  , n  , n  , gAAxI, n  , gCAxI, n  , gEAxI, gFAxI, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , gSAxI, n  , gUAxI, gVAxI, n  , n  , n  , n  , n  
+% q4: n  , n  , n  , gDxJ, gExJ, n  , gGxJ, n  , n  , n  , gKxJ, n  , n  , gNxJ, n  , n  , n  , n  , n  , n  , n  , gVxJ, n  , n  , n  , n  , n  , gBAxJ, gCAxJ, n  , n  , n  , n  , n  , n  , gJAxJ, n  , gLAxJ, n  , n  , n  , n  , n  , gRAxJ, gSAxJ, n  , n  , n  , gWAxJ, n  , n  , n  , n  
+% q5: n  , n  , n  , gDxK, n  , gFxK, gGxK, n  , n  , n  , gKxK, gLxK, gMxK, n  , n  , n  , n  , n  , n  , n  , gUxK, n  , n  , n  , gYxK, gZxK, gAAxK, gBAxK, n  , n  , n  , n  , n  , gHAxK, n  , n  , gKAxK, gLAxK, n  , n  , n  , n  , n  , gRAxK, n  , n  , n  , n  , n  , gXAxK, n  , n  , n  
+% A4: gAxL, gBxL, gCxL, gDxL, gExL, gFxL, gGxL, gHxL, gIxL, gJxL, gKxL, gLxL, gMxL, gNxL, gOxL, gPxL, gQxL, gRxL, gSxL, gTxL, gUxL, gVxL, gWxL, gXxL, gYxL, gZxL, gAAxL, gBAxL, gCAxL, gDAxL, gEAxL, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% A5: gAxM, gBxM, gCxM, gDxM, gExM, gFxM, gGxM, gHxM, gIxM, gJxM, gKxM, gLxM, gMxM, gNxM, gOxM, gPxM, gQxM, gRxM, gSxM, gTxM, gUxM, gVxM, gWxM, gXxM, gYxM, gZxM, gAAxM, gBAxM, gCAxM, gDAxM, gEAxM, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% q6: n  , gBxN, gCxN, n  , gExN, gFxN, n  , n  , n  , n  , n  , gLxN, n  , n  , gOxN, n  , n  , n  , n  , gTxN, gUxN, n  , n  , gXxN, n  , gZxN, gAAxN, n  , gCAxN, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q7: n  , n  , n  , gDxO, gExO, n  , gGxO, n  , gIxO, gJxO, gKxO, n  , n  , gNxO, n  , n  , n  , n  , gSxO, gTxO, n  , gVxO, n  , n  , gYxO, n  , n  , gBAxO, gCAxO, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q8: n  , gBxP, gCxP, gDxP, n  , gFxP, gGxP, n  , gIxP, gJxP, gKxP, gLxP, gMxP, n  , n  , n  , n  , n  , gSxP, n  , gUxP, n  , n  , gXxP, gYxP, gZxP, gAAxP, gBAxP, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A6: gAxQ, gBxQ, gCxQ, gDxQ, gExQ, gFxQ, gGxQ, gHxQ, gIxQ, gJxQ, gKxQ, gLxQ, gMxQ, gNxQ, gOxQ, gPxQ, gQxQ, gRxQ, gSxQ, gTxQ, gUxQ, gVxQ, gWxQ, gXxQ, gYxQ, gZxQ, gAAxQ, gBAxQ, gCAxQ, gDAxQ, gEAxQ, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% A7: gAxR, gBxR, gCxR, gDxR, gExR, gFxR, gGxR, gHxR, gIxR, gJxR, gKxR, gLxR, gMxR, gNxR, gOxR, gPxR, gQxR, gRxR, gSxR, gTxR, gUxR, gVxR, gWxR, gXxR, gYxR, gZxR, gAAxR, gBAxR, gCAxR, gDAxR, gEAxR, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% q9: n  , gBxS, gCxS, n  , gExS, gFxS, n  , n  , n  , n  , n  , gLxS, n  , n  , gOxS, n  , n  , n  , n  , gTxS, gUxS, n  , n  , gXxS, n  , gZxS, gAAxS, n  , gCAxS, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q10: n  , n  , n  , gDxT, gExT, n  , gGxT, n  , gIxT, gJxT, gKxT, n  , n  , gNxT, n  , n  , n  , n  , gSxT, gTxT, n  , gVxT, n  , n  , gYxT, n  , n  , gBAxT, gCAxT, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q11: n  , gBxU, gCxU, gDxU, n  , gFxU, gGxU, n  , gIxU, gJxU, gKxU, gLxU, gMxU, n  , n  , n  , n  , n  , gSxU, n  , gUxU, n  , n  , gXxU, gYxU, gZxU, gAAxU, gBAxU, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A8: gAxV, gBxV, gCxV, gDxV, gExV, gFxV, gGxV, gHxV, gIxV, gJxV, gKxV, gLxV, gMxV, gNxV, gOxV, gPxV, gQxV, gRxV, gSxV, gTxV, gUxV, gVxV, gWxV, gXxV, gYxV, gZxV, gAAxV, gBAxV, gCAxV, gDAxV, gEAxV, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% A9: gAxW, gBxW, gCxW, gDxW, gExW, gFxW, gGxW, gHxW, gIxW, gJxW, gKxW, gLxW, gMxW, gNxW, gOxW, gPxW, gQxW, gRxW, gSxW, gTxW, gUxW, gVxW, gWxW, gXxW, gYxW, gZxW, gAAxW, gBAxW, gCAxW, gDAxW, gEAxW, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% q12: n  , gBxX, gCxX, n  , gExX, gFxX, n  , n  , n  , n  , n  , gLxX, n  , n  , gOxX, n  , n  , n  , n  , gTxX, gUxX, n  , n  , gXxX, n  , gZxX, gAAxX, n  , gCAxX, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q13: n  , n  , n  , gDxY, gExY, n  , gGxY, n  , gIxY, gJxY, gKxY, n  , n  , gNxY, n  , n  , n  , n  , gSxY, gTxY, n  , gVxY, n  , n  , gYxY, n  , n  , gBAxY, gCAxY, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q14: n  , gBxZ, gCxZ, gDxZ, n  , gFxZ, gGxZ, n  , gIxZ, gJxZ, gKxZ, gLxZ, gMxZ, n  , n  , n  , n  , n  , gSxZ, n  , gUxZ, n  , n  , gXxZ, gYxZ, gZxZ, gAAxZ, gBAxZ, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A10: gAxAA, gBxAA, gCxAA, gDxAA, gExAA, gFxAA, gGxAA, gHxAA, gIxAA, gJxAA, gKxAA, gLxAA, gMxAA, gNxAA, gOxAA, gPxAA, gQxAA, gRxAA, gSxAA, gTxAA, gUxAA, gVxAA, gWxAA, gXxAA, gYxAA, gZxAA, gAAxAA, gBAxAA, gCAxAA, gDAxAA, gEAxAA, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% A11: gAxBA, gBxBA, gCxBA, gDxBA, gExBA, gFxBA, gGxBA, gHxBA, gIxBA, gJxBA, gKxBA, gLxBA, gMxBA, gNxBA, gOxBA, gPxBA, gQxBA, gRxBA, gSxBA, gTxBA, gUxBA, gVxBA, gWxBA, gXxBA, gYxBA, gZxBA, gAAxBA, gBAxBA, gCAxBA, gDAxBA, gEAxBA, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% q15: n  , gBxCA, gCxCA, n  , gExCA, gFxCA, n  , n  , n  , n  , n  , gLxCA, n  , n  , gOxCA, n  , n  , n  , n  , gTxCA, gUxCA, n  , n  , gXxCA, n  , gZxCA, gAAxCA, n  , gCAxCA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q16: n  , n  , n  , gDxDA, gExDA, n  , gGxDA, n  , gIxDA, gJxDA, gKxDA, n  , n  , gNxDA, n  , n  , n  , n  , gSxDA, gTxDA, n  , gVxDA, n  , n  , gYxDA, n  , n  , gBAxDA, gCAxDA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q17: n  , gBxEA, gCxEA, gDxEA, n  , gFxEA, gGxEA, n  , gIxEA, gJxEA, gKxEA, gLxEA, gMxEA, n  , n  , n  , n  , n  , gSxEA, n  , gUxEA, n  , n  , gXxEA, gYxEA, gZxEA, gAAxEA, gBAxEA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A12: gAxFA, gBxFA, gCxFA, gDxFA, gExFA, gFxFA, gGxFA, gHxFA, gIxFA, gJxFA, gKxFA, gLxFA, gMxFA, gNxFA, gOxFA, gPxFA, gQxFA, gRxFA, gSxFA, gTxFA, gUxFA, gVxFA, gWxFA, gXxFA, gYxFA, gZxFA, gAAxFA, gBAxFA, gCAxFA, gDAxFA, gEAxFA, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% A13: gAxGA, gBxGA, gCxGA, gDxGA, gExGA, gFxGA, gGxGA, gHxGA, gIxGA, gJxGA, gKxGA, gLxGA, gMxGA, gNxGA, gOxGA, gPxGA, gQxGA, gRxGA, gSxGA, gTxGA, gUxGA, gVxGA, gWxGA, gXxGA, gYxGA, gZxGA, gAAxGA, gBAxGA, gCAxGA, gDAxGA, gEAxGA, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% q18: n  , gBxHA, gCxHA, n  , n  , n  , n  , n  , n  , n  , n  , gLxHA, n  , n  , n  , n  , n  , n  , n  , gTxHA, gUxHA, n  , n  , gXxHA, n  , gZxHA, gAAxHA, gBAxHA, n  , n  , n  , n  , gGAxHA, n  , gIAxHA, n  , n  , n  , n  , n  , n  , gPAxHA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q19: n  , n  , n  , gDxIA, n  , n  , n  , n  , gIxIA, gJxIA, gKxIA, n  , n  , n  , n  , n  , n  , n  , gSxIA, gTxIA, n  , gVxIA, n  , n  , gYxIA, gZxIA, n  , gBAxIA, n  , n  , n  , n  , gGAxIA, gHAxIA, n  , n  , n  , n  , n  , n  , gOAxIA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q20: n  , gBxJA, gCxJA, gDxJA, n  , n  , n  , n  , gIxJA, gJxJA, gKxJA, gLxJA, n  , n  , n  , n  , n  , n  , gSxJA, n  , gUxJA, n  , n  , gXxJA, gYxJA, gZxJA, gAAxJA, n  , gCAxJA, n  , n  , n  , n  , gHAxJA, gIAxJA, n  , n  , n  , n  , gNAxJA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A14: gAxKA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A15: gAxLA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q21: n  , gBxMA, gCxMA, gDxMA, gExMA, n  , n  , n  , gIxMA, n  , n  , gLxMA, n  , gNxMA, gOxMA, n  , n  , n  , n  , gTxMA, n  , gVxMA, n  , gXxMA, n  , gZxMA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , gMAxMA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q22: n  , gBxNA, n  , n  , gExNA, gFxNA, n  , n  , gIxNA, gJxNA, n  , n  , n  , gNxNA, gOxNA, n  , n  , n  , gSxNA, gTxNA, gUxNA, n  , n  , n  , gYxNA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , gJAxNA, n  , gLAxNA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q23: n  , gBxOA, gCxOA, n  , n  , gFxOA, n  , n  , gIxOA, gJxOA, gKxOA, gLxOA, n  , n  , n  , n  , n  , n  , gSxOA, gTxOA, n  , n  , n  , gXxOA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , gJAxOA, n  , gLAxOA, gMAxOA, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A16: gAxPA, n  , n  , gDxPA, gExPA, gFxPA, gGxPA, gHxPA, gIxPA, n  , n  , gLxPA, gMxPA, gNxPA, gOxPA, gPxPA, gQxPA, gRxPA, n  , n  , gUxPA, gVxPA, gWxPA, n  , n  , gZxPA, gAAxPA, gBAxPA, gCAxPA, gDAxPA, gEAxPA, gFAxPA, gGAxPA, gHAxPA, gIAxPA, gJAxPA, gKAxPA, gLAxPA, gMAxPA, gNAxPA, gOAxPA, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% A17: gAxQA, gBxQA, gCxQA, n  , gExQA, gFxQA, gGxQA, gHxQA, gIxQA, n  , gKxQA, gLxQA, gMxQA, gNxQA, gOxQA, gPxQA, gQxQA, gRxQA, n  , gTxQA, gUxQA, n  , n  , n  , n  , n  , gAAxQA, gBAxQA, gCAxQA, gDAxQA, gEAxQA, gFAxQA, gGAxQA, gHAxQA, gIAxQA, gJAxQA, gKAxQA, gLAxQA, gMAxQA, gNAxQA, gOAxQA, gPAxQA, gQAxQA, gRAxQA, N  , N  , N  , N  , N  , N  , N  , N  , N  
+
+\documentclass[11pt]{article}
+\input{xyqcirc.tex}
+
+% definitions for the circuit elements
+
+\def\gAxB{\z\A{gAxB}}
+\def\gAxC{\z\A{gAxC}}
+\def\gAxG{\z\A{gAxG}}
+\def\gAxH{\z\A{gAxH}}
+\def\gAxL{\z\A{gAxL}}
+\def\gAxM{\z\A{gAxM}}
+\def\gAxQ{\z\A{gAxQ}}
+\def\gAxR{\z\A{gAxR}}
+\def\gAxV{\z\A{gAxV}}
+\def\gAxW{\z\A{gAxW}}
+\def\gAxAA{\z\A{gAxAA}}
+\def\gAxBA{\z\A{gAxBA}}
+\def\gAxFA{\z\A{gAxFA}}
+\def\gAxGA{\z\A{gAxGA}}
+\def\gAxKA{\z\A{gAxKA}}
+\def\gAxLA{\z\A{gAxLA}}
+\def\gAxPA{\z\A{gAxPA}}
+\def\gAxQA{\z\A{gAxQA}}
+\def\gBxD{\b\w\A{gBxD}}
+\def\gBxC{\o\w\A{gBxC}}
+\def\gBxF{\b\w\A{gBxF}}
+\def\gBxB{\o\w\A{gBxB}}
+\def\gCxF{\b\w\A{gCxF}}
+\def\gCxC{\o\w\A{gCxC}}
+\def\gCxD{\b\w\A{gCxD}}
+\def\gCxB{\o\w\A{gCxB}}
+\def\gBxP{\b\w\A{gBxP}}
+\def\gBxH{\o\w\A{gBxH}}
+\def\gBxN{\b\w\A{gBxN}}
+\def\gBxG{\o\w\A{gBxG}}
+\def\gCxP{\b\w\A{gCxP}}
+\def\gCxG{\o\w\A{gCxG}}
+\def\gCxN{\b\w\A{gCxN}}
+\def\gCxH{\o\w\A{gCxH}}
+\def\gDxK{\b\w\A{gDxK}}
+\def\gDxH{\o\w\A{gDxH}}
+\def\gDxJ{\b\w\A{gDxJ}}
+\def\gDxG{\o\w\A{gDxG}}
+\def\gExD{\b\w\A{gExD}}
+\def\gExG{\o\w\A{gExG}}
+\def\gFxF{\b\w\A{gFxF}}
+\def\gFxG{\o\w\A{gFxG}}
+\def\gExE{\b\w\A{gExE}}
+\def\gExH{\o\w\A{gExH}}
+\def\gGxE{\b\w\A{gGxE}}
+\def\gGxG{\o\w\A{gGxG}}
+\def\gFxD{\b\w\A{gFxD}}
+\def\gFxH{\o\w\A{gFxH}}
+\def\gGxF{\b\w\A{gGxF}}
+\def\gGxH{\o\w\A{gGxH}}
+\def\gBxU{\b\w\A{gBxU}}
+\def\gBxM{\o\w\A{gBxM}}
+\def\gBxS{\b\w\A{gBxS}}
+\def\gBxL{\o\w\A{gBxL}}
+\def\gCxU{\b\w\A{gCxU}}
+\def\gCxL{\o\w\A{gCxL}}
+\def\gCxS{\b\w\A{gCxS}}
+\def\gCxM{\o\w\A{gCxM}}
+\def\gDxP{\b\w\A{gDxP}}
+\def\gDxM{\o\w\A{gDxM}}
+\def\gDxO{\b\w\A{gDxO}}
+\def\gDxL{\o\w\A{gDxL}}
+\def\gExI{\b\w\A{gExI}}
+\def\gExL{\o\w\A{gExL}}
+\def\gFxK{\b\w\A{gFxK}}
+\def\gFxL{\o\w\A{gFxL}}
+\def\gExJ{\b\w\A{gExJ}}
+\def\gExM{\o\w\A{gExM}}
+\def\gGxJ{\b\w\A{gGxJ}}
+\def\gGxL{\o\w\A{gGxL}}
+\def\gFxI{\b\w\A{gFxI}}
+\def\gFxM{\o\w\A{gFxM}}
+\def\gGxK{\b\w\A{gGxK}}
+\def\gGxM{\o\w\A{gGxM}}
+\def\gBxZ{\b\w\A{gBxZ}}
+\def\gBxR{\o\w\A{gBxR}}
+\def\gBxX{\b\w\A{gBxX}}
+\def\gBxQ{\o\w\A{gBxQ}}
+\def\gCxZ{\b\w\A{gCxZ}}
+\def\gCxQ{\o\w\A{gCxQ}}
+\def\gCxX{\b\w\A{gCxX}}
+\def\gCxR{\o\w\A{gCxR}}
+\def\gDxU{\b\w\A{gDxU}}
+\def\gDxR{\o\w\A{gDxR}}
+\def\gDxT{\b\w\A{gDxT}}
+\def\gDxQ{\o\w\A{gDxQ}}
+\def\gExN{\b\w\A{gExN}}
+\def\gExQ{\o\w\A{gExQ}}
+\def\gFxP{\b\w\A{gFxP}}
+\def\gFxQ{\o\w\A{gFxQ}}
+\def\gExO{\b\w\A{gExO}}
+\def\gExR{\o\w\A{gExR}}
+\def\gGxO{\b\w\A{gGxO}}
+\def\gGxQ{\o\w\A{gGxQ}}
+\def\gFxN{\b\w\A{gFxN}}
+\def\gFxR{\o\w\A{gFxR}}
+\def\gGxP{\b\w\A{gGxP}}
+\def\gGxR{\o\w\A{gGxR}}
+\def\gBxEA{\b\w\A{gBxEA}}
+\def\gBxW{\o\w\A{gBxW}}
+\def\gBxCA{\b\w\A{gBxCA}}
+\def\gBxV{\o\w\A{gBxV}}
+\def\gCxEA{\b\w\A{gCxEA}}
+\def\gCxV{\o\w\A{gCxV}}
+\def\gCxCA{\b\w\A{gCxCA}}
+\def\gCxW{\o\w\A{gCxW}}
+\def\gDxZ{\b\w\A{gDxZ}}
+\def\gDxW{\o\w\A{gDxW}}
+\def\gDxY{\b\w\A{gDxY}}
+\def\gDxV{\o\w\A{gDxV}}
+\def\gExS{\b\w\A{gExS}}
+\def\gExV{\o\w\A{gExV}}
+\def\gFxU{\b\w\A{gFxU}}
+\def\gFxV{\o\w\A{gFxV}}
+\def\gExT{\b\w\A{gExT}}
+\def\gExW{\o\w\A{gExW}}
+\def\gGxT{\b\w\A{gGxT}}
+\def\gGxV{\o\w\A{gGxV}}
+\def\gFxS{\b\w\A{gFxS}}
+\def\gFxW{\o\w\A{gFxW}}
+\def\gGxU{\b\w\A{gGxU}}
+\def\gGxW{\o\w\A{gGxW}}
+\def\gBxJA{\b\w\A{gBxJA}}
+\def\gBxBA{\o\w\A{gBxBA}}
+\def\gBxHA{\b\w\A{gBxHA}}
+\def\gBxAA{\o\w\A{gBxAA}}
+\def\gCxJA{\b\w\A{gCxJA}}
+\def\gCxAA{\o\w\A{gCxAA}}
+\def\gCxHA{\b\w\A{gCxHA}}
+\def\gCxBA{\o\w\A{gCxBA}}
+\def\gDxEA{\b\w\A{gDxEA}}
+\def\gDxBA{\o\w\A{gDxBA}}
+\def\gDxDA{\b\w\A{gDxDA}}
+\def\gDxAA{\o\w\A{gDxAA}}
+\def\gExX{\b\w\A{gExX}}
+\def\gExAA{\o\w\A{gExAA}}
+\def\gFxZ{\b\w\A{gFxZ}}
+\def\gFxAA{\o\w\A{gFxAA}}
+\def\gExY{\b\w\A{gExY}}
+\def\gExBA{\o\w\A{gExBA}}
+\def\gGxY{\b\w\A{gGxY}}
+\def\gGxAA{\o\w\A{gGxAA}}
+\def\gFxX{\b\w\A{gFxX}}
+\def\gFxBA{\o\w\A{gFxBA}}
+\def\gGxZ{\b\w\A{gGxZ}}
+\def\gGxBA{\o\w\A{gGxBA}}
+\def\gBxOA{\b\w\A{gBxOA}}
+\def\gBxGA{\o\w\A{gBxGA}}
+\def\gBxMA{\b\w\A{gBxMA}}
+\def\gBxFA{\o\w\A{gBxFA}}
+\def\gCxOA{\b\w\A{gCxOA}}
+\def\gCxFA{\o\w\A{gCxFA}}
+\def\gCxMA{\b\w\A{gCxMA}}
+\def\gCxGA{\o\w\A{gCxGA}}
+\def\gDxJA{\b\w\A{gDxJA}}
+\def\gDxGA{\o\w\A{gDxGA}}
+\def\gDxIA{\b\w\A{gDxIA}}
+\def\gDxFA{\o\w\A{gDxFA}}
+\def\gExCA{\b\w\A{gExCA}}
+\def\gExFA{\o\w\A{gExFA}}
+\def\gFxEA{\b\w\A{gFxEA}}
+\def\gFxFA{\o\w\A{gFxFA}}
+\def\gExDA{\b\w\A{gExDA}}
+\def\gExGA{\o\w\A{gExGA}}
+\def\gGxDA{\b\w\A{gGxDA}}
+\def\gGxFA{\o\w\A{gGxFA}}
+\def\gFxCA{\b\w\A{gFxCA}}
+\def\gFxGA{\o\w\A{gFxGA}}
+\def\gGxEA{\b\w\A{gGxEA}}
+\def\gGxGA{\o\w\A{gGxGA}}
+\def\gDxB{\op{H}\w\A{gDxB}}
+\def\gDxC{\op{H}\w\A{gDxC}}
+\def\gHxB{\b\w\A{gHxB}}
+\def\gHxF{\o\w\A{gHxF}}
+\def\gHxC{\b\w\A{gHxC}}
+\def\gHxE{\o\w\A{gHxE}}
+\def\gIxB{\b\w\A{gIxB}}
+\def\gIxE{\o\w\A{gIxE}}
+\def\gIxC{\b\w\A{gIxC}}
+\def\gIxF{\o\w\A{gIxF}}
+\def\gJxB{\op{H}\w\A{gJxB}}
+\def\gJxC{\op{H}\w\A{gJxC}}
+\def\gDxMA{\b\w\A{gDxMA}}
+\def\gDxPA{\o\w\A{gDxPA}}
+\def\gBxNA{\b\w\A{gBxNA}}
+\def\gBxQA{\o\w\A{gBxQA}}
+\def\gExNA{\b\w\A{gExNA}}
+\def\gExPA{\o\w\A{gExPA}}
+\def\gFxOA{\b\w\A{gFxOA}}
+\def\gFxPA{\o\w\A{gFxPA}}
+\def\gCxQA{\op{H}\w\A{gCxQA}}
+\def\gExQA{\b\w\A{gExQA}}
+\def\gExMA{\o\w\A{gExMA}}
+\def\gFxQA{\b\w\A{gFxQA}}
+\def\gFxNA{\o\w\A{gFxNA}}
+\def\gGxQA{\op{H}\w\A{gGxQA}}
+\def\gGxPA{\meter\w\A{gGxPA}}
+\def\gHxQA{\meter\w\A{gHxQA}}
+\def\gHxG{\op{H}\w\A{gHxG}}
+\def\gHxH{\op{H}\w\A{gHxH}}
+\def\gIxH{\b\w\A{gIxH}}
+\def\gIxP{\o\w\A{gIxP}}
+\def\gIxG{\b\w\A{gIxG}}
+\def\gIxO{\o\w\A{gIxO}}
+\def\gJxH{\b\w\A{gJxH}}
+\def\gJxO{\o\w\A{gJxO}}
+\def\gJxG{\b\w\A{gJxG}}
+\def\gJxP{\o\w\A{gJxP}}
+\def\gKxH{\b\w\A{gKxH}}
+\def\gKxK{\o\w\A{gKxK}}
+\def\gKxG{\b\w\A{gKxG}}
+\def\gKxJ{\o\w\A{gKxJ}}
+\def\gLxG{\b\w\A{gLxG}}
+\def\gLxK{\o\w\A{gLxK}}
+\def\gLxH{\b\w\A{gLxH}}
+\def\gLxI{\o\w\A{gLxI}}
+\def\gMxH{\b\w\A{gMxH}}
+\def\gMxF{\o\w\A{gMxF}}
+\def\gNxH{\b\w\A{gNxH}}
+\def\gNxE{\o\w\A{gNxE}}
+\def\gOxH{\b\w\A{gOxH}}
+\def\gOxD{\o\w\A{gOxD}}
+\def\gMxG{*-{}\w\A{gMxG}}
+\def\gNxG{*-{}\w\A{gNxG}}
+\def\gOxG{*-{}\w\A{gOxG}}
+\def\gPxG{\op{H}\w\A{gPxG}}
+\def\gPxH{\op{H}\w\A{gPxH}}
+\def\gHxL{\op{H}\w\A{gHxL}}
+\def\gHxM{\op{H}\w\A{gHxM}}
+\def\gIxM{\b\w\A{gIxM}}
+\def\gIxU{\o\w\A{gIxU}}
+\def\gIxL{\b\w\A{gIxL}}
+\def\gIxT{\o\w\A{gIxT}}
+\def\gJxM{\b\w\A{gJxM}}
+\def\gJxT{\o\w\A{gJxT}}
+\def\gJxL{\b\w\A{gJxL}}
+\def\gJxU{\o\w\A{gJxU}}
+\def\gKxM{\b\w\A{gKxM}}
+\def\gKxP{\o\w\A{gKxP}}
+\def\gKxL{\b\w\A{gKxL}}
+\def\gKxO{\o\w\A{gKxO}}
+\def\gLxL{\b\w\A{gLxL}}
+\def\gLxP{\o\w\A{gLxP}}
+\def\gLxM{\b\w\A{gLxM}}
+\def\gLxN{\o\w\A{gLxN}}
+\def\gMxM{\b\w\A{gMxM}}
+\def\gMxK{\o\w\A{gMxK}}
+\def\gNxM{\b\w\A{gNxM}}
+\def\gNxJ{\o\w\A{gNxJ}}
+\def\gOxM{\b\w\A{gOxM}}
+\def\gOxI{\o\w\A{gOxI}}
+\def\gMxL{*-{}\w\A{gMxL}}
+\def\gNxL{*-{}\w\A{gNxL}}
+\def\gOxL{*-{}\w\A{gOxL}}
+\def\gPxL{\op{H}\w\A{gPxL}}
+\def\gPxM{\op{H}\w\A{gPxM}}
+\def\gHxQ{\op{H}\w\A{gHxQ}}
+\def\gHxR{\op{H}\w\A{gHxR}}
+\def\gIxR{\b\w\A{gIxR}}
+\def\gIxZ{\o\w\A{gIxZ}}
+\def\gIxQ{\b\w\A{gIxQ}}
+\def\gIxY{\o\w\A{gIxY}}
+\def\gJxR{\b\w\A{gJxR}}
+\def\gJxY{\o\w\A{gJxY}}
+\def\gJxQ{\b\w\A{gJxQ}}
+\def\gJxZ{\o\w\A{gJxZ}}
+\def\gKxR{\b\w\A{gKxR}}
+\def\gKxU{\o\w\A{gKxU}}
+\def\gKxQ{\b\w\A{gKxQ}}
+\def\gKxT{\o\w\A{gKxT}}
+\def\gLxQ{\b\w\A{gLxQ}}
+\def\gLxU{\o\w\A{gLxU}}
+\def\gLxR{\b\w\A{gLxR}}
+\def\gLxS{\o\w\A{gLxS}}
+\def\gMxR{\b\w\A{gMxR}}
+\def\gMxP{\o\w\A{gMxP}}
+\def\gNxR{\b\w\A{gNxR}}
+\def\gNxO{\o\w\A{gNxO}}
+\def\gOxR{\b\w\A{gOxR}}
+\def\gOxN{\o\w\A{gOxN}}
+\def\gMxQ{*-{}\w\A{gMxQ}}
+\def\gNxQ{*-{}\w\A{gNxQ}}
+\def\gOxQ{*-{}\w\A{gOxQ}}
+\def\gPxQ{\op{H}\w\A{gPxQ}}
+\def\gPxR{\op{H}\w\A{gPxR}}
+\def\gHxV{\op{H}\w\A{gHxV}}
+\def\gHxW{\op{H}\w\A{gHxW}}
+\def\gIxW{\b\w\A{gIxW}}
+\def\gIxEA{\o\w\A{gIxEA}}
+\def\gIxV{\b\w\A{gIxV}}
+\def\gIxDA{\o\w\A{gIxDA}}
+\def\gJxW{\b\w\A{gJxW}}
+\def\gJxDA{\o\w\A{gJxDA}}
+\def\gJxV{\b\w\A{gJxV}}
+\def\gJxEA{\o\w\A{gJxEA}}
+\def\gKxW{\b\w\A{gKxW}}
+\def\gKxZ{\o\w\A{gKxZ}}
+\def\gKxV{\b\w\A{gKxV}}
+\def\gKxY{\o\w\A{gKxY}}
+\def\gLxV{\b\w\A{gLxV}}
+\def\gLxZ{\o\w\A{gLxZ}}
+\def\gLxW{\b\w\A{gLxW}}
+\def\gLxX{\o\w\A{gLxX}}
+\def\gMxW{\b\w\A{gMxW}}
+\def\gMxU{\o\w\A{gMxU}}
+\def\gNxW{\b\w\A{gNxW}}
+\def\gNxT{\o\w\A{gNxT}}
+\def\gOxW{\b\w\A{gOxW}}
+\def\gOxS{\o\w\A{gOxS}}
+\def\gMxV{*-{}\w\A{gMxV}}
+\def\gNxV{*-{}\w\A{gNxV}}
+\def\gOxV{*-{}\w\A{gOxV}}
+\def\gPxV{\op{H}\w\A{gPxV}}
+\def\gPxW{\op{H}\w\A{gPxW}}
+\def\gHxAA{\op{H}\w\A{gHxAA}}
+\def\gHxBA{\op{H}\w\A{gHxBA}}
+\def\gIxBA{\b\w\A{gIxBA}}
+\def\gIxJA{\o\w\A{gIxJA}}
+\def\gIxAA{\b\w\A{gIxAA}}
+\def\gIxIA{\o\w\A{gIxIA}}
+\def\gJxBA{\b\w\A{gJxBA}}
+\def\gJxIA{\o\w\A{gJxIA}}
+\def\gJxAA{\b\w\A{gJxAA}}
+\def\gJxJA{\o\w\A{gJxJA}}
+\def\gKxBA{\b\w\A{gKxBA}}
+\def\gKxEA{\o\w\A{gKxEA}}
+\def\gKxAA{\b\w\A{gKxAA}}
+\def\gKxDA{\o\w\A{gKxDA}}
+\def\gLxAA{\b\w\A{gLxAA}}
+\def\gLxEA{\o\w\A{gLxEA}}
+\def\gLxBA{\b\w\A{gLxBA}}
+\def\gLxCA{\o\w\A{gLxCA}}
+\def\gMxBA{\b\w\A{gMxBA}}
+\def\gMxZ{\o\w\A{gMxZ}}
+\def\gNxBA{\b\w\A{gNxBA}}
+\def\gNxY{\o\w\A{gNxY}}
+\def\gOxBA{\b\w\A{gOxBA}}
+\def\gOxX{\o\w\A{gOxX}}
+\def\gMxAA{*-{}\w\A{gMxAA}}
+\def\gNxAA{*-{}\w\A{gNxAA}}
+\def\gOxAA{*-{}\w\A{gOxAA}}
+\def\gPxAA{\op{H}\w\A{gPxAA}}
+\def\gPxBA{\op{H}\w\A{gPxBA}}
+\def\gHxFA{\op{H}\w\A{gHxFA}}
+\def\gHxGA{\op{H}\w\A{gHxGA}}
+\def\gIxGA{\b\w\A{gIxGA}}
+\def\gIxOA{\o\w\A{gIxOA}}
+\def\gIxFA{\b\w\A{gIxFA}}
+\def\gIxNA{\o\w\A{gIxNA}}
+\def\gJxGA{\b\w\A{gJxGA}}
+\def\gJxNA{\o\w\A{gJxNA}}
+\def\gJxFA{\b\w\A{gJxFA}}
+\def\gJxOA{\o\w\A{gJxOA}}
+\def\gKxGA{\b\w\A{gKxGA}}
+\def\gKxJA{\o\w\A{gKxJA}}
+\def\gKxFA{\b\w\A{gKxFA}}
+\def\gKxIA{\o\w\A{gKxIA}}
+\def\gLxFA{\b\w\A{gLxFA}}
+\def\gLxJA{\o\w\A{gLxJA}}
+\def\gLxGA{\b\w\A{gLxGA}}
+\def\gLxHA{\o\w\A{gLxHA}}
+\def\gMxGA{\b\w\A{gMxGA}}
+\def\gMxEA{\o\w\A{gMxEA}}
+\def\gNxGA{\b\w\A{gNxGA}}
+\def\gNxDA{\o\w\A{gNxDA}}
+\def\gOxGA{\b\w\A{gOxGA}}
+\def\gOxCA{\o\w\A{gOxCA}}
+\def\gMxFA{*-{}\w\A{gMxFA}}
+\def\gNxFA{*-{}\w\A{gNxFA}}
+\def\gOxFA{*-{}\w\A{gOxFA}}
+\def\gPxFA{\op{H}\w\A{gPxFA}}
+\def\gPxGA{\op{H}\w\A{gPxGA}}
+\def\gKxB{\meter\w\A{gKxB}}
+\def\gKxC{\meter\w\A{gKxC}}
+\def\gQxG{\meter\w\A{gQxG}}
+\def\gQxH{\meter\w\A{gQxH}}
+\def\gQxL{\meter\w\A{gQxL}}
+\def\gQxM{\meter\w\A{gQxM}}
+\def\gQxQ{\meter\w\A{gQxQ}}
+\def\gQxR{\meter\w\A{gQxR}}
+\def\gQxV{\meter\w\A{gQxV}}
+\def\gQxW{\meter\w\A{gQxW}}
+\def\gQxAA{\meter\w\A{gQxAA}}
+\def\gQxBA{\meter\w\A{gQxBA}}
+\def\gQxFA{\meter\w\A{gQxFA}}
+\def\gQxGA{\meter\w\A{gQxGA}}
+\def\gLxB{\z\A{gLxB}}
+\def\gLxC{\z\A{gLxC}}
+\def\gRxG{\z\A{gRxG}}
+\def\gRxH{\z\A{gRxH}}
+\def\gRxL{\z\A{gRxL}}
+\def\gRxM{\z\A{gRxM}}
+\def\gRxQ{\z\A{gRxQ}}
+\def\gRxR{\z\A{gRxR}}
+\def\gRxV{\z\A{gRxV}}
+\def\gRxW{\z\A{gRxW}}
+\def\gRxAA{\z\A{gRxAA}}
+\def\gRxBA{\z\A{gRxBA}}
+\def\gRxFA{\z\A{gRxFA}}
+\def\gRxGA{\z\A{gRxGA}}
+\def\gHxPA{\z\A{gHxPA}}
+\def\gIxQA{\z\A{gIxQA}}
+\def\gPxD{\b\w\A{gPxD}}
+\def\gPxB{\o\w\A{gPxB}}
+\def\gQxF{\b\w\A{gQxF}}
+\def\gQxB{\o\w\A{gQxB}}
+\def\gRxB{\op{H}\w\A{gRxB}}
+\def\gMxC{\op{H}\w\A{gMxC}}
+\def\gQxC{\b\w\A{gQxC}}
+\def\gQxD{\o\w\A{gQxD}}
+\def\gSxB{\b\w\A{gSxB}}
+\def\gSxD{\o\w\A{gSxD}}
+\def\gRxC{\b\w\A{gRxC}}
+\def\gRxF{\o\w\A{gRxF}}
+\def\gTxB{\b\w\A{gTxB}}
+\def\gTxE{\o\w\A{gTxE}}
+\def\gUxB{\op{H}\w\A{gUxB}}
+\def\gSxC{\op{H}\w\A{gSxC}}
+\def\gVxB{\meter\w\A{gVxB}}
+\def\gTxC{\meter\w\A{gTxC}}
+\def\gWxB{\z\A{gWxB}}
+\def\gUxC{\z\A{gUxC}}
+\def\gIxMA{\b\w\A{gIxMA}}
+\def\gIxPA{\o\w\A{gIxPA}}
+\def\gKxOA{\b\w\A{gKxOA}}
+\def\gKxQA{\o\w\A{gKxQA}}
+\def\gLxMA{\b\w\A{gLxMA}}
+\def\gLxQA{\o\w\A{gLxQA}}
+\def\gLxOA{\b\w\A{gLxOA}}
+\def\gLxPA{\o\w\A{gLxPA}}
+\def\gMxPA{\op{H}\w\A{gMxPA}}
+\def\gMxQA{\op{H}\w\A{gMxQA}}
+\def\gNxPA{\b\w\A{gNxPA}}
+\def\gNxMA{\o\w\A{gNxMA}}
+\def\gNxQA{\b\w\A{gNxQA}}
+\def\gNxNA{\o\w\A{gNxNA}}
+\def\gOxPA{\b\w\A{gOxPA}}
+\def\gOxNA{\o\w\A{gOxNA}}
+\def\gOxQA{\b\w\A{gOxQA}}
+\def\gOxMA{\o\w\A{gOxMA}}
+\def\gPxPA{\op{H}\w\A{gPxPA}}
+\def\gPxQA{\op{H}\w\A{gPxQA}}
+\def\gQxPA{\meter\w\A{gQxPA}}
+\def\gQxQA{\meter\w\A{gQxQA}}
+\def\gRxPA{\z\A{gRxPA}}
+\def\gRxQA{\z\A{gRxQA}}
+\def\gSxP{\b\w\A{gSxP}}
+\def\gSxG{\o\w\A{gSxG}}
+\def\gSxO{\b\w\A{gSxO}}
+\def\gSxH{\o\w\A{gSxH}}
+\def\gTxO{\b\w\A{gTxO}}
+\def\gTxG{\o\w\A{gTxG}}
+\def\gTxN{\b\w\A{gTxN}}
+\def\gTxH{\o\w\A{gTxH}}
+\def\gUxK{\b\w\A{gUxK}}
+\def\gUxG{\o\w\A{gUxG}}
+\def\gVxJ{\b\w\A{gVxJ}}
+\def\gVxG{\o\w\A{gVxG}}
+\def\gUxI{\b\w\A{gUxI}}
+\def\gUxH{\o\w\A{gUxH}}
+\def\gSxU{\b\w\A{gSxU}}
+\def\gSxL{\o\w\A{gSxL}}
+\def\gSxT{\b\w\A{gSxT}}
+\def\gSxM{\o\w\A{gSxM}}
+\def\gTxT{\b\w\A{gTxT}}
+\def\gTxL{\o\w\A{gTxL}}
+\def\gTxS{\b\w\A{gTxS}}
+\def\gTxM{\o\w\A{gTxM}}
+\def\gUxP{\b\w\A{gUxP}}
+\def\gUxL{\o\w\A{gUxL}}
+\def\gVxO{\b\w\A{gVxO}}
+\def\gVxL{\o\w\A{gVxL}}
+\def\gUxN{\b\w\A{gUxN}}
+\def\gUxM{\o\w\A{gUxM}}
+\def\gSxZ{\b\w\A{gSxZ}}
+\def\gSxQ{\o\w\A{gSxQ}}
+\def\gSxY{\b\w\A{gSxY}}
+\def\gSxR{\o\w\A{gSxR}}
+\def\gTxY{\b\w\A{gTxY}}
+\def\gTxQ{\o\w\A{gTxQ}}
+\def\gTxX{\b\w\A{gTxX}}
+\def\gTxR{\o\w\A{gTxR}}
+\def\gUxU{\b\w\A{gUxU}}
+\def\gUxQ{\o\w\A{gUxQ}}
+\def\gVxT{\b\w\A{gVxT}}
+\def\gVxQ{\o\w\A{gVxQ}}
+\def\gUxS{\b\w\A{gUxS}}
+\def\gUxR{\o\w\A{gUxR}}
+\def\gSxEA{\b\w\A{gSxEA}}
+\def\gSxV{\o\w\A{gSxV}}
+\def\gSxDA{\b\w\A{gSxDA}}
+\def\gSxW{\o\w\A{gSxW}}
+\def\gTxDA{\b\w\A{gTxDA}}
+\def\gTxV{\o\w\A{gTxV}}
+\def\gTxCA{\b\w\A{gTxCA}}
+\def\gTxW{\o\w\A{gTxW}}
+\def\gUxZ{\b\w\A{gUxZ}}
+\def\gUxV{\o\w\A{gUxV}}
+\def\gVxY{\b\w\A{gVxY}}
+\def\gVxV{\o\w\A{gVxV}}
+\def\gUxX{\b\w\A{gUxX}}
+\def\gUxW{\o\w\A{gUxW}}
+\def\gSxJA{\b\w\A{gSxJA}}
+\def\gSxAA{\o\w\A{gSxAA}}
+\def\gSxIA{\b\w\A{gSxIA}}
+\def\gSxBA{\o\w\A{gSxBA}}
+\def\gTxIA{\b\w\A{gTxIA}}
+\def\gTxAA{\o\w\A{gTxAA}}
+\def\gTxHA{\b\w\A{gTxHA}}
+\def\gTxBA{\o\w\A{gTxBA}}
+\def\gUxEA{\b\w\A{gUxEA}}
+\def\gUxAA{\o\w\A{gUxAA}}
+\def\gVxDA{\b\w\A{gVxDA}}
+\def\gVxAA{\o\w\A{gVxAA}}
+\def\gUxCA{\b\w\A{gUxCA}}
+\def\gUxBA{\o\w\A{gUxBA}}
+\def\gSxOA{\b\w\A{gSxOA}}
+\def\gSxFA{\o\w\A{gSxFA}}
+\def\gSxNA{\b\w\A{gSxNA}}
+\def\gSxGA{\o\w\A{gSxGA}}
+\def\gTxNA{\b\w\A{gTxNA}}
+\def\gTxFA{\o\w\A{gTxFA}}
+\def\gTxMA{\b\w\A{gTxMA}}
+\def\gTxGA{\o\w\A{gTxGA}}
+\def\gUxJA{\b\w\A{gUxJA}}
+\def\gUxFA{\o\w\A{gUxFA}}
+\def\gVxIA{\b\w\A{gVxIA}}
+\def\gVxFA{\o\w\A{gVxFA}}
+\def\gUxHA{\b\w\A{gUxHA}}
+\def\gUxGA{\o\w\A{gUxGA}}
+\def\gTxOA{\b\w\A{gTxOA}}
+\def\gTxQA{\o\w\A{gTxQA}}
+\def\gUxNA{\b\w\A{gUxNA}}
+\def\gUxPA{\o\w\A{gUxPA}}
+\def\gVxMA{\b\w\A{gVxMA}}
+\def\gVxPA{\o\w\A{gVxPA}}
+\def\gWxG{\op{H}\w\A{gWxG}}
+\def\gVxH{*-{}\w\A{gVxH}}
+\def\gWxH{\op{H}\w\A{gWxH}}
+\def\gXxH{\b\w\A{gXxH}}
+\def\gXxP{\o\w\A{gXxP}}
+\def\gXxG{\b\w\A{gXxG}}
+\def\gXxN{\o\w\A{gXxN}}
+\def\gYxH{\b\w\A{gYxH}}
+\def\gYxK{\o\w\A{gYxK}}
+\def\gZxH{\b\w\A{gZxH}}
+\def\gZxN{\o\w\A{gZxN}}
+\def\gYxG{\b\w\A{gYxG}}
+\def\gYxO{\o\w\A{gYxO}}
+\def\gZxG{\b\w\A{gZxG}}
+\def\gZxK{\o\w\A{gZxK}}
+\def\gAAxG{\b\w\A{gAAxG}}
+\def\gAAxF{\o\w\A{gAAxF}}
+\def\gAAxH{\b\w\A{gAAxH}}
+\def\gAAxD{\o\w\A{gAAxD}}
+\def\gBAxH{\b\w\A{gBAxH}}
+\def\gBAxF{\o\w\A{gBAxF}}
+\def\gBAxG{\b\w\A{gBAxG}}
+\def\gBAxE{\o\w\A{gBAxE}}
+\def\gCAxH{\b\w\A{gCAxH}}
+\def\gCAxE{\o\w\A{gCAxE}}
+\def\gCAxG{\b\w\A{gCAxG}}
+\def\gCAxD{\o\w\A{gCAxD}}
+\def\gDAxG{\op{H}\w\A{gDAxG}}
+\def\gDAxH{\op{H}\w\A{gDAxH}}
+\def\gWxL{\op{H}\w\A{gWxL}}
+\def\gVxM{*-{}\w\A{gVxM}}
+\def\gWxM{\op{H}\w\A{gWxM}}
+\def\gXxM{\b\w\A{gXxM}}
+\def\gXxU{\o\w\A{gXxU}}
+\def\gXxL{\b\w\A{gXxL}}
+\def\gXxS{\o\w\A{gXxS}}
+\def\gYxM{\b\w\A{gYxM}}
+\def\gYxP{\o\w\A{gYxP}}
+\def\gZxM{\b\w\A{gZxM}}
+\def\gZxS{\o\w\A{gZxS}}
+\def\gYxL{\b\w\A{gYxL}}
+\def\gYxT{\o\w\A{gYxT}}
+\def\gZxL{\b\w\A{gZxL}}
+\def\gZxP{\o\w\A{gZxP}}
+\def\gAAxL{\b\w\A{gAAxL}}
+\def\gAAxK{\o\w\A{gAAxK}}
+\def\gAAxM{\b\w\A{gAAxM}}
+\def\gAAxI{\o\w\A{gAAxI}}
+\def\gBAxM{\b\w\A{gBAxM}}
+\def\gBAxK{\o\w\A{gBAxK}}
+\def\gBAxL{\b\w\A{gBAxL}}
+\def\gBAxJ{\o\w\A{gBAxJ}}
+\def\gCAxM{\b\w\A{gCAxM}}
+\def\gCAxJ{\o\w\A{gCAxJ}}
+\def\gCAxL{\b\w\A{gCAxL}}
+\def\gCAxI{\o\w\A{gCAxI}}
+\def\gDAxL{\op{H}\w\A{gDAxL}}
+\def\gDAxM{\op{H}\w\A{gDAxM}}
+\def\gWxQ{\op{H}\w\A{gWxQ}}
+\def\gVxR{*-{}\w\A{gVxR}}
+\def\gWxR{\op{H}\w\A{gWxR}}
+\def\gXxR{\b\w\A{gXxR}}
+\def\gXxZ{\o\w\A{gXxZ}}
+\def\gXxQ{\b\w\A{gXxQ}}
+\def\gXxX{\o\w\A{gXxX}}
+\def\gYxR{\b\w\A{gYxR}}
+\def\gYxU{\o\w\A{gYxU}}
+\def\gZxR{\b\w\A{gZxR}}
+\def\gZxX{\o\w\A{gZxX}}
+\def\gYxQ{\b\w\A{gYxQ}}
+\def\gYxY{\o\w\A{gYxY}}
+\def\gZxQ{\b\w\A{gZxQ}}
+\def\gZxU{\o\w\A{gZxU}}
+\def\gAAxQ{\b\w\A{gAAxQ}}
+\def\gAAxP{\o\w\A{gAAxP}}
+\def\gAAxR{\b\w\A{gAAxR}}
+\def\gAAxN{\o\w\A{gAAxN}}
+\def\gBAxR{\b\w\A{gBAxR}}
+\def\gBAxP{\o\w\A{gBAxP}}
+\def\gBAxQ{\b\w\A{gBAxQ}}
+\def\gBAxO{\o\w\A{gBAxO}}
+\def\gCAxR{\b\w\A{gCAxR}}
+\def\gCAxO{\o\w\A{gCAxO}}
+\def\gCAxQ{\b\w\A{gCAxQ}}
+\def\gCAxN{\o\w\A{gCAxN}}
+\def\gDAxQ{\op{H}\w\A{gDAxQ}}
+\def\gDAxR{\op{H}\w\A{gDAxR}}
+\def\gWxV{\op{H}\w\A{gWxV}}
+\def\gVxW{*-{}\w\A{gVxW}}
+\def\gWxW{\op{H}\w\A{gWxW}}
+\def\gXxW{\b\w\A{gXxW}}
+\def\gXxEA{\o\w\A{gXxEA}}
+\def\gXxV{\b\w\A{gXxV}}
+\def\gXxCA{\o\w\A{gXxCA}}
+\def\gYxW{\b\w\A{gYxW}}
+\def\gYxZ{\o\w\A{gYxZ}}
+\def\gZxW{\b\w\A{gZxW}}
+\def\gZxCA{\o\w\A{gZxCA}}
+\def\gYxV{\b\w\A{gYxV}}
+\def\gYxDA{\o\w\A{gYxDA}}
+\def\gZxV{\b\w\A{gZxV}}
+\def\gZxZ{\o\w\A{gZxZ}}
+\def\gAAxV{\b\w\A{gAAxV}}
+\def\gAAxU{\o\w\A{gAAxU}}
+\def\gAAxW{\b\w\A{gAAxW}}
+\def\gAAxS{\o\w\A{gAAxS}}
+\def\gBAxW{\b\w\A{gBAxW}}
+\def\gBAxU{\o\w\A{gBAxU}}
+\def\gBAxV{\b\w\A{gBAxV}}
+\def\gBAxT{\o\w\A{gBAxT}}
+\def\gCAxW{\b\w\A{gCAxW}}
+\def\gCAxT{\o\w\A{gCAxT}}
+\def\gCAxV{\b\w\A{gCAxV}}
+\def\gCAxS{\o\w\A{gCAxS}}
+\def\gDAxV{\op{H}\w\A{gDAxV}}
+\def\gDAxW{\op{H}\w\A{gDAxW}}
+\def\gWxAA{\op{H}\w\A{gWxAA}}
+\def\gVxBA{*-{}\w\A{gVxBA}}
+\def\gWxBA{\op{H}\w\A{gWxBA}}
+\def\gXxBA{\b\w\A{gXxBA}}
+\def\gXxJA{\o\w\A{gXxJA}}
+\def\gXxAA{\b\w\A{gXxAA}}
+\def\gXxHA{\o\w\A{gXxHA}}
+\def\gYxBA{\b\w\A{gYxBA}}
+\def\gYxEA{\o\w\A{gYxEA}}
+\def\gZxBA{\b\w\A{gZxBA}}
+\def\gZxHA{\o\w\A{gZxHA}}
+\def\gYxAA{\b\w\A{gYxAA}}
+\def\gYxIA{\o\w\A{gYxIA}}
+\def\gZxAA{\b\w\A{gZxAA}}
+\def\gZxEA{\o\w\A{gZxEA}}
+\def\gAAxAA{\b\w\A{gAAxAA}}
+\def\gAAxZ{\o\w\A{gAAxZ}}
+\def\gAAxBA{\b\w\A{gAAxBA}}
+\def\gAAxX{\o\w\A{gAAxX}}
+\def\gBAxBA{\b\w\A{gBAxBA}}
+\def\gBAxZ{\o\w\A{gBAxZ}}
+\def\gBAxAA{\b\w\A{gBAxAA}}
+\def\gBAxY{\o\w\A{gBAxY}}
+\def\gCAxBA{\b\w\A{gCAxBA}}
+\def\gCAxY{\o\w\A{gCAxY}}
+\def\gCAxAA{\b\w\A{gCAxAA}}
+\def\gCAxX{\o\w\A{gCAxX}}
+\def\gDAxAA{\op{H}\w\A{gDAxAA}}
+\def\gDAxBA{\op{H}\w\A{gDAxBA}}
+\def\gWxFA{\op{H}\w\A{gWxFA}}
+\def\gVxGA{*-{}\w\A{gVxGA}}
+\def\gWxGA{\op{H}\w\A{gWxGA}}
+\def\gXxGA{\b\w\A{gXxGA}}
+\def\gXxOA{\o\w\A{gXxOA}}
+\def\gXxFA{\b\w\A{gXxFA}}
+\def\gXxMA{\o\w\A{gXxMA}}
+\def\gYxGA{\b\w\A{gYxGA}}
+\def\gYxJA{\o\w\A{gYxJA}}
+\def\gZxGA{\b\w\A{gZxGA}}
+\def\gZxMA{\o\w\A{gZxMA}}
+\def\gYxFA{\b\w\A{gYxFA}}
+\def\gYxNA{\o\w\A{gYxNA}}
+\def\gZxFA{\b\w\A{gZxFA}}
+\def\gZxJA{\o\w\A{gZxJA}}
+\def\gAAxFA{\b\w\A{gAAxFA}}
+\def\gAAxEA{\o\w\A{gAAxEA}}
+\def\gAAxGA{\b\w\A{gAAxGA}}
+\def\gAAxCA{\o\w\A{gAAxCA}}
+\def\gBAxGA{\b\w\A{gBAxGA}}
+\def\gBAxEA{\o\w\A{gBAxEA}}
+\def\gBAxFA{\b\w\A{gBAxFA}}
+\def\gBAxDA{\o\w\A{gBAxDA}}
+\def\gCAxGA{\b\w\A{gCAxGA}}
+\def\gCAxDA{\o\w\A{gCAxDA}}
+\def\gCAxFA{\b\w\A{gCAxFA}}
+\def\gCAxCA{\o\w\A{gCAxCA}}
+\def\gDAxFA{\op{H}\w\A{gDAxFA}}
+\def\gDAxGA{\op{H}\w\A{gDAxGA}}
+\def\gWxPA{\op{H}\w\A{gWxPA}}
+\def\gUxQA{\op{H}\w\A{gUxQA}}
+\def\gAAxQA{\b\w\A{gAAxQA}}
+\def\gAAxHA{\o\w\A{gAAxHA}}
+\def\gZxPA{\b\w\A{gZxPA}}
+\def\gZxIA{\o\w\A{gZxIA}}
+\def\gBAxQA{\b\w\A{gBAxQA}}
+\def\gBAxIA{\o\w\A{gBAxIA}}
+\def\gAAxPA{\b\w\A{gAAxPA}}
+\def\gAAxJA{\o\w\A{gAAxJA}}
+\def\gCAxQA{\b\w\A{gCAxQA}}
+\def\gCAxJA{\o\w\A{gCAxJA}}
+\def\gBAxPA{\b\w\A{gBAxPA}}
+\def\gBAxHA{\o\w\A{gBAxHA}}
+\def\gCAxPA{\op{H}\w\A{gCAxPA}}
+\def\gDAxQA{\op{H}\w\A{gDAxQA}}
+\def\gDAxPA{\meter\w\A{gDAxPA}}
+\def\gEAxQA{\meter\w\A{gEAxQA}}
+\def\gEAxPA{*-{}\W\A{gEAxPA}}
+\def\gFAxPA{\z\A{gFAxPA}}
+\def\gFAxQA{\z\A{gFAxQA}}
+\def\gEAxG{\meter\w\A{gEAxG}}
+\def\gEAxH{\meter\w\A{gEAxH}}
+\def\gEAxL{\meter\w\A{gEAxL}}
+\def\gEAxM{\meter\w\A{gEAxM}}
+\def\gEAxQ{\meter\w\A{gEAxQ}}
+\def\gEAxR{\meter\w\A{gEAxR}}
+\def\gEAxV{\meter\w\A{gEAxV}}
+\def\gEAxW{\meter\w\A{gEAxW}}
+\def\gEAxAA{\meter\w\A{gEAxAA}}
+\def\gEAxBA{\meter\w\A{gEAxBA}}
+\def\gEAxFA{\meter\w\A{gEAxFA}}
+\def\gEAxGA{\meter\w\A{gEAxGA}}
+\def\gDAxE{\b\w\A{gDAxE}}
+\def\gDAxC{\o\w\A{gDAxC}}
+\def\gEAxE{\b\w\A{gEAxE}}
+\def\gEAxB{\o\w\A{gEAxB}}
+\def\gEAxI{\b\w\A{gEAxI}}
+\def\gEAxC{\o\w\A{gEAxC}}
+\def\gFAxF{\b\w\A{gFAxF}}
+\def\gFAxC{\o\w\A{gFAxC}}
+\def\gGAxD{\b\w\A{gGAxD}}
+\def\gGAxC{\o\w\A{gGAxC}}
+\def\gFAxI{\b\w\A{gFAxI}}
+\def\gFAxB{\o\w\A{gFAxB}}
+\def\gHAxK{\b\w\A{gHAxK}}
+\def\gHAxC{\o\w\A{gHAxC}}
+\def\gGAxB{\op{H}\w\A{gGAxB}}
+\def\gIAxC{\op{H}\w\A{gIAxC}}
+\def\gHAxB{\b\w\A{gHAxB}}
+\def\gHAxE{\o\w\A{gHAxE}}
+\def\gIAxB{\b\w\A{gIAxB}}
+\def\gIAxF{\o\w\A{gIAxF}}
+\def\gJAxC{\b\w\A{gJAxC}}
+\def\gJAxD{\o\w\A{gJAxD}}
+\def\gJAxB{\b\w\A{gJAxB}}
+\def\gJAxJ{\o\w\A{gJAxJ}}
+\def\gKAxC{\b\w\A{gKAxC}}
+\def\gKAxK{\o\w\A{gKAxK}}
+\def\gLAxB{\b\w\A{gLAxB}}
+\def\gLAxK{\o\w\A{gLAxK}}
+\def\gLAxC{\b\w\A{gLAxC}}
+\def\gLAxJ{\o\w\A{gLAxJ}}
+\def\gMAxC{\b\w\A{gMAxC}}
+\def\gMAxF{\o\w\A{gMAxF}}
+\def\gMAxB{\op{H}\w\A{gMAxB}}
+\def\gNAxC{\op{H}\w\A{gNAxC}}
+\def\gNAxB{\meter\w\A{gNAxB}}
+\def\gOAxC{\meter\w\A{gOAxC}}
+\def\gOAxB{\z\A{gOAxB}}
+\def\gPAxC{\z\A{gPAxC}}
+\def\gPAxD{\b\w\A{gPAxD}}
+\def\gPAxB{\o\w\A{gPAxB}}
+\def\gQAxE{\b\w\A{gQAxE}}
+\def\gQAxC{\o\w\A{gQAxC}}
+\def\gQAxF{\b\w\A{gQAxF}}
+\def\gQAxB{\o\w\A{gQAxB}}
+\def\gRAxJ{\b\w\A{gRAxJ}}
+\def\gRAxC{\o\w\A{gRAxC}}
+\def\gRAxK{\b\w\A{gRAxK}}
+\def\gRAxB{\o\w\A{gRAxB}}
+\def\gSAxJ{\b\w\A{gSAxJ}}
+\def\gSAxB{\o\w\A{gSAxB}}
+\def\gSAxI{\b\w\A{gSAxI}}
+\def\gSAxC{\o\w\A{gSAxC}}
+\def\gTAxB{\op{H}\w\A{gTAxB}}
+\def\gTAxC{\op{H}\w\A{gTAxC}}
+\def\gUAxB{\b\w\A{gUAxB}}
+\def\gUAxF{\o\w\A{gUAxF}}
+\def\gUAxC{\b\w\A{gUAxC}}
+\def\gUAxI{\o\w\A{gUAxI}}
+\def\gVAxB{\b\w\A{gVAxB}}
+\def\gVAxI{\o\w\A{gVAxI}}
+\def\gVAxC{\b\w\A{gVAxC}}
+\def\gVAxF{\o\w\A{gVAxF}}
+\def\gWAxB{\b\w\A{gWAxB}}
+\def\gWAxJ{\o\w\A{gWAxJ}}
+\def\gXAxB{\b\w\A{gXAxB}}
+\def\gXAxK{\o\w\A{gXAxK}}
+\def\gYAxB{\op{H}\w\A{gYAxB}}
+\def\gWAxC{*-{}\w\A{gWAxC}}
+\def\gXAxC{*-{}\w\A{gXAxC}}
+\def\gYAxC{\op{H}\w\A{gYAxC}}
+\def\g@BxB{\meter\w\A{g@BxB}}
+\def\g@BxC{\meter\w\A{g@BxC}}
+\def\gGAxHA{\b\w\A{gGAxHA}}
+\def\gGAxPA{\o\w\A{gGAxPA}}
+\def\gGAxIA{\b\w\A{gGAxIA}}
+\def\gGAxQA{\o\w\A{gGAxQA}}
+\def\gHAxIA{\b\w\A{gHAxIA}}
+\def\gHAxPA{\o\w\A{gHAxPA}}
+\def\gHAxJA{\b\w\A{gHAxJA}}
+\def\gHAxQA{\o\w\A{gHAxQA}}
+\def\gIAxJA{\b\w\A{gIAxJA}}
+\def\gIAxPA{\o\w\A{gIAxPA}}
+\def\gIAxHA{\b\w\A{gIAxHA}}
+\def\gIAxQA{\o\w\A{gIAxQA}}
+\def\gJAxNA{\b\w\A{gJAxNA}}
+\def\gJAxPA{\o\w\A{gJAxPA}}
+\def\gJAxOA{\b\w\A{gJAxOA}}
+\def\gJAxQA{\o\w\A{gJAxQA}}
+\def\gKAxPA{\op{H}\w\A{gKAxPA}}
+\def\gKAxQA{\op{H}\w\A{gKAxQA}}
+\def\gLAxPA{\b\w\A{gLAxPA}}
+\def\gLAxNA{\o\w\A{gLAxNA}}
+\def\gLAxQA{\b\w\A{gLAxQA}}
+\def\gLAxOA{\o\w\A{gLAxOA}}
+\def\gMAxPA{\b\w\A{gMAxPA}}
+\def\gMAxOA{\o\w\A{gMAxOA}}
+\def\gMAxQA{\b\w\A{gMAxQA}}
+\def\gMAxMA{\o\w\A{gMAxMA}}
+\def\gNAxQA{\b\w\A{gNAxQA}}
+\def\gNAxJA{\o\w\A{gNAxJA}}
+\def\gOAxQA{\b\w\A{gOAxQA}}
+\def\gOAxIA{\o\w\A{gOAxIA}}
+\def\gPAxQA{\b\w\A{gPAxQA}}
+\def\gPAxHA{\o\w\A{gPAxHA}}
+\def\gNAxPA{\op{H}\w\A{gNAxPA}}
+\def\gQAxQA{\op{H}\w\A{gQAxQA}}
+\def\gOAxPA{\meter\w\A{gOAxPA}}
+\def\gRAxQA{\meter\w\A{gRAxQA}}
+
+% definitions for bit labels and initial states
+
+\def\bA{ \q{q_{0}}}
+\def\bB{\qv{A_{0}}{0}}
+\def\bC{\qv{A_{1}}{0}}
+\def\bD{ \q{q_{0}}}
+\def\bE{ \q{q_{1}}}
+\def\bF{ \q{q_{2}}}
+\def\bG{\qv{A_{2}}{0}}
+\def\bH{\qv{A_{3}}{0}}
+\def\bI{ \q{q_{3}}}
+\def\bJ{ \q{q_{4}}}
+\def\bK{ \q{q_{5}}}
+\def\bL{\qv{A_{4}}{0}}
+\def\bM{\qv{A_{5}}{0}}
+\def\bN{ \q{q_{6}}}
+\def\bO{ \q{q_{7}}}
+\def\bP{ \q{q_{8}}}
+\def\bQ{\qv{A_{6}}{0}}
+\def\bR{\qv{A_{7}}{0}}
+\def\bS{ \q{q_{9}}}
+\def\bT{ \q{q_{10}}}
+\def\bU{ \q{q_{11}}}
+\def\bV{\qv{A_{8}}{0}}
+\def\bW{\qv{A_{9}}{0}}
+\def\bX{ \q{q_{12}}}
+\def\bY{ \q{q_{13}}}
+\def\bZ{ \q{q_{14}}}
+\def\bAA{\qv{A_{10}}{0}}
+\def\bBA{\qv{A_{11}}{0}}
+\def\bCA{ \q{q_{15}}}
+\def\bDA{ \q{q_{16}}}
+\def\bEA{ \q{q_{17}}}
+\def\bFA{\qv{A_{12}}{0}}
+\def\bGA{\qv{A_{13}}{0}}
+\def\bHA{ \q{q_{18}}}
+\def\bIA{ \q{q_{19}}}
+\def\bJA{ \q{q_{20}}}
+\def\bKA{\qv{A_{14}}{0}}
+\def\bLA{\qv{A_{15}}{0}}
+\def\bMA{ \q{q_{21}}}
+\def\bNA{ \q{q_{22}}}
+\def\bOA{ \q{q_{23}}}
+\def\bPA{\qv{A_{16}}{0}}
+\def\bQA{\qv{A_{17}}{0}}
+
+% The quantum circuit as an xymatrix
+
+\xymatrix@R=5pt@C=10pt{
+    \bA & \n   &\gBxD &\gCxD &\n   &\gExD &\gFxD &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gOxD &\gPxD &\gQxD &\n   &\gSxD &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gAAxD &\n   &\gCAxD &\n   &\n   &\n   &\gGAxD &\n   &\n   &\gJAxD &\n   &\n   &\n   &\n   &\n   &\gPAxD &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bB & \gAxB &\gBxB &\gCxB &\gDxB &\n   &\n   &\n   &\gHxB &\gIxB &\gJxB &\gKxB &\gLxB &\n   &\n   &\n   &\gPxB &\gQxB &\gRxB &\gSxB &\gTxB &\gUxB &\gVxB &\gWxB &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gEAxB &\gFAxB &\gGAxB &\gHAxB &\gIAxB &\gJAxB &\n   &\gLAxB &\gMAxB &\gNAxB &\gOAxB &\gPAxB &\gQAxB &\gRAxB &\gSAxB &\gTAxB &\gUAxB &\gVAxB &\gWAxB &\gXAxB &\gYAxB &\g@BxB &\N  
+\\  \bC & \gAxC &\gBxC &\gCxC &\gDxC &\n   &\n   &\n   &\gHxC &\gIxC &\gJxC &\gKxC &\gLxC &\gMxC &\n   &\n   &\n   &\gQxC &\gRxC &\gSxC &\gTxC &\gUxC &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gDAxC &\gEAxC &\gFAxC &\gGAxC &\gHAxC &\gIAxC &\gJAxC &\gKAxC &\gLAxC &\gMAxC &\gNAxC &\gOAxC &\gPAxC &\gQAxC &\gRAxC &\gSAxC &\gTAxC &\gUAxC &\gVAxC &\gWAxC &\gXAxC &\gYAxC &\g@BxC &\N  
+\\  \bD & \n   &\gBxD &\gCxD &\n   &\gExD &\gFxD &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gOxD &\gPxD &\gQxD &\n   &\gSxD &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gAAxD &\n   &\gCAxD &\n   &\n   &\n   &\gGAxD &\n   &\n   &\gJAxD &\n   &\n   &\n   &\n   &\n   &\gPAxD &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bE & \n   &\n   &\n   &\n   &\gExE &\n   &\gGxE &\gHxE &\gIxE &\n   &\n   &\n   &\n   &\gNxE &\n   &\n   &\n   &\n   &\n   &\gTxE &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gBAxE &\gCAxE &\gDAxE &\gEAxE &\n   &\n   &\gHAxE &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gQAxE &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bF & \n   &\gBxF &\gCxF &\n   &\n   &\gFxF &\gGxF &\gHxF &\gIxF &\n   &\n   &\n   &\gMxF &\n   &\n   &\n   &\gQxF &\gRxF &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gAAxF &\gBAxF &\n   &\n   &\n   &\gFAxF &\n   &\n   &\gIAxF &\n   &\n   &\n   &\gMAxF &\n   &\n   &\n   &\gQAxF &\n   &\n   &\n   &\gUAxF &\gVAxF &\n   &\n   &\n   &\n   &\n  
+\\  \bG & \gAxG &\gBxG &\gCxG &\gDxG &\gExG &\gFxG &\gGxG &\gHxG &\gIxG &\gJxG &\gKxG &\gLxG &\gMxG &\gNxG &\gOxG &\gPxG &\gQxG &\gRxG &\gSxG &\gTxG &\gUxG &\gVxG &\gWxG &\gXxG &\gYxG &\gZxG &\gAAxG &\gBAxG &\gCAxG &\gDAxG &\gEAxG &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bH & \gAxH &\gBxH &\gCxH &\gDxH &\gExH &\gFxH &\gGxH &\gHxH &\gIxH &\gJxH &\gKxH &\gLxH &\gMxH &\gNxH &\gOxH &\gPxH &\gQxH &\gRxH &\gSxH &\gTxH &\gUxH &\gVxH &\gWxH &\gXxH &\gYxH &\gZxH &\gAAxH &\gBAxH &\gCAxH &\gDAxH &\gEAxH &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bI & \n   &\n   &\n   &\n   &\gExI &\gFxI &\n   &\n   &\n   &\n   &\n   &\gLxI &\n   &\n   &\gOxI &\n   &\n   &\n   &\n   &\n   &\gUxI &\n   &\n   &\n   &\n   &\n   &\gAAxI &\n   &\gCAxI &\n   &\gEAxI &\gFAxI &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gSAxI &\n   &\gUAxI &\gVAxI &\n   &\n   &\n   &\n   &\n  
+\\  \bJ & \n   &\n   &\n   &\gDxJ &\gExJ &\n   &\gGxJ &\n   &\n   &\n   &\gKxJ &\n   &\n   &\gNxJ &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gVxJ &\n   &\n   &\n   &\n   &\n   &\gBAxJ &\gCAxJ &\n   &\n   &\n   &\n   &\n   &\n   &\gJAxJ &\n   &\gLAxJ &\n   &\n   &\n   &\n   &\n   &\gRAxJ &\gSAxJ &\n   &\n   &\n   &\gWAxJ &\n   &\n   &\n   &\n  
+\\  \bK & \n   &\n   &\n   &\gDxK &\n   &\gFxK &\gGxK &\n   &\n   &\n   &\gKxK &\gLxK &\gMxK &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gUxK &\n   &\n   &\n   &\gYxK &\gZxK &\gAAxK &\gBAxK &\n   &\n   &\n   &\n   &\n   &\gHAxK &\n   &\n   &\gKAxK &\gLAxK &\n   &\n   &\n   &\n   &\n   &\gRAxK &\n   &\n   &\n   &\n   &\n   &\gXAxK &\n   &\n   &\n  
+\\  \bL & \gAxL &\gBxL &\gCxL &\gDxL &\gExL &\gFxL &\gGxL &\gHxL &\gIxL &\gJxL &\gKxL &\gLxL &\gMxL &\gNxL &\gOxL &\gPxL &\gQxL &\gRxL &\gSxL &\gTxL &\gUxL &\gVxL &\gWxL &\gXxL &\gYxL &\gZxL &\gAAxL &\gBAxL &\gCAxL &\gDAxL &\gEAxL &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bM & \gAxM &\gBxM &\gCxM &\gDxM &\gExM &\gFxM &\gGxM &\gHxM &\gIxM &\gJxM &\gKxM &\gLxM &\gMxM &\gNxM &\gOxM &\gPxM &\gQxM &\gRxM &\gSxM &\gTxM &\gUxM &\gVxM &\gWxM &\gXxM &\gYxM &\gZxM &\gAAxM &\gBAxM &\gCAxM &\gDAxM &\gEAxM &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bN & \n   &\gBxN &\gCxN &\n   &\gExN &\gFxN &\n   &\n   &\n   &\n   &\n   &\gLxN &\n   &\n   &\gOxN &\n   &\n   &\n   &\n   &\gTxN &\gUxN &\n   &\n   &\gXxN &\n   &\gZxN &\gAAxN &\n   &\gCAxN &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bO & \n   &\n   &\n   &\gDxO &\gExO &\n   &\gGxO &\n   &\gIxO &\gJxO &\gKxO &\n   &\n   &\gNxO &\n   &\n   &\n   &\n   &\gSxO &\gTxO &\n   &\gVxO &\n   &\n   &\gYxO &\n   &\n   &\gBAxO &\gCAxO &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bP & \n   &\gBxP &\gCxP &\gDxP &\n   &\gFxP &\gGxP &\n   &\gIxP &\gJxP &\gKxP &\gLxP &\gMxP &\n   &\n   &\n   &\n   &\n   &\gSxP &\n   &\gUxP &\n   &\n   &\gXxP &\gYxP &\gZxP &\gAAxP &\gBAxP &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bQ & \gAxQ &\gBxQ &\gCxQ &\gDxQ &\gExQ &\gFxQ &\gGxQ &\gHxQ &\gIxQ &\gJxQ &\gKxQ &\gLxQ &\gMxQ &\gNxQ &\gOxQ &\gPxQ &\gQxQ &\gRxQ &\gSxQ &\gTxQ &\gUxQ &\gVxQ &\gWxQ &\gXxQ &\gYxQ &\gZxQ &\gAAxQ &\gBAxQ &\gCAxQ &\gDAxQ &\gEAxQ &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bR & \gAxR &\gBxR &\gCxR &\gDxR &\gExR &\gFxR &\gGxR &\gHxR &\gIxR &\gJxR &\gKxR &\gLxR &\gMxR &\gNxR &\gOxR &\gPxR &\gQxR &\gRxR &\gSxR &\gTxR &\gUxR &\gVxR &\gWxR &\gXxR &\gYxR &\gZxR &\gAAxR &\gBAxR &\gCAxR &\gDAxR &\gEAxR &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bS & \n   &\gBxS &\gCxS &\n   &\gExS &\gFxS &\n   &\n   &\n   &\n   &\n   &\gLxS &\n   &\n   &\gOxS &\n   &\n   &\n   &\n   &\gTxS &\gUxS &\n   &\n   &\gXxS &\n   &\gZxS &\gAAxS &\n   &\gCAxS &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bT & \n   &\n   &\n   &\gDxT &\gExT &\n   &\gGxT &\n   &\gIxT &\gJxT &\gKxT &\n   &\n   &\gNxT &\n   &\n   &\n   &\n   &\gSxT &\gTxT &\n   &\gVxT &\n   &\n   &\gYxT &\n   &\n   &\gBAxT &\gCAxT &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bU & \n   &\gBxU &\gCxU &\gDxU &\n   &\gFxU &\gGxU &\n   &\gIxU &\gJxU &\gKxU &\gLxU &\gMxU &\n   &\n   &\n   &\n   &\n   &\gSxU &\n   &\gUxU &\n   &\n   &\gXxU &\gYxU &\gZxU &\gAAxU &\gBAxU &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bV & \gAxV &\gBxV &\gCxV &\gDxV &\gExV &\gFxV &\gGxV &\gHxV &\gIxV &\gJxV &\gKxV &\gLxV &\gMxV &\gNxV &\gOxV &\gPxV &\gQxV &\gRxV &\gSxV &\gTxV &\gUxV &\gVxV &\gWxV &\gXxV &\gYxV &\gZxV &\gAAxV &\gBAxV &\gCAxV &\gDAxV &\gEAxV &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bW & \gAxW &\gBxW &\gCxW &\gDxW &\gExW &\gFxW &\gGxW &\gHxW &\gIxW &\gJxW &\gKxW &\gLxW &\gMxW &\gNxW &\gOxW &\gPxW &\gQxW &\gRxW &\gSxW &\gTxW &\gUxW &\gVxW &\gWxW &\gXxW &\gYxW &\gZxW &\gAAxW &\gBAxW &\gCAxW &\gDAxW &\gEAxW &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bX & \n   &\gBxX &\gCxX &\n   &\gExX &\gFxX &\n   &\n   &\n   &\n   &\n   &\gLxX &\n   &\n   &\gOxX &\n   &\n   &\n   &\n   &\gTxX &\gUxX &\n   &\n   &\gXxX &\n   &\gZxX &\gAAxX &\n   &\gCAxX &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bY & \n   &\n   &\n   &\gDxY &\gExY &\n   &\gGxY &\n   &\gIxY &\gJxY &\gKxY &\n   &\n   &\gNxY &\n   &\n   &\n   &\n   &\gSxY &\gTxY &\n   &\gVxY &\n   &\n   &\gYxY &\n   &\n   &\gBAxY &\gCAxY &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bZ & \n   &\gBxZ &\gCxZ &\gDxZ &\n   &\gFxZ &\gGxZ &\n   &\gIxZ &\gJxZ &\gKxZ &\gLxZ &\gMxZ &\n   &\n   &\n   &\n   &\n   &\gSxZ &\n   &\gUxZ &\n   &\n   &\gXxZ &\gYxZ &\gZxZ &\gAAxZ &\gBAxZ &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bAA & \gAxAA &\gBxAA &\gCxAA &\gDxAA &\gExAA &\gFxAA &\gGxAA &\gHxAA &\gIxAA &\gJxAA &\gKxAA &\gLxAA &\gMxAA &\gNxAA &\gOxAA &\gPxAA &\gQxAA &\gRxAA &\gSxAA &\gTxAA &\gUxAA &\gVxAA &\gWxAA &\gXxAA &\gYxAA &\gZxAA &\gAAxAA &\gBAxAA &\gCAxAA &\gDAxAA &\gEAxAA &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bBA & \gAxBA &\gBxBA &\gCxBA &\gDxBA &\gExBA &\gFxBA &\gGxBA &\gHxBA &\gIxBA &\gJxBA &\gKxBA &\gLxBA &\gMxBA &\gNxBA &\gOxBA &\gPxBA &\gQxBA &\gRxBA &\gSxBA &\gTxBA &\gUxBA &\gVxBA &\gWxBA &\gXxBA &\gYxBA &\gZxBA &\gAAxBA &\gBAxBA &\gCAxBA &\gDAxBA &\gEAxBA &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bCA & \n   &\gBxCA &\gCxCA &\n   &\gExCA &\gFxCA &\n   &\n   &\n   &\n   &\n   &\gLxCA &\n   &\n   &\gOxCA &\n   &\n   &\n   &\n   &\gTxCA &\gUxCA &\n   &\n   &\gXxCA &\n   &\gZxCA &\gAAxCA &\n   &\gCAxCA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bDA & \n   &\n   &\n   &\gDxDA &\gExDA &\n   &\gGxDA &\n   &\gIxDA &\gJxDA &\gKxDA &\n   &\n   &\gNxDA &\n   &\n   &\n   &\n   &\gSxDA &\gTxDA &\n   &\gVxDA &\n   &\n   &\gYxDA &\n   &\n   &\gBAxDA &\gCAxDA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bEA & \n   &\gBxEA &\gCxEA &\gDxEA &\n   &\gFxEA &\gGxEA &\n   &\gIxEA &\gJxEA &\gKxEA &\gLxEA &\gMxEA &\n   &\n   &\n   &\n   &\n   &\gSxEA &\n   &\gUxEA &\n   &\n   &\gXxEA &\gYxEA &\gZxEA &\gAAxEA &\gBAxEA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bFA & \gAxFA &\gBxFA &\gCxFA &\gDxFA &\gExFA &\gFxFA &\gGxFA &\gHxFA &\gIxFA &\gJxFA &\gKxFA &\gLxFA &\gMxFA &\gNxFA &\gOxFA &\gPxFA &\gQxFA &\gRxFA &\gSxFA &\gTxFA &\gUxFA &\gVxFA &\gWxFA &\gXxFA &\gYxFA &\gZxFA &\gAAxFA &\gBAxFA &\gCAxFA &\gDAxFA &\gEAxFA &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bGA & \gAxGA &\gBxGA &\gCxGA &\gDxGA &\gExGA &\gFxGA &\gGxGA &\gHxGA &\gIxGA &\gJxGA &\gKxGA &\gLxGA &\gMxGA &\gNxGA &\gOxGA &\gPxGA &\gQxGA &\gRxGA &\gSxGA &\gTxGA &\gUxGA &\gVxGA &\gWxGA &\gXxGA &\gYxGA &\gZxGA &\gAAxGA &\gBAxGA &\gCAxGA &\gDAxGA &\gEAxGA &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bHA & \n   &\gBxHA &\gCxHA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gLxHA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gTxHA &\gUxHA &\n   &\n   &\gXxHA &\n   &\gZxHA &\gAAxHA &\gBAxHA &\n   &\n   &\n   &\n   &\gGAxHA &\n   &\gIAxHA &\n   &\n   &\n   &\n   &\n   &\n   &\gPAxHA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bIA & \n   &\n   &\n   &\gDxIA &\n   &\n   &\n   &\n   &\gIxIA &\gJxIA &\gKxIA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gSxIA &\gTxIA &\n   &\gVxIA &\n   &\n   &\gYxIA &\gZxIA &\n   &\gBAxIA &\n   &\n   &\n   &\n   &\gGAxIA &\gHAxIA &\n   &\n   &\n   &\n   &\n   &\n   &\gOAxIA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bJA & \n   &\gBxJA &\gCxJA &\gDxJA &\n   &\n   &\n   &\n   &\gIxJA &\gJxJA &\gKxJA &\gLxJA &\n   &\n   &\n   &\n   &\n   &\n   &\gSxJA &\n   &\gUxJA &\n   &\n   &\gXxJA &\gYxJA &\gZxJA &\gAAxJA &\n   &\gCAxJA &\n   &\n   &\n   &\n   &\gHAxJA &\gIAxJA &\n   &\n   &\n   &\n   &\gNAxJA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bKA & \gAxKA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bLA & \gAxLA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bMA & \n   &\gBxMA &\gCxMA &\gDxMA &\gExMA &\n   &\n   &\n   &\gIxMA &\n   &\n   &\gLxMA &\n   &\gNxMA &\gOxMA &\n   &\n   &\n   &\n   &\gTxMA &\n   &\gVxMA &\n   &\gXxMA &\n   &\gZxMA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gMAxMA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bNA & \n   &\gBxNA &\n   &\n   &\gExNA &\gFxNA &\n   &\n   &\gIxNA &\gJxNA &\n   &\n   &\n   &\gNxNA &\gOxNA &\n   &\n   &\n   &\gSxNA &\gTxNA &\gUxNA &\n   &\n   &\n   &\gYxNA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gJAxNA &\n   &\gLAxNA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bOA & \n   &\gBxOA &\gCxOA &\n   &\n   &\gFxOA &\n   &\n   &\gIxOA &\gJxOA &\gKxOA &\gLxOA &\n   &\n   &\n   &\n   &\n   &\n   &\gSxOA &\gTxOA &\n   &\n   &\n   &\gXxOA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gJAxOA &\n   &\gLAxOA &\gMAxOA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bPA & \gAxPA &\n   &\n   &\gDxPA &\gExPA &\gFxPA &\gGxPA &\gHxPA &\gIxPA &\n   &\n   &\gLxPA &\gMxPA &\gNxPA &\gOxPA &\gPxPA &\gQxPA &\gRxPA &\n   &\n   &\gUxPA &\gVxPA &\gWxPA &\n   &\n   &\gZxPA &\gAAxPA &\gBAxPA &\gCAxPA &\gDAxPA &\gEAxPA &\gFAxPA &\gGAxPA &\gHAxPA &\gIAxPA &\gJAxPA &\gKAxPA &\gLAxPA &\gMAxPA &\gNAxPA &\gOAxPA &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bQA & \gAxQA &\gBxQA &\gCxQA &\n   &\gExQA &\gFxQA &\gGxQA &\gHxQA &\gIxQA &\n   &\gKxQA &\gLxQA &\gMxQA &\gNxQA &\gOxQA &\gPxQA &\gQxQA &\gRxQA &\n   &\gTxQA &\gUxQA &\n   &\n   &\n   &\n   &\n   &\gAAxQA &\gBAxQA &\gCAxQA &\gDAxQA &\gEAxQA &\gFAxQA &\gGAxQA &\gHAxQA &\gIAxQA &\gJAxQA &\gKAxQA &\gLAxQA &\gMAxQA &\gNAxQA &\gOAxQA &\gPAxQA &\gQAxQA &\gRAxQA &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+%
+% Vertical lines and other post-xymatrix latex
+%
+\ar@{-}"gBxC";"gBxD"
+\ar@{-}"gBxB";"gBxF"
+\ar@{-}"gCxC";"gCxF"
+\ar@{-}"gCxB";"gCxD"
+\ar@{-}"gBxH";"gBxP"
+\ar@{-}"gBxG";"gBxN"
+\ar@{-}"gCxG";"gCxP"
+\ar@{-}"gCxH";"gCxN"
+\ar@{-}"gDxH";"gDxK"
+\ar@{-}"gDxG";"gDxJ"
+\ar@{-}"gExG";"gExD"
+\ar@{-}"gFxG";"gFxF"
+\ar@{-}"gExH";"gExE"
+\ar@{-}"gGxG";"gGxE"
+\ar@{-}"gFxH";"gFxD"
+\ar@{-}"gGxH";"gGxF"
+\ar@{-}"gBxM";"gBxU"
+\ar@{-}"gBxL";"gBxS"
+\ar@{-}"gCxL";"gCxU"
+\ar@{-}"gCxM";"gCxS"
+\ar@{-}"gDxM";"gDxP"
+\ar@{-}"gDxL";"gDxO"
+\ar@{-}"gExL";"gExI"
+\ar@{-}"gFxL";"gFxK"
+\ar@{-}"gExM";"gExJ"
+\ar@{-}"gGxL";"gGxJ"
+\ar@{-}"gFxM";"gFxI"
+\ar@{-}"gGxM";"gGxK"
+\ar@{-}"gBxR";"gBxZ"
+\ar@{-}"gBxQ";"gBxX"
+\ar@{-}"gCxQ";"gCxZ"
+\ar@{-}"gCxR";"gCxX"
+\ar@{-}"gDxR";"gDxU"
+\ar@{-}"gDxQ";"gDxT"
+\ar@{-}"gExQ";"gExN"
+\ar@{-}"gFxQ";"gFxP"
+\ar@{-}"gExR";"gExO"
+\ar@{-}"gGxQ";"gGxO"
+\ar@{-}"gFxR";"gFxN"
+\ar@{-}"gGxR";"gGxP"
+\ar@{-}"gBxW";"gBxEA"
+\ar@{-}"gBxV";"gBxCA"
+\ar@{-}"gCxV";"gCxEA"
+\ar@{-}"gCxW";"gCxCA"
+\ar@{-}"gDxW";"gDxZ"
+\ar@{-}"gDxV";"gDxY"
+\ar@{-}"gExV";"gExS"
+\ar@{-}"gFxV";"gFxU"
+\ar@{-}"gExW";"gExT"
+\ar@{-}"gGxV";"gGxT"
+\ar@{-}"gFxW";"gFxS"
+\ar@{-}"gGxW";"gGxU"
+\ar@{-}"gBxBA";"gBxJA"
+\ar@{-}"gBxAA";"gBxHA"
+\ar@{-}"gCxAA";"gCxJA"
+\ar@{-}"gCxBA";"gCxHA"
+\ar@{-}"gDxBA";"gDxEA"
+\ar@{-}"gDxAA";"gDxDA"
+\ar@{-}"gExAA";"gExX"
+\ar@{-}"gFxAA";"gFxZ"
+\ar@{-}"gExBA";"gExY"
+\ar@{-}"gGxAA";"gGxY"
+\ar@{-}"gFxBA";"gFxX"
+\ar@{-}"gGxBA";"gGxZ"
+\ar@{-}"gBxGA";"gBxOA"
+\ar@{-}"gBxFA";"gBxMA"
+\ar@{-}"gCxFA";"gCxOA"
+\ar@{-}"gCxGA";"gCxMA"
+\ar@{-}"gDxGA";"gDxJA"
+\ar@{-}"gDxFA";"gDxIA"
+\ar@{-}"gExFA";"gExCA"
+\ar@{-}"gFxFA";"gFxEA"
+\ar@{-}"gExGA";"gExDA"
+\ar@{-}"gGxFA";"gGxDA"
+\ar@{-}"gFxGA";"gFxCA"
+\ar@{-}"gGxGA";"gGxEA"
+\ar@{-}"gHxF";"gHxB"
+\ar@{-}"gHxE";"gHxC"
+\ar@{-}"gIxE";"gIxB"
+\ar@{-}"gIxF";"gIxC"
+\ar@{-}"gDxPA";"gDxMA"
+\ar@{-}"gBxQA";"gBxNA"
+\ar@{-}"gExPA";"gExNA"
+\ar@{-}"gFxPA";"gFxOA"
+\ar@{-}"gExMA";"gExQA"
+\ar@{-}"gFxNA";"gFxQA"
+\ar@{-}"gIxP";"gIxH"
+\ar@{-}"gIxO";"gIxG"
+\ar@{-}"gJxO";"gJxH"
+\ar@{-}"gJxP";"gJxG"
+\ar@{-}"gKxK";"gKxH"
+\ar@{-}"gKxJ";"gKxG"
+\ar@{-}"gLxK";"gLxG"
+\ar@{-}"gLxI";"gLxH"
+\ar@{-}"gMxF";"gMxH"
+\ar@{-}"gNxE";"gNxH"
+\ar@{-}"gOxD";"gOxH"
+\ar@{-}"gIxU";"gIxM"
+\ar@{-}"gIxT";"gIxL"
+\ar@{-}"gJxT";"gJxM"
+\ar@{-}"gJxU";"gJxL"
+\ar@{-}"gKxP";"gKxM"
+\ar@{-}"gKxO";"gKxL"
+\ar@{-}"gLxP";"gLxL"
+\ar@{-}"gLxN";"gLxM"
+\ar@{-}"gMxK";"gMxM"
+\ar@{-}"gNxJ";"gNxM"
+\ar@{-}"gOxI";"gOxM"
+\ar@{-}"gIxZ";"gIxR"
+\ar@{-}"gIxY";"gIxQ"
+\ar@{-}"gJxY";"gJxR"
+\ar@{-}"gJxZ";"gJxQ"
+\ar@{-}"gKxU";"gKxR"
+\ar@{-}"gKxT";"gKxQ"
+\ar@{-}"gLxU";"gLxQ"
+\ar@{-}"gLxS";"gLxR"
+\ar@{-}"gMxP";"gMxR"
+\ar@{-}"gNxO";"gNxR"
+\ar@{-}"gOxN";"gOxR"
+\ar@{-}"gIxEA";"gIxW"
+\ar@{-}"gIxDA";"gIxV"
+\ar@{-}"gJxDA";"gJxW"
+\ar@{-}"gJxEA";"gJxV"
+\ar@{-}"gKxZ";"gKxW"
+\ar@{-}"gKxY";"gKxV"
+\ar@{-}"gLxZ";"gLxV"
+\ar@{-}"gLxX";"gLxW"
+\ar@{-}"gMxU";"gMxW"
+\ar@{-}"gNxT";"gNxW"
+\ar@{-}"gOxS";"gOxW"
+\ar@{-}"gIxJA";"gIxBA"
+\ar@{-}"gIxIA";"gIxAA"
+\ar@{-}"gJxIA";"gJxBA"
+\ar@{-}"gJxJA";"gJxAA"
+\ar@{-}"gKxEA";"gKxBA"
+\ar@{-}"gKxDA";"gKxAA"
+\ar@{-}"gLxEA";"gLxAA"
+\ar@{-}"gLxCA";"gLxBA"
+\ar@{-}"gMxZ";"gMxBA"
+\ar@{-}"gNxY";"gNxBA"
+\ar@{-}"gOxX";"gOxBA"
+\ar@{-}"gIxOA";"gIxGA"
+\ar@{-}"gIxNA";"gIxFA"
+\ar@{-}"gJxNA";"gJxGA"
+\ar@{-}"gJxOA";"gJxFA"
+\ar@{-}"gKxJA";"gKxGA"
+\ar@{-}"gKxIA";"gKxFA"
+\ar@{-}"gLxJA";"gLxFA"
+\ar@{-}"gLxHA";"gLxGA"
+\ar@{-}"gMxEA";"gMxGA"
+\ar@{-}"gNxDA";"gNxGA"
+\ar@{-}"gOxCA";"gOxGA"
+\ar@{-}"gPxB";"gPxD"
+\ar@{-}"gQxB";"gQxF"
+\ar@{-}"gQxD";"gQxC"
+\ar@{-}"gSxD";"gSxB"
+\ar@{-}"gRxF";"gRxC"
+\ar@{-}"gTxE";"gTxB"
+\ar@{-}"gIxPA";"gIxMA"
+\ar@{-}"gKxQA";"gKxOA"
+\ar@{-}"gLxQA";"gLxMA"
+\ar@{-}"gLxPA";"gLxOA"
+\ar@{-}"gNxMA";"gNxPA"
+\ar@{-}"gNxNA";"gNxQA"
+\ar@{-}"gOxNA";"gOxPA"
+\ar@{-}"gOxMA";"gOxQA"
+\ar@{-}"gSxG";"gSxP"
+\ar@{-}"gSxH";"gSxO"
+\ar@{-}"gTxG";"gTxO"
+\ar@{-}"gTxH";"gTxN"
+\ar@{-}"gUxG";"gUxK"
+\ar@{-}"gVxG";"gVxJ"
+\ar@{-}"gUxH";"gUxI"
+\ar@{-}"gSxL";"gSxU"
+\ar@{-}"gSxM";"gSxT"
+\ar@{-}"gTxL";"gTxT"
+\ar@{-}"gTxM";"gTxS"
+\ar@{-}"gUxL";"gUxP"
+\ar@{-}"gVxL";"gVxO"
+\ar@{-}"gUxM";"gUxN"
+\ar@{-}"gSxQ";"gSxZ"
+\ar@{-}"gSxR";"gSxY"
+\ar@{-}"gTxQ";"gTxY"
+\ar@{-}"gTxR";"gTxX"
+\ar@{-}"gUxQ";"gUxU"
+\ar@{-}"gVxQ";"gVxT"
+\ar@{-}"gUxR";"gUxS"
+\ar@{-}"gSxV";"gSxEA"
+\ar@{-}"gSxW";"gSxDA"
+\ar@{-}"gTxV";"gTxDA"
+\ar@{-}"gTxW";"gTxCA"
+\ar@{-}"gUxV";"gUxZ"
+\ar@{-}"gVxV";"gVxY"
+\ar@{-}"gUxW";"gUxX"
+\ar@{-}"gSxAA";"gSxJA"
+\ar@{-}"gSxBA";"gSxIA"
+\ar@{-}"gTxAA";"gTxIA"
+\ar@{-}"gTxBA";"gTxHA"
+\ar@{-}"gUxAA";"gUxEA"
+\ar@{-}"gVxAA";"gVxDA"
+\ar@{-}"gUxBA";"gUxCA"
+\ar@{-}"gSxFA";"gSxOA"
+\ar@{-}"gSxGA";"gSxNA"
+\ar@{-}"gTxFA";"gTxNA"
+\ar@{-}"gTxGA";"gTxMA"
+\ar@{-}"gUxFA";"gUxJA"
+\ar@{-}"gVxFA";"gVxIA"
+\ar@{-}"gUxGA";"gUxHA"
+\ar@{-}"gTxQA";"gTxOA"
+\ar@{-}"gUxPA";"gUxNA"
+\ar@{-}"gVxPA";"gVxMA"
+\ar@{-}"gXxP";"gXxH"
+\ar@{-}"gXxN";"gXxG"
+\ar@{-}"gYxK";"gYxH"
+\ar@{-}"gZxN";"gZxH"
+\ar@{-}"gYxO";"gYxG"
+\ar@{-}"gZxK";"gZxG"
+\ar@{-}"gAAxF";"gAAxG"
+\ar@{-}"gAAxD";"gAAxH"
+\ar@{-}"gBAxF";"gBAxH"
+\ar@{-}"gBAxE";"gBAxG"
+\ar@{-}"gCAxE";"gCAxH"
+\ar@{-}"gCAxD";"gCAxG"
+\ar@{-}"gXxU";"gXxM"
+\ar@{-}"gXxS";"gXxL"
+\ar@{-}"gYxP";"gYxM"
+\ar@{-}"gZxS";"gZxM"
+\ar@{-}"gYxT";"gYxL"
+\ar@{-}"gZxP";"gZxL"
+\ar@{-}"gAAxK";"gAAxL"
+\ar@{-}"gAAxI";"gAAxM"
+\ar@{-}"gBAxK";"gBAxM"
+\ar@{-}"gBAxJ";"gBAxL"
+\ar@{-}"gCAxJ";"gCAxM"
+\ar@{-}"gCAxI";"gCAxL"
+\ar@{-}"gXxZ";"gXxR"
+\ar@{-}"gXxX";"gXxQ"
+\ar@{-}"gYxU";"gYxR"
+\ar@{-}"gZxX";"gZxR"
+\ar@{-}"gYxY";"gYxQ"
+\ar@{-}"gZxU";"gZxQ"
+\ar@{-}"gAAxP";"gAAxQ"
+\ar@{-}"gAAxN";"gAAxR"
+\ar@{-}"gBAxP";"gBAxR"
+\ar@{-}"gBAxO";"gBAxQ"
+\ar@{-}"gCAxO";"gCAxR"
+\ar@{-}"gCAxN";"gCAxQ"
+\ar@{-}"gXxEA";"gXxW"
+\ar@{-}"gXxCA";"gXxV"
+\ar@{-}"gYxZ";"gYxW"
+\ar@{-}"gZxCA";"gZxW"
+\ar@{-}"gYxDA";"gYxV"
+\ar@{-}"gZxZ";"gZxV"
+\ar@{-}"gAAxU";"gAAxV"
+\ar@{-}"gAAxS";"gAAxW"
+\ar@{-}"gBAxU";"gBAxW"
+\ar@{-}"gBAxT";"gBAxV"
+\ar@{-}"gCAxT";"gCAxW"
+\ar@{-}"gCAxS";"gCAxV"
+\ar@{-}"gXxJA";"gXxBA"
+\ar@{-}"gXxHA";"gXxAA"
+\ar@{-}"gYxEA";"gYxBA"
+\ar@{-}"gZxHA";"gZxBA"
+\ar@{-}"gYxIA";"gYxAA"
+\ar@{-}"gZxEA";"gZxAA"
+\ar@{-}"gAAxZ";"gAAxAA"
+\ar@{-}"gAAxX";"gAAxBA"
+\ar@{-}"gBAxZ";"gBAxBA"
+\ar@{-}"gBAxY";"gBAxAA"
+\ar@{-}"gCAxY";"gCAxBA"
+\ar@{-}"gCAxX";"gCAxAA"
+\ar@{-}"gXxOA";"gXxGA"
+\ar@{-}"gXxMA";"gXxFA"
+\ar@{-}"gYxJA";"gYxGA"
+\ar@{-}"gZxMA";"gZxGA"
+\ar@{-}"gYxNA";"gYxFA"
+\ar@{-}"gZxJA";"gZxFA"
+\ar@{-}"gAAxEA";"gAAxFA"
+\ar@{-}"gAAxCA";"gAAxGA"
+\ar@{-}"gBAxEA";"gBAxGA"
+\ar@{-}"gBAxDA";"gBAxFA"
+\ar@{-}"gCAxDA";"gCAxGA"
+\ar@{-}"gCAxCA";"gCAxFA"
+\ar@{-}"gAAxHA";"gAAxQA"
+\ar@{-}"gZxIA";"gZxPA"
+\ar@{-}"gBAxIA";"gBAxQA"
+\ar@{-}"gAAxJA";"gAAxPA"
+\ar@{-}"gCAxJA";"gCAxQA"
+\ar@{-}"gBAxHA";"gBAxPA"
+\ar@{-}"gDAxC";"gDAxE"
+\ar@{-}"gEAxB";"gEAxE"
+\ar@{-}"gEAxC";"gEAxI"
+\ar@{-}"gFAxC";"gFAxF"
+\ar@{-}"gGAxC";"gGAxD"
+\ar@{-}"gFAxB";"gFAxI"
+\ar@{-}"gHAxC";"gHAxK"
+\ar@{-}"gHAxE";"gHAxB"
+\ar@{-}"gIAxF";"gIAxB"
+\ar@{-}"gJAxD";"gJAxC"
+\ar@{-}"gJAxJ";"gJAxB"
+\ar@{-}"gKAxK";"gKAxC"
+\ar@{-}"gLAxK";"gLAxB"
+\ar@{-}"gLAxJ";"gLAxC"
+\ar@{-}"gMAxF";"gMAxC"
+\ar@{-}"gPAxB";"gPAxD"
+\ar@{-}"gQAxC";"gQAxE"
+\ar@{-}"gQAxB";"gQAxF"
+\ar@{-}"gRAxC";"gRAxJ"
+\ar@{-}"gRAxB";"gRAxK"
+\ar@{-}"gSAxB";"gSAxJ"
+\ar@{-}"gSAxC";"gSAxI"
+\ar@{-}"gUAxF";"gUAxB"
+\ar@{-}"gUAxI";"gUAxC"
+\ar@{-}"gVAxI";"gVAxB"
+\ar@{-}"gVAxF";"gVAxC"
+\ar@{-}"gWAxJ";"gWAxB"
+\ar@{-}"gXAxK";"gXAxB"
+\ar@{-}"gGAxPA";"gGAxHA"
+\ar@{-}"gGAxQA";"gGAxIA"
+\ar@{-}"gHAxPA";"gHAxIA"
+\ar@{-}"gHAxQA";"gHAxJA"
+\ar@{-}"gIAxPA";"gIAxJA"
+\ar@{-}"gIAxQA";"gIAxHA"
+\ar@{-}"gJAxPA";"gJAxNA"
+\ar@{-}"gJAxQA";"gJAxOA"
+\ar@{-}"gLAxNA";"gLAxPA"
+\ar@{-}"gLAxOA";"gLAxQA"
+\ar@{-}"gMAxOA";"gMAxPA"
+\ar@{-}"gMAxMA";"gMAxQA"
+\ar@{-}"gNAxJA";"gNAxQA"
+\ar@{-}"gOAxIA";"gOAxQA"
+\ar@{-}"gPAxHA";"gPAxQA"
+}
+
+\end{document}

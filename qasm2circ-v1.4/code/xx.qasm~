@@ -1,0 +1,15 @@
+# Weilei Zeng
+# A simple circuit to measure X_0X_1
+
+  qubit	   q0
+  qubit	   q1
+  qubit	   A0,0
+
+  H	   q0
+  H	   q1
+  cnot	   q0,A0
+  cnot	   q1,A0
+  nop	   q0
+  H	   q0
+  H	   q1
+  measure  A0

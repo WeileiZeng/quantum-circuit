@@ -1,0 +1,119 @@
+% Weilei Zeng
+% A circuit to measure XXX XXX in shor's code
+% There are three versions of this circuit 1>standard one 2>simplified one 3>more simplified
+% Here shows 3>more simplified one. This one is optimized such that the time interval is minimal
+% 
+%   qubit	   q0
+%   qubit	   q1
+%   qubit	   q2
+%   qubit	   A0,0
+%   qubit	   A1,0
+%   qubit	   q3
+%   qubit	   q4
+%   qubit	   q5
+% 
+% 
+%   H	   A0
+%   H	   A1
+%   cnot	   A0,q0
+%   cnot	   A0,q1
+%   cnot	   A0,q2
+%   cnot	   A1,q3
+%   cnot	   A1,q4
+%   cnot	   A1,q5
+%   cnot	   A0,A1
+%   H	   A0
+%   H	   A1
+%   
+%   measure  A0
+%  Time 01:
+%    Gate 00 H(A0)
+%    Gate 01 H(A1)
+%  Time 02:
+%    Gate 02 cnot(A0,q0)
+%    Gate 05 cnot(A1,q3)
+%  Time 03:
+%    Gate 03 cnot(A0,q1)
+%    Gate 06 cnot(A1,q4)
+%  Time 04:
+%    Gate 04 cnot(A0,q2)
+%    Gate 07 cnot(A1,q5)
+%  Time 05:
+%    Gate 08 cnot(A0,A1)
+%  Time 06:
+%    Gate 09 H(A0)
+%    Gate 10 H(A1)
+%  Time 07:
+%    Gate 11 measure(A0)
+
+% Qubit circuit matrix:
+%
+% q0: n  , gBxA, n  , n  , n  , n  , n  , n  
+% q1: n  , n  , gCxB, n  , n  , n  , n  , n  
+% q2: n  , n  , n  , gDxC, n  , n  , n  , n  
+% A0: gAxD, gBxD, gCxD, gDxD, gExD, gFxD, gGxD, N  
+% A1: gAxE, gBxE, gCxE, gDxE, gExE, gFxE, n  , n  
+% q3: n  , gBxF, n  , n  , n  , n  , n  , n  
+% q4: n  , n  , gCxG, n  , n  , n  , n  , n  
+% q5: n  , n  , n  , gDxH, n  , n  , n  , n  
+
+\documentclass[11pt]{article}
+\input{xyqcirc.tex}
+
+% definitions for the circuit elements
+
+\def\gAxD{\op{H}\w\A{gAxD}}
+\def\gAxE{\op{H}\w\A{gAxE}}
+\def\gBxD{\b\w\A{gBxD}}
+\def\gBxA{\o\w\A{gBxA}}
+\def\gCxD{\b\w\A{gCxD}}
+\def\gCxB{\o\w\A{gCxB}}
+\def\gDxD{\b\w\A{gDxD}}
+\def\gDxC{\o\w\A{gDxC}}
+\def\gBxE{\b\w\A{gBxE}}
+\def\gBxF{\o\w\A{gBxF}}
+\def\gCxE{\b\w\A{gCxE}}
+\def\gCxG{\o\w\A{gCxG}}
+\def\gDxE{\b\w\A{gDxE}}
+\def\gDxH{\o\w\A{gDxH}}
+\def\gExD{\b\w\A{gExD}}
+\def\gExE{\o\w\A{gExE}}
+\def\gFxD{\op{H}\w\A{gFxD}}
+\def\gFxE{\op{H}\w\A{gFxE}}
+\def\gGxD{\meter\w\A{gGxD}}
+
+% definitions for bit labels and initial states
+
+\def\bA{ \q{q_{0}}}
+\def\bB{ \q{q_{1}}}
+\def\bC{ \q{q_{2}}}
+\def\bD{\qv{A_{0}}{0}}
+\def\bE{\qv{A_{1}}{0}}
+\def\bF{ \q{q_{3}}}
+\def\bG{ \q{q_{4}}}
+\def\bH{ \q{q_{5}}}
+
+% The quantum circuit as an xymatrix
+
+\xymatrix@R=5pt@C=10pt{
+    \bA & \n   &\gBxA &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bB & \n   &\n   &\gCxB &\n   &\n   &\n   &\n   &\n  
+\\  \bC & \n   &\n   &\n   &\gDxC &\n   &\n   &\n   &\n  
+\\  \bD & \gAxD &\gBxD &\gCxD &\gDxD &\gExD &\gFxD &\gGxD &\N  
+\\  \bE & \gAxE &\gBxE &\gCxE &\gDxE &\gExE &\gFxE &\n   &\n  
+\\  \bF & \n   &\gBxF &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bG & \n   &\n   &\gCxG &\n   &\n   &\n   &\n   &\n  
+\\  \bH & \n   &\n   &\n   &\gDxH &\n   &\n   &\n   &\n  
+%
+% Vertical lines and other post-xymatrix latex
+%
+\ar@{-}"gBxA";"gBxD"
+\ar@{-}"gCxB";"gCxD"
+\ar@{-}"gDxC";"gDxD"
+\ar@{-}"gBxF";"gBxE"
+\ar@{-}"gCxG";"gCxE"
+\ar@{-}"gDxH";"gDxE"
+\ar@{-}"gExE";"gExD"
+}
+
+\end{document}

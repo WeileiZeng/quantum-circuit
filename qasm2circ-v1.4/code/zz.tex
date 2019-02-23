@@ -1,0 +1,54 @@
+% Weilei Zeng
+% A simple circuit to measure Z_0Z_1
+% 
+%   qubit	   q0
+%   qubit	   q1
+%   qubit	   A0,0
+% 
+%   cnot	   q0,A0
+%   cnot	   q1,A0
+%   measure  A0
+%  Time 01:
+%    Gate 00 cnot(q0,A0)
+%  Time 02:
+%    Gate 01 cnot(q1,A0)
+%  Time 03:
+%    Gate 02 measure(A0)
+
+% Qubit circuit matrix:
+%
+% q0: gAxA, n  , n  , n  
+% q1: n  , gBxB, n  , n  
+% A0: gAxC, gBxC, gCxC, N  
+
+\documentclass[11pt]{article}
+\input{xyqcirc.tex}
+
+% definitions for the circuit elements
+
+\def\gAxA{\b\w\A{gAxA}}
+\def\gAxC{\o\w\A{gAxC}}
+\def\gBxB{\b\w\A{gBxB}}
+\def\gBxC{\o\w\A{gBxC}}
+\def\gCxC{\meter\w\A{gCxC}}
+
+% definitions for bit labels and initial states
+
+\def\bA{ \q{q_{0}}}
+\def\bB{ \q{q_{1}}}
+\def\bC{\qv{A_{0}}{0}}
+
+% The quantum circuit as an xymatrix
+
+\xymatrix@R=5pt@C=10pt{
+    \bA & \gAxA &\n   &\n   &\n  
+\\  \bB & \n   &\gBxB &\n   &\n  
+\\  \bC & \gAxC &\gBxC &\gCxC &\N  
+%
+% Vertical lines and other post-xymatrix latex
+%
+\ar@{-}"gAxC";"gAxA"
+\ar@{-}"gBxC";"gBxB"
+}
+
+\end{document}

@@ -1,0 +1,8 @@
+#left block
+  cnot     q40,A5
+  cnot     q9,A5
+  cnot     q7,A5
+  cnot     q41,A4
+  cnot     q40,A4
+  cnot     q8,A4
+  cnot     q7,A4

@@ -1,0 +1,19 @@
+#right block
+       h        A12
+       h        A13
+       cnot     A13,q23
+       cnot     A12,q22
+       cnot     A13,q22
+       cnot     A12,q23
+       cnot     A13,q20
+       cnot     A12,q19
+       cnot     A12,q20
+       cnot     A13,q18
+       cnot     A13,q17
+       cnot     A13,q16
+       cnot     A13,q15
+       nop      A12
+       nop      A12
+       nop      A12
+       h        A12
+       h        A13

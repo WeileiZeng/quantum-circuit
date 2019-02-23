@@ -1,0 +1,29 @@
+#left block
+  cnot     q41,A5
+  cnot     q9,A4
+  cnot     q41,A4
+  cnot     q7,A4
+  cnot     q40,A5
+  cnot     q8,A5
+  cnot     q4,A5
+  cnot     q5,A5
+  cnot     q3,A4
+  cnot     q4,A4
+  cnot     q5,A4
+  cnot     q3,A5
+
+#right block
+  h        A4
+  h        A5
+  cnot     A4,q41
+  cnot     A4,q40
+  cnot     A4,q7
+  cnot     A5,q6
+  cnot     A5,q8
+  cnot     A4,q8
+
+  cnot     A5,q3
+  cnot     A5,q4
+  cnot     A5,q5
+  h        A4
+  h        A5

@@ -1,0 +1,178 @@
+% Weilei Zeng
+% A circuit to measure XXX XXX in shor's code
+% There are three versions of this circuit 1>standard one 2>simplified one 3>more simplified
+% Here shows 1>the standard one
+% 
+%   qubit	   q0
+%   qubit	   q1
+%   qubit	   q2
+%   qubit	   q3
+%   qubit	   q4
+%   qubit	   q5
+%   qubit	   A0,0
+% 
+%   H	   q0
+%   H	   q1
+%   H	   q2
+%   H	   q3
+%   H	   q4
+%   H	   q5
+%   cnot	   q0,A0
+%   cnot	   q1,A0
+%   cnot	   q2,A0
+%   cnot	   q3,A0
+%   cnot	   q4,A0
+%   cnot	   q5,A0
+%   nop	   q0
+%   nop	   q0
+%   nop	   q0
+%   nop	   q0
+%   nop	   q0
+%   nop	   q1
+%   nop	   q1
+%   nop	   q1
+%   nop	   q1
+%   nop	   q2
+%   nop	   q2
+%   nop	   q2
+%   nop	   q3
+%   nop	   q3
+%   nop	   q4
+%   H	   q0
+%   H	   q1
+%   H	   q2
+%   H	   q3
+%   H	   q4
+%   H	   q5
+%   measure  A0
+%  Time 01:
+%    Gate 00 H(q0)
+%    Gate 01 H(q1)
+%    Gate 02 H(q2)
+%    Gate 03 H(q3)
+%    Gate 04 H(q4)
+%    Gate 05 H(q5)
+%  Time 02:
+%    Gate 06 cnot(q0,A0)
+%  Time 03:
+%    Gate 07 cnot(q1,A0)
+%    Gate 12 nop(q0)
+%  Time 04:
+%    Gate 08 cnot(q2,A0)
+%    Gate 13 nop(q0)
+%    Gate 17 nop(q1)
+%  Time 05:
+%    Gate 09 cnot(q3,A0)
+%    Gate 14 nop(q0)
+%    Gate 18 nop(q1)
+%    Gate 21 nop(q2)
+%  Time 06:
+%    Gate 10 cnot(q4,A0)
+%    Gate 15 nop(q0)
+%    Gate 19 nop(q1)
+%    Gate 22 nop(q2)
+%    Gate 24 nop(q3)
+%  Time 07:
+%    Gate 11 cnot(q5,A0)
+%    Gate 16 nop(q0)
+%    Gate 20 nop(q1)
+%    Gate 23 nop(q2)
+%    Gate 25 nop(q3)
+%    Gate 26 nop(q4)
+%  Time 08:
+%    Gate 27 H(q0)
+%    Gate 28 H(q1)
+%    Gate 29 H(q2)
+%    Gate 30 H(q3)
+%    Gate 31 H(q4)
+%    Gate 32 H(q5)
+%    Gate 33 measure(A0)
+
+% Qubit circuit matrix:
+%
+% q0: gAxA, gBxA, gCxA, gDxA, gExA, gFxA, gGxA, gHxA, n  
+% q1: gAxB, n  , gCxB, gDxB, gExB, gFxB, gGxB, gHxB, n  
+% q2: gAxC, n  , n  , gDxC, gExC, gFxC, gGxC, gHxC, n  
+% q3: gAxD, n  , n  , n  , gExD, gFxD, gGxD, gHxD, n  
+% q4: gAxE, n  , n  , n  , n  , gFxE, gGxE, gHxE, n  
+% q5: gAxF, n  , n  , n  , n  , n  , gGxF, gHxF, n  
+% A0: n  , gBxG, gCxG, gDxG, gExG, gFxG, gGxG, gHxG, N  
+
+\documentclass[11pt]{article}
+\input{xyqcirc.tex}
+
+% definitions for the circuit elements
+
+\def\gAxA{\op{H}\w\A{gAxA}}
+\def\gAxB{\op{H}\w\A{gAxB}}
+\def\gAxC{\op{H}\w\A{gAxC}}
+\def\gAxD{\op{H}\w\A{gAxD}}
+\def\gAxE{\op{H}\w\A{gAxE}}
+\def\gAxF{\op{H}\w\A{gAxF}}
+\def\gBxA{\b\w\A{gBxA}}
+\def\gBxG{\o\w\A{gBxG}}
+\def\gCxB{\b\w\A{gCxB}}
+\def\gCxG{\o\w\A{gCxG}}
+\def\gDxC{\b\w\A{gDxC}}
+\def\gDxG{\o\w\A{gDxG}}
+\def\gExD{\b\w\A{gExD}}
+\def\gExG{\o\w\A{gExG}}
+\def\gFxE{\b\w\A{gFxE}}
+\def\gFxG{\o\w\A{gFxG}}
+\def\gGxF{\b\w\A{gGxF}}
+\def\gGxG{\o\w\A{gGxG}}
+\def\gCxA{*-{}\w\A{gCxA}}
+\def\gDxA{*-{}\w\A{gDxA}}
+\def\gExA{*-{}\w\A{gExA}}
+\def\gFxA{*-{}\w\A{gFxA}}
+\def\gGxA{*-{}\w\A{gGxA}}
+\def\gDxB{*-{}\w\A{gDxB}}
+\def\gExB{*-{}\w\A{gExB}}
+\def\gFxB{*-{}\w\A{gFxB}}
+\def\gGxB{*-{}\w\A{gGxB}}
+\def\gExC{*-{}\w\A{gExC}}
+\def\gFxC{*-{}\w\A{gFxC}}
+\def\gGxC{*-{}\w\A{gGxC}}
+\def\gFxD{*-{}\w\A{gFxD}}
+\def\gGxD{*-{}\w\A{gGxD}}
+\def\gGxE{*-{}\w\A{gGxE}}
+\def\gHxA{\op{H}\w\A{gHxA}}
+\def\gHxB{\op{H}\w\A{gHxB}}
+\def\gHxC{\op{H}\w\A{gHxC}}
+\def\gHxD{\op{H}\w\A{gHxD}}
+\def\gHxE{\op{H}\w\A{gHxE}}
+\def\gHxF{\op{H}\w\A{gHxF}}
+\def\gHxG{\meter\w\A{gHxG}}
+
+% definitions for bit labels and initial states
+
+\def\bA{ \q{q_{0}}}
+\def\bB{ \q{q_{1}}}
+\def\bC{ \q{q_{2}}}
+\def\bD{ \q{q_{3}}}
+\def\bE{ \q{q_{4}}}
+\def\bF{ \q{q_{5}}}
+\def\bG{\qv{A_{0}}{0}}
+
+% The quantum circuit as an xymatrix
+
+\xymatrix@R=5pt@C=10pt{
+    \bA & \gAxA &\gBxA &\gCxA &\gDxA &\gExA &\gFxA &\gGxA &\gHxA &\n  
+\\  \bB & \gAxB &\n   &\gCxB &\gDxB &\gExB &\gFxB &\gGxB &\gHxB &\n  
+\\  \bC & \gAxC &\n   &\n   &\gDxC &\gExC &\gFxC &\gGxC &\gHxC &\n  
+\\  \bD & \gAxD &\n   &\n   &\n   &\gExD &\gFxD &\gGxD &\gHxD &\n  
+\\  \bE & \gAxE &\n   &\n   &\n   &\n   &\gFxE &\gGxE &\gHxE &\n  
+\\  \bF & \gAxF &\n   &\n   &\n   &\n   &\n   &\gGxF &\gHxF &\n  
+\\  \bG & \n   &\gBxG &\gCxG &\gDxG &\gExG &\gFxG &\gGxG &\gHxG &\N  
+%
+% Vertical lines and other post-xymatrix latex
+%
+\ar@{-}"gBxG";"gBxA"
+\ar@{-}"gCxG";"gCxB"
+\ar@{-}"gDxG";"gDxC"
+\ar@{-}"gExG";"gExD"
+\ar@{-}"gFxG";"gFxE"
+\ar@{-}"gGxG";"gGxF"
+}
+
+\end{document}

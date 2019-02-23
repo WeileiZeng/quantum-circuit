@@ -1,0 +1,30 @@
+#left block
+  cnot     q20,A11
+  cnot     q18,A10
+  cnot     q20,A10
+  cnot     q16,A10
+  cnot     q19,A11
+  cnot     q17,A11
+  cnot     q13,A11
+  cnot     q14,A11
+  cnot     q12,A10
+  cnot     q13,A10
+  cnot     q14,A10
+  cnot     q12,A11
+
+#right block
+  h        A10
+  h        A11
+  cnot     A10,q20
+  cnot     A10,q19
+  cnot     A10,q16
+  cnot     A11,q15
+  cnot     A11,q17
+  cnot     A10,q17
+
+  cnot     A11,q12
+  cnot     A11,q13
+  cnot     A11,q14
+  nop      A10
+  h        A10
+  h        A11

@@ -1,0 +1,13 @@
+#left block
+      cnot      q23,A13
+      cnot      q21,A12
+      cnot      q23,A12
+      cnot      q21,A13
+      cnot      q20,A13
+      cnot      q19,A12
+      cnot      q15,A12
+      cnot      q17,A12
+      cnot      q16,A13
+      cnot      q16,A12
+      cnot      q15,A13
+      cnot      q17,A13

@@ -1,0 +1,52 @@
+#left block
+      cnot      q14,A7
+      cnot      q12,A6
+      cnot      q14,A6
+      cnot      q12,A7
+      cnot      q11,A7
+      cnot      q10,A6
+      cnot      q6,A6
+      cnot      q8,A6
+      cnot      q7,A7
+      cnot      q7,A6
+      cnot      q6,A7
+      cnot      q8,A7
+#left block
+      cnot      q17,A9
+      cnot      q15,A8
+      cnot      q17,A8
+      cnot      q15,A9
+      cnot      q14,A9
+      cnot      q13,A8
+      cnot      q9,A8
+      cnot      q11,A8
+      cnot      q10,A9
+      cnot      q10,A8
+      cnot      q9,A9
+      cnot      q11,A9
+#left block
+      cnot      q20,A11
+      cnot      q18,A10
+      cnot      q20,A10
+      cnot      q18,A11
+      cnot      q17,A11
+      cnot      q16,A10
+      cnot      q12,A10
+      cnot      q14,A10
+      cnot      q13,A11
+      cnot      q13,A10
+      cnot      q12,A11
+      cnot      q14,A11
+#left block
+      cnot      q23,A13
+      cnot      q21,A12
+      cnot      q23,A12
+      cnot      q21,A13
+      cnot      q20,A13
+      cnot      q19,A12
+      cnot      q15,A12
+      cnot      q17,A12
+      cnot      q16,A13
+      cnot      q16,A12
+      cnot      q15,A13
+      cnot      q17,A13

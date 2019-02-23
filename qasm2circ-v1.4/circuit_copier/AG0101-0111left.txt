@@ -1,0 +1,8 @@
+#left part
+  cnot  q8,A2
+  cnot  q7,A3
+  cnot  q7,A2
+  cnot  q6,A3
+  cnot  q5,A2
+  cnot  q4,A2
+  cnot  q3,A3

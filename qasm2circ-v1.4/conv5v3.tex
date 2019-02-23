@@ -1,0 +1,1002 @@
+% Weilei Zeng, see weilei_readme.txt
+% A circuit to measure G_1
+% somehow this circuit have to start with q0 in the beginning, which could be emitted when we crop the image of the circuit.
+% 
+%   qubit	   q0
+%   qubit	   B0,0
+%   qubit	   B1,0
+%   qubit	   B2,0
+%   qubit	   B3,0
+%   qubit	   A0,0
+%   qubit	   A1,0
+%   qubit	   q0
+%   qubit	   q1
+%   qubit	   q2
+%   qubit	   A2,0
+%   qubit	   A3,0
+%   qubit	   q3
+%   qubit	   q4
+%   qubit	   q5
+%   qubit	   A4,0
+%   qubit	   A5,0
+%   qubit	   q6
+%   qubit	   q7
+%   qubit	   q8
+%   qubit	   A6,0
+%   qubit	   A7,0
+%   qubit	   q9
+%   qubit	   q10
+%   qubit	   q11
+%   qubit	   A8,0
+%   qubit	   A9,0
+% 
+%some initial set up
+%   h	   A1
+%   h        A3
+%   
+%g1
+%   nop	   q1
+%   cnot	   q1,A2
+%   cnot     A3,q0
+%   cnot     A3,q1
+%   cnot	   q2,A2
+%   cnot	   q0,A2
+%   cnot     A3,q2
+% 
+%g1
+%   nop	   q4
+%   cnot	   q4,A4
+%   h        A5
+%   cnot     A5,q3
+%   cnot     A5,q4
+%   cnot	   q5,A4
+%   cnot	   q3,A4
+%   cnot     A5,q5
+% 
+%g1
+%   nop      q7
+%   cnot     q7,A6
+%   h        A7
+%   cnot     A7,q6
+%   cnot     A7,q7
+%   cnot     q8,A6
+%   cnot     q6,A6
+%   cnot     A7,q8
+% 
+%g1
+%   nop      q10
+%   cnot     q10,A8
+%   h        A9
+%   cnot     A9,q9
+%   cnot     A9,q10
+%   cnot     q11,A8
+%   cnot     q9,A8
+%   cnot     A9,q11
+% 
+%g2
+%   nop      q1
+%   cnot	   q0,A0
+%   cnot     A1,q1
+%   cnot     A1,q0
+%   h        A1
+%   h	   q1
+%   h	   q2
+%   cnot	   q2,A0
+%   h	   q2
+%   cnot	   q1,A0
+%   h	   q1
+%   cnot	   q2,A1
+%   cnot	   q1,A1
+%   cnot	   q2,A0
+%g2
+% 
+%   cnot	   q3,A2
+%   cnot     A3,q4
+%   cnot     A3,q3
+%   h        A3
+%   h	   q4
+%   h	   q5
+%   cnot	   q5,A2
+%   h	   q5
+%   cnot	   q4,A2
+%   h	   q4
+%   cnot	   q5,A3
+%   cnot	   q4,A3
+%   cnot	   q5,A2
+% 
+%g2
+%   cnot	   q6,A4
+%   cnot	   A5,q7
+%   cnot	   A5,q6
+%   h	   A5
+%   h	   q7
+%   h	   q8
+%   cnot	   q8,A4
+%   h	   q8
+%   cnot	   q7,A4
+%   h	   q7
+%   cnot	   q8,A5
+%   cnot	   q7,A5
+%   cnot	   q8,A4
+% 
+%g2
+%   cnot     q9,A6
+%   cnot     A7,q10
+%   cnot     A7,q9
+%   h        A7
+%   h        q10
+%   h        q11
+%   cnot     q11,A6
+%   h        q11
+%   cnot     q10,A6
+%   h        q10
+%   cnot     q11,A7
+%   cnot     q10,A7
+%   cnot     q11,A6
+% 
+% some final set up
+%   h    	   A9
+% 
+% measurement
+% 
+%   measure  A0
+%   measure  A1
+%   measure  A2
+%   measure  A3
+%   measure  A4
+%   measure  A5
+%   measure  A6
+%   measure  A7
+%   nop	   A8
+%   nop	   A8
+%   nop	   A8
+%   nop	   A8
+%   nop	   A8
+%   nop	   A9
+%   nop	   A9
+%   nop	   A9
+%   nop	   A9
+%   measure  A8
+%   measure  A9
+% 
+% 
+%the following is for AG part
+%   zero 	   A0
+%   zero 	   A1
+%   zero 	   A2
+%   zero 	   A3
+%   zero 	   A4
+%   zero 	   A5
+%   zero 	   A6
+% 
+%non repeat part
+% 
+%some initial set up
+%   h        A1
+% 
+%g1
+%   nop      q1
+%   cnot     q1,A2
+%   cnot     A3,q0
+%   cnot     A3,q1
+%   cnot     q2,A2
+%   cnot     q0,A2
+%   cnot     A3,q2
+% 
+%g2
+%   nop      q1
+%   cnot     q0,A0
+%   cnot     A1,q1
+%   cnot     A1,q0
+%   h        A1
+%   h        q1
+%   h        q2
+%   cnot     q2,A0
+%   h        q2
+%   cnot     q1,A0
+%   h        q1
+%   cnot     q2,A1
+%   cnot     q1,A1
+%   cnot     q2,A0
+%   
+%repeat part
+% 
+% 
+%left block
+%   cnot	   q8,A3
+%   cnot	   q6,A2
+%   cnot	   q8,A2
+%   cnot	   q4,A2
+%   cnot	   q7,A3
+%   cnot	   q5,A3
+%   cnot	   q1,A3
+%   cnot	   q2,A3
+%   cnot	   q0,A2
+%   cnot	   q1,A2
+%   cnot	   q2,A2
+%   cnot	   q0,A3
+% 
+%left block
+%   cnot     q11,A5
+%   cnot     q9,A4
+%   cnot     q11,A4
+%   cnot     q7,A4
+%   cnot     q10,A5
+%   cnot     q8,A5
+%   cnot     q4,A5
+%   cnot     q5,A5
+%   cnot     q3,A4
+%   cnot     q4,A4
+%   cnot     q5,A4
+%   cnot     q3,A5
+% 
+% 
+%right block
+%   h	   A2
+%   h	   A3
+%   cnot 	   A2,q8
+%   cnot 	   A2,q7
+%   cnot 	   A2,q4
+%   cnot	   A3,q3
+%   cnot	   A3,q5
+%   cnot 	   A2,q5
+% 
+%   cnot	   A3,q0
+%   cnot	   A3,q1
+%   cnot	   A3,q2
+%   h	   A2
+%   h	   A3
+% 
+%right block
+%   h        A4
+%   h        A5
+%   cnot     A4,q11
+%   cnot     A4,q10
+%   cnot     A4,q7
+%   cnot     A5,q6
+%   cnot     A5,q8
+%   cnot     A4,q8
+% 
+%   cnot     A5,q3
+%   cnot     A5,q4
+%   cnot     A5,q5
+%   h        A4
+%   h        A5
+% 
+% 
+% 
+% 
+%   measure  A3
+%   measure  A2
+%   
+%  Time 01:
+%    Gate 00 h(A1)
+%    Gate 01 h(A3)
+%    Gate 02 nop(q1)
+%    Gate 09 nop(q4)
+%    Gate 11 h(A5)
+%    Gate 17 nop(q7)
+%    Gate 19 h(A7)
+%    Gate 25 nop(q10)
+%    Gate 27 h(A9)
+%  Time 02:
+%    Gate 03 cnot(q1,A2)
+%    Gate 04 cnot(A3,q0)
+%    Gate 10 cnot(q4,A4)
+%    Gate 12 cnot(A5,q3)
+%    Gate 18 cnot(q7,A6)
+%    Gate 20 cnot(A7,q6)
+%    Gate 26 cnot(q10,A8)
+%    Gate 28 cnot(A9,q9)
+%  Time 03:
+%    Gate 05 cnot(A3,q1)
+%    Gate 06 cnot(q2,A2)
+%    Gate 13 cnot(A5,q4)
+%    Gate 14 cnot(q5,A4)
+%    Gate 21 cnot(A7,q7)
+%    Gate 22 cnot(q8,A6)
+%    Gate 29 cnot(A9,q10)
+%    Gate 30 cnot(q11,A8)
+%  Time 04:
+%    Gate 07 cnot(q0,A2)
+%    Gate 08 cnot(A3,q2)
+%    Gate 15 cnot(q3,A4)
+%    Gate 16 cnot(A5,q5)
+%    Gate 23 cnot(q6,A6)
+%    Gate 24 cnot(A7,q8)
+%    Gate 31 cnot(q9,A8)
+%    Gate 32 cnot(A9,q11)
+%    Gate 33 nop(q1)
+%  Time 05:
+%    Gate 34 cnot(q0,A0)
+%    Gate 35 cnot(A1,q1)
+%    Gate 39 h(q2)
+%    Gate 47 cnot(q3,A2)
+%    Gate 48 cnot(A3,q4)
+%    Gate 52 h(q5)
+%    Gate 60 cnot(q6,A4)
+%    Gate 61 cnot(A5,q7)
+%    Gate 65 h(q8)
+%    Gate 73 cnot(q9,A6)
+%    Gate 74 cnot(A7,q10)
+%    Gate 78 h(q11)
+%    Gate 86 h(A9)
+%    Gate 95 nop(A8)
+%  Time 06:
+%    Gate 36 cnot(A1,q0)
+%    Gate 38 h(q1)
+%    Gate 40 cnot(q2,A0)
+%    Gate 49 cnot(A3,q3)
+%    Gate 51 h(q4)
+%    Gate 53 cnot(q5,A2)
+%    Gate 62 cnot(A5,q6)
+%    Gate 64 h(q7)
+%    Gate 66 cnot(q8,A4)
+%    Gate 75 cnot(A7,q9)
+%    Gate 77 h(q10)
+%    Gate 79 cnot(q11,A6)
+%    Gate 96 nop(A8)
+%    Gate 100 nop(A9)
+%  Time 07:
+%    Gate 37 h(A1)
+%    Gate 41 h(q2)
+%    Gate 42 cnot(q1,A0)
+%    Gate 50 h(A3)
+%    Gate 54 h(q5)
+%    Gate 55 cnot(q4,A2)
+%    Gate 63 h(A5)
+%    Gate 67 h(q8)
+%    Gate 68 cnot(q7,A4)
+%    Gate 76 h(A7)
+%    Gate 80 h(q11)
+%    Gate 81 cnot(q10,A6)
+%    Gate 97 nop(A8)
+%    Gate 101 nop(A9)
+%  Time 08:
+%    Gate 43 h(q1)
+%    Gate 44 cnot(q2,A1)
+%    Gate 56 h(q4)
+%    Gate 57 cnot(q5,A3)
+%    Gate 69 h(q7)
+%    Gate 70 cnot(q8,A5)
+%    Gate 82 h(q10)
+%    Gate 83 cnot(q11,A7)
+%    Gate 98 nop(A8)
+%    Gate 102 nop(A9)
+%  Time 09:
+%    Gate 45 cnot(q1,A1)
+%    Gate 46 cnot(q2,A0)
+%    Gate 58 cnot(q4,A3)
+%    Gate 59 cnot(q5,A2)
+%    Gate 71 cnot(q7,A5)
+%    Gate 72 cnot(q8,A4)
+%    Gate 84 cnot(q10,A7)
+%    Gate 85 cnot(q11,A6)
+%    Gate 99 nop(A8)
+%    Gate 103 nop(A9)
+%  Time 10:
+%    Gate 87 measure(A0)
+%    Gate 88 measure(A1)
+%    Gate 89 measure(A2)
+%    Gate 90 measure(A3)
+%    Gate 91 measure(A4)
+%    Gate 92 measure(A5)
+%    Gate 93 measure(A6)
+%    Gate 94 measure(A7)
+%    Gate 104 measure(A8)
+%    Gate 105 measure(A9)
+%    Gate 114 nop(q1)
+%  Time 11:
+%    Gate 106 zero(A0)
+%    Gate 107 zero(A1)
+%    Gate 108 zero(A2)
+%    Gate 109 zero(A3)
+%    Gate 110 zero(A4)
+%    Gate 111 zero(A5)
+%    Gate 112 zero(A6)
+%  Time 12:
+%    Gate 113 h(A1)
+%    Gate 115 cnot(q1,A2)
+%    Gate 116 cnot(A3,q0)
+%    Gate 147 cnot(q11,A5)
+%    Gate 148 cnot(q9,A4)
+%  Time 13:
+%    Gate 117 cnot(A3,q1)
+%    Gate 118 cnot(q2,A2)
+%    Gate 149 cnot(q11,A4)
+%    Gate 151 cnot(q10,A5)
+%  Time 14:
+%    Gate 119 cnot(q0,A2)
+%    Gate 120 cnot(A3,q2)
+%    Gate 121 nop(q1)
+%  Time 15:
+%    Gate 122 cnot(q0,A0)
+%    Gate 123 cnot(A1,q1)
+%    Gate 127 h(q2)
+%    Gate 135 cnot(q8,A3)
+%    Gate 136 cnot(q6,A2)
+%  Time 16:
+%    Gate 124 cnot(A1,q0)
+%    Gate 126 h(q1)
+%    Gate 128 cnot(q2,A0)
+%    Gate 137 cnot(q8,A2)
+%    Gate 139 cnot(q7,A3)
+%  Time 17:
+%    Gate 125 h(A1)
+%    Gate 129 h(q2)
+%    Gate 130 cnot(q1,A0)
+%    Gate 138 cnot(q4,A2)
+%    Gate 140 cnot(q5,A3)
+%    Gate 150 cnot(q7,A4)
+%    Gate 152 cnot(q8,A5)
+%  Time 18:
+%    Gate 131 h(q1)
+%    Gate 132 cnot(q2,A1)
+%    Gate 143 cnot(q0,A2)
+%    Gate 153 cnot(q4,A5)
+%    Gate 155 cnot(q3,A4)
+%  Time 19:
+%    Gate 133 cnot(q1,A1)
+%    Gate 134 cnot(q2,A0)
+%    Gate 154 cnot(q5,A5)
+%    Gate 156 cnot(q4,A4)
+%  Time 20:
+%    Gate 141 cnot(q1,A3)
+%    Gate 157 cnot(q5,A4)
+%    Gate 158 cnot(q3,A5)
+%  Time 21:
+%    Gate 142 cnot(q2,A3)
+%    Gate 144 cnot(q1,A2)
+%    Gate 172 h(A4)
+%    Gate 173 h(A5)
+%  Time 22:
+%    Gate 145 cnot(q2,A2)
+%    Gate 146 cnot(q0,A3)
+%    Gate 174 cnot(A4,q11)
+%    Gate 177 cnot(A5,q6)
+%  Time 23:
+%    Gate 159 h(A2)
+%    Gate 160 h(A3)
+%    Gate 175 cnot(A4,q10)
+%  Time 24:
+%    Gate 161 cnot(A2,q8)
+%    Gate 164 cnot(A3,q3)
+%  Time 25:
+%    Gate 162 cnot(A2,q7)
+%    Gate 165 cnot(A3,q5)
+%    Gate 178 cnot(A5,q8)
+%  Time 26:
+%    Gate 163 cnot(A2,q4)
+%    Gate 167 cnot(A3,q0)
+%    Gate 176 cnot(A4,q7)
+%    Gate 180 cnot(A5,q3)
+%  Time 27:
+%    Gate 166 cnot(A2,q5)
+%    Gate 168 cnot(A3,q1)
+%    Gate 179 cnot(A4,q8)
+%    Gate 181 cnot(A5,q4)
+%  Time 28:
+%    Gate 169 cnot(A3,q2)
+%    Gate 170 h(A2)
+%    Gate 182 cnot(A5,q5)
+%    Gate 183 h(A4)
+%  Time 29:
+%    Gate 171 h(A3)
+%    Gate 184 h(A5)
+%    Gate 186 measure(A2)
+%  Time 30:
+%    Gate 185 measure(A3)
+
+% Qubit circuit matrix:
+%
+% q0: n  , gBxH, n  , gDxH, gExH, gFxH, n  , n  , n  , n  , n  , gLxH, n  , gNxH, gOxH, gPxH, n  , gRxH, n  , n  , n  , gVxH, n  , n  , n  , gZxH, n  , n  , n  , n  , n  
+% B0: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% B1: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% B2: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% B3: n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A0: n  , n  , n  , n  , gExF, gFxF, gGxF, n  , gIxF, gJxF, gKxF, n  , n  , n  , gOxF, gPxF, gQxF, n  , gSxF, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A1: gAxG, n  , n  , n  , gExG, gFxG, gGxG, gHxG, gIxG, gJxG, gKxG, gLxG, n  , n  , gOxG, gPxG, gQxG, gRxG, gSxG, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q0: n  , gBxH, n  , gDxH, gExH, gFxH, n  , n  , n  , n  , n  , gLxH, n  , gNxH, gOxH, gPxH, n  , gRxH, n  , n  , n  , gVxH, n  , n  , n  , gZxH, n  , n  , n  , n  , n  
+% q1: gAxI, gBxI, gCxI, gDxI, gExI, gFxI, gGxI, gHxI, gIxI, gJxI, n  , gLxI, gMxI, gNxI, gOxI, gPxI, gQxI, gRxI, gSxI, gTxI, gUxI, n  , n  , n  , n  , n  , gAAxI, n  , n  , n  , n  
+% q2: n  , n  , gCxJ, gDxJ, gExJ, gFxJ, gGxJ, gHxJ, gIxJ, n  , n  , n  , gMxJ, gNxJ, gOxJ, gPxJ, gQxJ, gRxJ, gSxJ, n  , gUxJ, gVxJ, n  , n  , n  , n  , n  , gBAxJ, n  , n  , n  
+% A2: n  , gBxK, gCxK, gDxK, gExK, gFxK, gGxK, n  , gIxK, gJxK, gKxK, gLxK, gMxK, gNxK, gOxK, gPxK, gQxK, gRxK, n  , n  , gUxK, gVxK, gWxK, gXxK, gYxK, gZxK, gAAxK, gBAxK, gCAxK, N  , N  
+% A3: gAxL, gBxL, gCxL, gDxL, gExL, gFxL, gGxL, gHxL, gIxL, gJxL, gKxL, gLxL, gMxL, gNxL, gOxL, gPxL, gQxL, n  , n  , gTxL, gUxL, gVxL, gWxL, gXxL, gYxL, gZxL, gAAxL, gBAxL, gCAxL, gDAxL, N  
+% q3: n  , gBxM, n  , gDxM, gExM, gFxM, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , gRxM, n  , gTxM, n  , n  , n  , gXxM, n  , gZxM, n  , n  , n  , n  , n  
+% q4: gAxN, gBxN, gCxN, n  , gExN, gFxN, gGxN, gHxN, gIxN, n  , n  , n  , n  , n  , n  , n  , gQxN, gRxN, gSxN, n  , n  , n  , n  , n  , n  , gZxN, gAAxN, n  , n  , n  , n  
+% q5: n  , n  , gCxO, gDxO, gExO, gFxO, gGxO, gHxO, gIxO, n  , n  , n  , n  , n  , n  , n  , gQxO, n  , gSxO, gTxO, n  , n  , n  , n  , gYxO, n  , gAAxO, gBAxO, n  , n  , n  
+% A4: n  , gBxP, gCxP, gDxP, gExP, gFxP, gGxP, n  , gIxP, gJxP, gKxP, gLxP, gMxP, n  , n  , n  , gQxP, gRxP, gSxP, gTxP, gUxP, gVxP, gWxP, n  , n  , gZxP, gAAxP, gBAxP, n  , n  , n  
+% A5: gAxQ, gBxQ, gCxQ, gDxQ, gExQ, gFxQ, gGxQ, gHxQ, gIxQ, gJxQ, gKxQ, gLxQ, gMxQ, n  , n  , n  , gQxQ, gRxQ, gSxQ, gTxQ, gUxQ, gVxQ, n  , n  , gYxQ, gZxQ, gAAxQ, gBAxQ, gCAxQ, n  , n  
+% q6: n  , gBxR, n  , gDxR, gExR, gFxR, n  , n  , n  , n  , n  , n  , n  , n  , gOxR, n  , n  , n  , n  , n  , n  , gVxR, n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q7: gAxS, gBxS, gCxS, n  , gExS, gFxS, gGxS, gHxS, gIxS, n  , n  , n  , n  , n  , n  , gPxS, gQxS, n  , n  , n  , n  , n  , n  , n  , gYxS, gZxS, n  , n  , n  , n  , n  
+% q8: n  , n  , gCxT, gDxT, gExT, gFxT, gGxT, gHxT, gIxT, n  , n  , n  , n  , n  , gOxT, gPxT, gQxT, n  , n  , n  , n  , n  , n  , gXxT, gYxT, n  , gAAxT, n  , n  , n  , n  
+% A6: n  , gBxU, gCxU, gDxU, gExU, gFxU, gGxU, n  , gIxU, gJxU, gKxU, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A7: gAxV, gBxV, gCxV, gDxV, gExV, gFxV, gGxV, gHxV, gIxV, gJxV, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% q9: n  , gBxW, n  , gDxW, gExW, gFxW, n  , n  , n  , n  , n  , gLxW, n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q10: gAxX, gBxX, gCxX, n  , gExX, gFxX, gGxX, gHxX, gIxX, n  , n  , n  , gMxX, n  , n  , n  , n  , n  , n  , n  , n  , n  , gWxX, n  , n  , n  , n  , n  , n  , n  , n  
+% q11: n  , n  , gCxY, gDxY, gExY, gFxY, gGxY, gHxY, gIxY, n  , n  , gLxY, gMxY, n  , n  , n  , n  , n  , n  , n  , n  , gVxY, n  , n  , n  , n  , n  , n  , n  , n  , n  
+% A8: n  , gBxZ, gCxZ, gDxZ, gExZ, gFxZ, gGxZ, gHxZ, gIxZ, gJxZ, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+% A9: gAxAA, gBxAA, gCxAA, gDxAA, gExAA, gFxAA, gGxAA, gHxAA, gIxAA, gJxAA, N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  , N  
+
+\documentclass[11pt]{article}
+\input{xyqcirc.tex}
+
+% definitions for the circuit elements
+
+\def\gAxG{\op{H}\w\A{gAxG}}
+\def\gAxL{\op{H}\w\A{gAxL}}
+\def\gAxI{*-{}\w\A{gAxI}}
+\def\gBxI{\b\w\A{gBxI}}
+\def\gBxK{\o\w\A{gBxK}}
+\def\gBxL{\b\w\A{gBxL}}
+\def\gBxH{\o\w\A{gBxH}}
+\def\gCxL{\b\w\A{gCxL}}
+\def\gCxI{\o\w\A{gCxI}}
+\def\gCxJ{\b\w\A{gCxJ}}
+\def\gCxK{\o\w\A{gCxK}}
+\def\gDxH{\b\w\A{gDxH}}
+\def\gDxK{\o\w\A{gDxK}}
+\def\gDxL{\b\w\A{gDxL}}
+\def\gDxJ{\o\w\A{gDxJ}}
+\def\gAxN{*-{}\w\A{gAxN}}
+\def\gBxN{\b\w\A{gBxN}}
+\def\gBxP{\o\w\A{gBxP}}
+\def\gAxQ{\op{H}\w\A{gAxQ}}
+\def\gBxQ{\b\w\A{gBxQ}}
+\def\gBxM{\o\w\A{gBxM}}
+\def\gCxQ{\b\w\A{gCxQ}}
+\def\gCxN{\o\w\A{gCxN}}
+\def\gCxO{\b\w\A{gCxO}}
+\def\gCxP{\o\w\A{gCxP}}
+\def\gDxM{\b\w\A{gDxM}}
+\def\gDxP{\o\w\A{gDxP}}
+\def\gDxQ{\b\w\A{gDxQ}}
+\def\gDxO{\o\w\A{gDxO}}
+\def\gAxS{*-{}\w\A{gAxS}}
+\def\gBxS{\b\w\A{gBxS}}
+\def\gBxU{\o\w\A{gBxU}}
+\def\gAxV{\op{H}\w\A{gAxV}}
+\def\gBxV{\b\w\A{gBxV}}
+\def\gBxR{\o\w\A{gBxR}}
+\def\gCxV{\b\w\A{gCxV}}
+\def\gCxS{\o\w\A{gCxS}}
+\def\gCxT{\b\w\A{gCxT}}
+\def\gCxU{\o\w\A{gCxU}}
+\def\gDxR{\b\w\A{gDxR}}
+\def\gDxU{\o\w\A{gDxU}}
+\def\gDxV{\b\w\A{gDxV}}
+\def\gDxT{\o\w\A{gDxT}}
+\def\gAxX{*-{}\w\A{gAxX}}
+\def\gBxX{\b\w\A{gBxX}}
+\def\gBxZ{\o\w\A{gBxZ}}
+\def\gAxAA{\op{H}\w\A{gAxAA}}
+\def\gBxAA{\b\w\A{gBxAA}}
+\def\gBxW{\o\w\A{gBxW}}
+\def\gCxAA{\b\w\A{gCxAA}}
+\def\gCxX{\o\w\A{gCxX}}
+\def\gCxY{\b\w\A{gCxY}}
+\def\gCxZ{\o\w\A{gCxZ}}
+\def\gDxW{\b\w\A{gDxW}}
+\def\gDxZ{\o\w\A{gDxZ}}
+\def\gDxAA{\b\w\A{gDxAA}}
+\def\gDxY{\o\w\A{gDxY}}
+\def\gDxI{*-{}\w\A{gDxI}}
+\def\gExH{\b\w\A{gExH}}
+\def\gExF{\o\w\A{gExF}}
+\def\gExG{\b\w\A{gExG}}
+\def\gExI{\o\w\A{gExI}}
+\def\gFxG{\b\w\A{gFxG}}
+\def\gFxH{\o\w\A{gFxH}}
+\def\gGxG{\op{H}\w\A{gGxG}}
+\def\gFxI{\op{H}\w\A{gFxI}}
+\def\gExJ{\op{H}\w\A{gExJ}}
+\def\gFxJ{\b\w\A{gFxJ}}
+\def\gFxF{\o\w\A{gFxF}}
+\def\gGxJ{\op{H}\w\A{gGxJ}}
+\def\gGxI{\b\w\A{gGxI}}
+\def\gGxF{\o\w\A{gGxF}}
+\def\gHxI{\op{H}\w\A{gHxI}}
+\def\gHxJ{\b\w\A{gHxJ}}
+\def\gHxG{\o\w\A{gHxG}}
+\def\gIxI{\b\w\A{gIxI}}
+\def\gIxG{\o\w\A{gIxG}}
+\def\gIxJ{\b\w\A{gIxJ}}
+\def\gIxF{\o\w\A{gIxF}}
+\def\gExM{\b\w\A{gExM}}
+\def\gExK{\o\w\A{gExK}}
+\def\gExL{\b\w\A{gExL}}
+\def\gExN{\o\w\A{gExN}}
+\def\gFxL{\b\w\A{gFxL}}
+\def\gFxM{\o\w\A{gFxM}}
+\def\gGxL{\op{H}\w\A{gGxL}}
+\def\gFxN{\op{H}\w\A{gFxN}}
+\def\gExO{\op{H}\w\A{gExO}}
+\def\gFxO{\b\w\A{gFxO}}
+\def\gFxK{\o\w\A{gFxK}}
+\def\gGxO{\op{H}\w\A{gGxO}}
+\def\gGxN{\b\w\A{gGxN}}
+\def\gGxK{\o\w\A{gGxK}}
+\def\gHxN{\op{H}\w\A{gHxN}}
+\def\gHxO{\b\w\A{gHxO}}
+\def\gHxL{\o\w\A{gHxL}}
+\def\gIxN{\b\w\A{gIxN}}
+\def\gIxL{\o\w\A{gIxL}}
+\def\gIxO{\b\w\A{gIxO}}
+\def\gIxK{\o\w\A{gIxK}}
+\def\gExR{\b\w\A{gExR}}
+\def\gExP{\o\w\A{gExP}}
+\def\gExQ{\b\w\A{gExQ}}
+\def\gExS{\o\w\A{gExS}}
+\def\gFxQ{\b\w\A{gFxQ}}
+\def\gFxR{\o\w\A{gFxR}}
+\def\gGxQ{\op{H}\w\A{gGxQ}}
+\def\gFxS{\op{H}\w\A{gFxS}}
+\def\gExT{\op{H}\w\A{gExT}}
+\def\gFxT{\b\w\A{gFxT}}
+\def\gFxP{\o\w\A{gFxP}}
+\def\gGxT{\op{H}\w\A{gGxT}}
+\def\gGxS{\b\w\A{gGxS}}
+\def\gGxP{\o\w\A{gGxP}}
+\def\gHxS{\op{H}\w\A{gHxS}}
+\def\gHxT{\b\w\A{gHxT}}
+\def\gHxQ{\o\w\A{gHxQ}}
+\def\gIxS{\b\w\A{gIxS}}
+\def\gIxQ{\o\w\A{gIxQ}}
+\def\gIxT{\b\w\A{gIxT}}
+\def\gIxP{\o\w\A{gIxP}}
+\def\gExW{\b\w\A{gExW}}
+\def\gExU{\o\w\A{gExU}}
+\def\gExV{\b\w\A{gExV}}
+\def\gExX{\o\w\A{gExX}}
+\def\gFxV{\b\w\A{gFxV}}
+\def\gFxW{\o\w\A{gFxW}}
+\def\gGxV{\op{H}\w\A{gGxV}}
+\def\gFxX{\op{H}\w\A{gFxX}}
+\def\gExY{\op{H}\w\A{gExY}}
+\def\gFxY{\b\w\A{gFxY}}
+\def\gFxU{\o\w\A{gFxU}}
+\def\gGxY{\op{H}\w\A{gGxY}}
+\def\gGxX{\b\w\A{gGxX}}
+\def\gGxU{\o\w\A{gGxU}}
+\def\gHxX{\op{H}\w\A{gHxX}}
+\def\gHxY{\b\w\A{gHxY}}
+\def\gHxV{\o\w\A{gHxV}}
+\def\gIxX{\b\w\A{gIxX}}
+\def\gIxV{\o\w\A{gIxV}}
+\def\gIxY{\b\w\A{gIxY}}
+\def\gIxU{\o\w\A{gIxU}}
+\def\gExAA{\op{H}\w\A{gExAA}}
+\def\gJxF{\meter\w\A{gJxF}}
+\def\gJxG{\meter\w\A{gJxG}}
+\def\gJxK{\meter\w\A{gJxK}}
+\def\gJxL{\meter\w\A{gJxL}}
+\def\gJxP{\meter\w\A{gJxP}}
+\def\gJxQ{\meter\w\A{gJxQ}}
+\def\gJxU{\meter\w\A{gJxU}}
+\def\gJxV{\meter\w\A{gJxV}}
+\def\gExZ{*-{}\w\A{gExZ}}
+\def\gFxZ{*-{}\w\A{gFxZ}}
+\def\gGxZ{*-{}\w\A{gGxZ}}
+\def\gHxZ{*-{}\w\A{gHxZ}}
+\def\gIxZ{*-{}\w\A{gIxZ}}
+\def\gFxAA{*-{}\w\A{gFxAA}}
+\def\gGxAA{*-{}\w\A{gGxAA}}
+\def\gHxAA{*-{}\w\A{gHxAA}}
+\def\gIxAA{*-{}\w\A{gIxAA}}
+\def\gJxZ{\meter\w\A{gJxZ}}
+\def\gJxAA{\meter\w\A{gJxAA}}
+\def\gKxF{\z\A{gKxF}}
+\def\gKxG{\z\A{gKxG}}
+\def\gKxK{\z\A{gKxK}}
+\def\gKxL{\z\A{gKxL}}
+\def\gKxP{\z\A{gKxP}}
+\def\gKxQ{\z\A{gKxQ}}
+\def\gKxU{\z\A{gKxU}}
+\def\gLxG{\op{H}\w\A{gLxG}}
+\def\gJxI{*-{}\w\A{gJxI}}
+\def\gLxI{\b\w\A{gLxI}}
+\def\gLxK{\o\w\A{gLxK}}
+\def\gLxL{\b\w\A{gLxL}}
+\def\gLxH{\o\w\A{gLxH}}
+\def\gMxL{\b\w\A{gMxL}}
+\def\gMxI{\o\w\A{gMxI}}
+\def\gMxJ{\b\w\A{gMxJ}}
+\def\gMxK{\o\w\A{gMxK}}
+\def\gNxH{\b\w\A{gNxH}}
+\def\gNxK{\o\w\A{gNxK}}
+\def\gNxL{\b\w\A{gNxL}}
+\def\gNxJ{\o\w\A{gNxJ}}
+\def\gNxI{*-{}\w\A{gNxI}}
+\def\gOxH{\b\w\A{gOxH}}
+\def\gOxF{\o\w\A{gOxF}}
+\def\gOxG{\b\w\A{gOxG}}
+\def\gOxI{\o\w\A{gOxI}}
+\def\gPxG{\b\w\A{gPxG}}
+\def\gPxH{\o\w\A{gPxH}}
+\def\gQxG{\op{H}\w\A{gQxG}}
+\def\gPxI{\op{H}\w\A{gPxI}}
+\def\gOxJ{\op{H}\w\A{gOxJ}}
+\def\gPxJ{\b\w\A{gPxJ}}
+\def\gPxF{\o\w\A{gPxF}}
+\def\gQxJ{\op{H}\w\A{gQxJ}}
+\def\gQxI{\b\w\A{gQxI}}
+\def\gQxF{\o\w\A{gQxF}}
+\def\gRxI{\op{H}\w\A{gRxI}}
+\def\gRxJ{\b\w\A{gRxJ}}
+\def\gRxG{\o\w\A{gRxG}}
+\def\gSxI{\b\w\A{gSxI}}
+\def\gSxG{\o\w\A{gSxG}}
+\def\gSxJ{\b\w\A{gSxJ}}
+\def\gSxF{\o\w\A{gSxF}}
+\def\gOxT{\b\w\A{gOxT}}
+\def\gOxL{\o\w\A{gOxL}}
+\def\gOxR{\b\w\A{gOxR}}
+\def\gOxK{\o\w\A{gOxK}}
+\def\gPxT{\b\w\A{gPxT}}
+\def\gPxK{\o\w\A{gPxK}}
+\def\gQxN{\b\w\A{gQxN}}
+\def\gQxK{\o\w\A{gQxK}}
+\def\gPxS{\b\w\A{gPxS}}
+\def\gPxL{\o\w\A{gPxL}}
+\def\gQxO{\b\w\A{gQxO}}
+\def\gQxL{\o\w\A{gQxL}}
+\def\gTxI{\b\w\A{gTxI}}
+\def\gTxL{\o\w\A{gTxL}}
+\def\gUxJ{\b\w\A{gUxJ}}
+\def\gUxL{\o\w\A{gUxL}}
+\def\gRxH{\b\w\A{gRxH}}
+\def\gRxK{\o\w\A{gRxK}}
+\def\gUxI{\b\w\A{gUxI}}
+\def\gUxK{\o\w\A{gUxK}}
+\def\gVxJ{\b\w\A{gVxJ}}
+\def\gVxK{\o\w\A{gVxK}}
+\def\gVxH{\b\w\A{gVxH}}
+\def\gVxL{\o\w\A{gVxL}}
+\def\gLxY{\b\w\A{gLxY}}
+\def\gLxQ{\o\w\A{gLxQ}}
+\def\gLxW{\b\w\A{gLxW}}
+\def\gLxP{\o\w\A{gLxP}}
+\def\gMxY{\b\w\A{gMxY}}
+\def\gMxP{\o\w\A{gMxP}}
+\def\gQxS{\b\w\A{gQxS}}
+\def\gQxP{\o\w\A{gQxP}}
+\def\gMxX{\b\w\A{gMxX}}
+\def\gMxQ{\o\w\A{gMxQ}}
+\def\gQxT{\b\w\A{gQxT}}
+\def\gQxQ{\o\w\A{gQxQ}}
+\def\gRxN{\b\w\A{gRxN}}
+\def\gRxQ{\o\w\A{gRxQ}}
+\def\gSxO{\b\w\A{gSxO}}
+\def\gSxQ{\o\w\A{gSxQ}}
+\def\gRxM{\b\w\A{gRxM}}
+\def\gRxP{\o\w\A{gRxP}}
+\def\gSxN{\b\w\A{gSxN}}
+\def\gSxP{\o\w\A{gSxP}}
+\def\gTxO{\b\w\A{gTxO}}
+\def\gTxP{\o\w\A{gTxP}}
+\def\gTxM{\b\w\A{gTxM}}
+\def\gTxQ{\o\w\A{gTxQ}}
+\def\gWxK{\op{H}\w\A{gWxK}}
+\def\gWxL{\op{H}\w\A{gWxL}}
+\def\gXxK{\b\w\A{gXxK}}
+\def\gXxT{\o\w\A{gXxT}}
+\def\gYxK{\b\w\A{gYxK}}
+\def\gYxS{\o\w\A{gYxS}}
+\def\gZxK{\b\w\A{gZxK}}
+\def\gZxN{\o\w\A{gZxN}}
+\def\gXxL{\b\w\A{gXxL}}
+\def\gXxM{\o\w\A{gXxM}}
+\def\gYxL{\b\w\A{gYxL}}
+\def\gYxO{\o\w\A{gYxO}}
+\def\gAAxK{\b\w\A{gAAxK}}
+\def\gAAxO{\o\w\A{gAAxO}}
+\def\gZxL{\b\w\A{gZxL}}
+\def\gZxH{\o\w\A{gZxH}}
+\def\gAAxL{\b\w\A{gAAxL}}
+\def\gAAxI{\o\w\A{gAAxI}}
+\def\gBAxL{\b\w\A{gBAxL}}
+\def\gBAxJ{\o\w\A{gBAxJ}}
+\def\gBAxK{\op{H}\w\A{gBAxK}}
+\def\gCAxL{\op{H}\w\A{gCAxL}}
+\def\gUxP{\op{H}\w\A{gUxP}}
+\def\gUxQ{\op{H}\w\A{gUxQ}}
+\def\gVxP{\b\w\A{gVxP}}
+\def\gVxY{\o\w\A{gVxY}}
+\def\gWxP{\b\w\A{gWxP}}
+\def\gWxX{\o\w\A{gWxX}}
+\def\gZxP{\b\w\A{gZxP}}
+\def\gZxS{\o\w\A{gZxS}}
+\def\gVxQ{\b\w\A{gVxQ}}
+\def\gVxR{\o\w\A{gVxR}}
+\def\gYxQ{\b\w\A{gYxQ}}
+\def\gYxT{\o\w\A{gYxT}}
+\def\gAAxP{\b\w\A{gAAxP}}
+\def\gAAxT{\o\w\A{gAAxT}}
+\def\gZxQ{\b\w\A{gZxQ}}
+\def\gZxM{\o\w\A{gZxM}}
+\def\gAAxQ{\b\w\A{gAAxQ}}
+\def\gAAxN{\o\w\A{gAAxN}}
+\def\gBAxQ{\b\w\A{gBAxQ}}
+\def\gBAxO{\o\w\A{gBAxO}}
+\def\gBAxP{\op{H}\w\A{gBAxP}}
+\def\gCAxQ{\op{H}\w\A{gCAxQ}}
+\def\gDAxL{\meter\w\A{gDAxL}}
+\def\gCAxK{\meter\w\A{gCAxK}}
+
+% definitions for bit labels and initial states
+
+\def\bA{ \q{q_{0}}}
+\def\bB{\qv{B_{0}}{0}}
+\def\bC{\qv{B_{1}}{0}}
+\def\bD{\qv{B_{2}}{0}}
+\def\bE{\qv{B_{3}}{0}}
+\def\bF{\qv{A_{0}}{0}}
+\def\bG{\qv{A_{1}}{0}}
+\def\bH{ \q{q_{0}}}
+\def\bI{ \q{q_{1}}}
+\def\bJ{ \q{q_{2}}}
+\def\bK{\qv{A_{2}}{0}}
+\def\bL{\qv{A_{3}}{0}}
+\def\bM{ \q{q_{3}}}
+\def\bN{ \q{q_{4}}}
+\def\bO{ \q{q_{5}}}
+\def\bP{\qv{A_{4}}{0}}
+\def\bQ{\qv{A_{5}}{0}}
+\def\bR{ \q{q_{6}}}
+\def\bS{ \q{q_{7}}}
+\def\bT{ \q{q_{8}}}
+\def\bU{\qv{A_{6}}{0}}
+\def\bV{\qv{A_{7}}{0}}
+\def\bW{ \q{q_{9}}}
+\def\bX{ \q{q_{10}}}
+\def\bY{ \q{q_{11}}}
+\def\bZ{\qv{A_{8}}{0}}
+\def\bAA{\qv{A_{9}}{0}}
+
+% The quantum circuit as an xymatrix
+
+\xymatrix@R=5pt@C=10pt{
+    \bA & \n   &\gBxH &\n   &\gDxH &\gExH &\gFxH &\n   &\n   &\n   &\n   &\n   &\gLxH &\n   &\gNxH &\gOxH &\gPxH &\n   &\gRxH &\n   &\n   &\n   &\gVxH &\n   &\n   &\n   &\gZxH &\n   &\n   &\n   &\n   &\n  
+\\  \bB & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bC & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bD & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bE & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bF & \n   &\n   &\n   &\n   &\gExF &\gFxF &\gGxF &\n   &\gIxF &\gJxF &\gKxF &\n   &\n   &\n   &\gOxF &\gPxF &\gQxF &\n   &\gSxF &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bG & \gAxG &\n   &\n   &\n   &\gExG &\gFxG &\gGxG &\gHxG &\gIxG &\gJxG &\gKxG &\gLxG &\n   &\n   &\gOxG &\gPxG &\gQxG &\gRxG &\gSxG &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bH & \n   &\gBxH &\n   &\gDxH &\gExH &\gFxH &\n   &\n   &\n   &\n   &\n   &\gLxH &\n   &\gNxH &\gOxH &\gPxH &\n   &\gRxH &\n   &\n   &\n   &\gVxH &\n   &\n   &\n   &\gZxH &\n   &\n   &\n   &\n   &\n  
+\\  \bI & \gAxI &\gBxI &\gCxI &\gDxI &\gExI &\gFxI &\gGxI &\gHxI &\gIxI &\gJxI &\n   &\gLxI &\gMxI &\gNxI &\gOxI &\gPxI &\gQxI &\gRxI &\gSxI &\gTxI &\gUxI &\n   &\n   &\n   &\n   &\n   &\gAAxI &\n   &\n   &\n   &\n  
+\\  \bJ & \n   &\n   &\gCxJ &\gDxJ &\gExJ &\gFxJ &\gGxJ &\gHxJ &\gIxJ &\n   &\n   &\n   &\gMxJ &\gNxJ &\gOxJ &\gPxJ &\gQxJ &\gRxJ &\gSxJ &\n   &\gUxJ &\gVxJ &\n   &\n   &\n   &\n   &\n   &\gBAxJ &\n   &\n   &\n  
+\\  \bK & \n   &\gBxK &\gCxK &\gDxK &\gExK &\gFxK &\gGxK &\n   &\gIxK &\gJxK &\gKxK &\gLxK &\gMxK &\gNxK &\gOxK &\gPxK &\gQxK &\gRxK &\n   &\n   &\gUxK &\gVxK &\gWxK &\gXxK &\gYxK &\gZxK &\gAAxK &\gBAxK &\gCAxK &\N   &\N  
+\\  \bL & \gAxL &\gBxL &\gCxL &\gDxL &\gExL &\gFxL &\gGxL &\gHxL &\gIxL &\gJxL &\gKxL &\gLxL &\gMxL &\gNxL &\gOxL &\gPxL &\gQxL &\n   &\n   &\gTxL &\gUxL &\gVxL &\gWxL &\gXxL &\gYxL &\gZxL &\gAAxL &\gBAxL &\gCAxL &\gDAxL &\N  
+\\  \bM & \n   &\gBxM &\n   &\gDxM &\gExM &\gFxM &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gRxM &\n   &\gTxM &\n   &\n   &\n   &\gXxM &\n   &\gZxM &\n   &\n   &\n   &\n   &\n  
+\\  \bN & \gAxN &\gBxN &\gCxN &\n   &\gExN &\gFxN &\gGxN &\gHxN &\gIxN &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gQxN &\gRxN &\gSxN &\n   &\n   &\n   &\n   &\n   &\n   &\gZxN &\gAAxN &\n   &\n   &\n   &\n  
+\\  \bO & \n   &\n   &\gCxO &\gDxO &\gExO &\gFxO &\gGxO &\gHxO &\gIxO &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gQxO &\n   &\gSxO &\gTxO &\n   &\n   &\n   &\n   &\gYxO &\n   &\gAAxO &\gBAxO &\n   &\n   &\n  
+\\  \bP & \n   &\gBxP &\gCxP &\gDxP &\gExP &\gFxP &\gGxP &\n   &\gIxP &\gJxP &\gKxP &\gLxP &\gMxP &\n   &\n   &\n   &\gQxP &\gRxP &\gSxP &\gTxP &\gUxP &\gVxP &\gWxP &\n   &\n   &\gZxP &\gAAxP &\gBAxP &\n   &\n   &\n  
+\\  \bQ & \gAxQ &\gBxQ &\gCxQ &\gDxQ &\gExQ &\gFxQ &\gGxQ &\gHxQ &\gIxQ &\gJxQ &\gKxQ &\gLxQ &\gMxQ &\n   &\n   &\n   &\gQxQ &\gRxQ &\gSxQ &\gTxQ &\gUxQ &\gVxQ &\n   &\n   &\gYxQ &\gZxQ &\gAAxQ &\gBAxQ &\gCAxQ &\n   &\n  
+\\  \bR & \n   &\gBxR &\n   &\gDxR &\gExR &\gFxR &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gOxR &\n   &\n   &\n   &\n   &\n   &\n   &\gVxR &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bS & \gAxS &\gBxS &\gCxS &\n   &\gExS &\gFxS &\gGxS &\gHxS &\gIxS &\n   &\n   &\n   &\n   &\n   &\n   &\gPxS &\gQxS &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gYxS &\gZxS &\n   &\n   &\n   &\n   &\n  
+\\  \bT & \n   &\n   &\gCxT &\gDxT &\gExT &\gFxT &\gGxT &\gHxT &\gIxT &\n   &\n   &\n   &\n   &\n   &\gOxT &\gPxT &\gQxT &\n   &\n   &\n   &\n   &\n   &\n   &\gXxT &\gYxT &\n   &\gAAxT &\n   &\n   &\n   &\n  
+\\  \bU & \n   &\gBxU &\gCxU &\gDxU &\gExU &\gFxU &\gGxU &\n   &\gIxU &\gJxU &\gKxU &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bV & \gAxV &\gBxV &\gCxV &\gDxV &\gExV &\gFxV &\gGxV &\gHxV &\gIxV &\gJxV &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bW & \n   &\gBxW &\n   &\gDxW &\gExW &\gFxW &\n   &\n   &\n   &\n   &\n   &\gLxW &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bX & \gAxX &\gBxX &\gCxX &\n   &\gExX &\gFxX &\gGxX &\gHxX &\gIxX &\n   &\n   &\n   &\gMxX &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gWxX &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bY & \n   &\n   &\gCxY &\gDxY &\gExY &\gFxY &\gGxY &\gHxY &\gIxY &\n   &\n   &\gLxY &\gMxY &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gVxY &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bZ & \n   &\gBxZ &\gCxZ &\gDxZ &\gExZ &\gFxZ &\gGxZ &\gHxZ &\gIxZ &\gJxZ &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+\\  \bAA & \gAxAA &\gBxAA &\gCxAA &\gDxAA &\gExAA &\gFxAA &\gGxAA &\gHxAA &\gIxAA &\gJxAA &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N   &\N  
+%
+% Vertical lines and other post-xymatrix latex
+%
+\ar@{-}"gBxK";"gBxI"
+\ar@{-}"gBxH";"gBxL"
+\ar@{-}"gCxI";"gCxL"
+\ar@{-}"gCxK";"gCxJ"
+\ar@{-}"gDxK";"gDxH"
+\ar@{-}"gDxJ";"gDxL"
+\ar@{-}"gBxP";"gBxN"
+\ar@{-}"gBxM";"gBxQ"
+\ar@{-}"gCxN";"gCxQ"
+\ar@{-}"gCxP";"gCxO"
+\ar@{-}"gDxP";"gDxM"
+\ar@{-}"gDxO";"gDxQ"
+\ar@{-}"gBxU";"gBxS"
+\ar@{-}"gBxR";"gBxV"
+\ar@{-}"gCxS";"gCxV"
+\ar@{-}"gCxU";"gCxT"
+\ar@{-}"gDxU";"gDxR"
+\ar@{-}"gDxT";"gDxV"
+\ar@{-}"gBxZ";"gBxX"
+\ar@{-}"gBxW";"gBxAA"
+\ar@{-}"gCxX";"gCxAA"
+\ar@{-}"gCxZ";"gCxY"
+\ar@{-}"gDxZ";"gDxW"
+\ar@{-}"gDxY";"gDxAA"
+\ar@{-}"gExF";"gExH"
+\ar@{-}"gExI";"gExG"
+\ar@{-}"gFxH";"gFxG"
+\ar@{-}"gFxF";"gFxJ"
+\ar@{-}"gGxF";"gGxI"
+\ar@{-}"gHxG";"gHxJ"
+\ar@{-}"gIxG";"gIxI"
+\ar@{-}"gIxF";"gIxJ"
+\ar@{-}"gExK";"gExM"
+\ar@{-}"gExN";"gExL"
+\ar@{-}"gFxM";"gFxL"
+\ar@{-}"gFxK";"gFxO"
+\ar@{-}"gGxK";"gGxN"
+\ar@{-}"gHxL";"gHxO"
+\ar@{-}"gIxL";"gIxN"
+\ar@{-}"gIxK";"gIxO"
+\ar@{-}"gExP";"gExR"
+\ar@{-}"gExS";"gExQ"
+\ar@{-}"gFxR";"gFxQ"
+\ar@{-}"gFxP";"gFxT"
+\ar@{-}"gGxP";"gGxS"
+\ar@{-}"gHxQ";"gHxT"
+\ar@{-}"gIxQ";"gIxS"
+\ar@{-}"gIxP";"gIxT"
+\ar@{-}"gExU";"gExW"
+\ar@{-}"gExX";"gExV"
+\ar@{-}"gFxW";"gFxV"
+\ar@{-}"gFxU";"gFxY"
+\ar@{-}"gGxU";"gGxX"
+\ar@{-}"gHxV";"gHxY"
+\ar@{-}"gIxV";"gIxX"
+\ar@{-}"gIxU";"gIxY"
+\ar@{-}"gLxK";"gLxI"
+\ar@{-}"gLxH";"gLxL"
+\ar@{-}"gMxI";"gMxL"
+\ar@{-}"gMxK";"gMxJ"
+\ar@{-}"gNxK";"gNxH"
+\ar@{-}"gNxJ";"gNxL"
+\ar@{-}"gOxF";"gOxH"
+\ar@{-}"gOxI";"gOxG"
+\ar@{-}"gPxH";"gPxG"
+\ar@{-}"gPxF";"gPxJ"
+\ar@{-}"gQxF";"gQxI"
+\ar@{-}"gRxG";"gRxJ"
+\ar@{-}"gSxG";"gSxI"
+\ar@{-}"gSxF";"gSxJ"
+\ar@{-}"gOxL";"gOxT"
+\ar@{-}"gOxK";"gOxR"
+\ar@{-}"gPxK";"gPxT"
+\ar@{-}"gQxK";"gQxN"
+\ar@{-}"gPxL";"gPxS"
+\ar@{-}"gQxL";"gQxO"
+\ar@{-}"gTxL";"gTxI"
+\ar@{-}"gUxL";"gUxJ"
+\ar@{-}"gRxK";"gRxH"
+\ar@{-}"gUxK";"gUxI"
+\ar@{-}"gVxK";"gVxJ"
+\ar@{-}"gVxL";"gVxH"
+\ar@{-}"gLxQ";"gLxY"
+\ar@{-}"gLxP";"gLxW"
+\ar@{-}"gMxP";"gMxY"
+\ar@{-}"gQxP";"gQxS"
+\ar@{-}"gMxQ";"gMxX"
+\ar@{-}"gQxQ";"gQxT"
+\ar@{-}"gRxQ";"gRxN"
+\ar@{-}"gSxQ";"gSxO"
+\ar@{-}"gRxP";"gRxM"
+\ar@{-}"gSxP";"gSxN"
+\ar@{-}"gTxP";"gTxO"
+\ar@{-}"gTxQ";"gTxM"
+\ar@{-}"gXxT";"gXxK"
+\ar@{-}"gYxS";"gYxK"
+\ar@{-}"gZxN";"gZxK"
+\ar@{-}"gXxM";"gXxL"
+\ar@{-}"gYxO";"gYxL"
+\ar@{-}"gAAxO";"gAAxK"
+\ar@{-}"gZxH";"gZxL"
+\ar@{-}"gAAxI";"gAAxL"
+\ar@{-}"gBAxJ";"gBAxL"
+\ar@{-}"gVxY";"gVxP"
+\ar@{-}"gWxX";"gWxP"
+\ar@{-}"gZxS";"gZxP"
+\ar@{-}"gVxR";"gVxQ"
+\ar@{-}"gYxT";"gYxQ"
+\ar@{-}"gAAxT";"gAAxP"
+\ar@{-}"gZxM";"gZxQ"
+\ar@{-}"gAAxN";"gAAxQ"
+\ar@{-}"gBAxO";"gBAxQ"
+}
+
+\end{document}

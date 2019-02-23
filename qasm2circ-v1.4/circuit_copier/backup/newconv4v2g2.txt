@@ -1,0 +1,14 @@
+#g2
+  cnot     q12,A8
+  cnot     A9,q13
+  cnot     A9,q12
+  h        A9
+  h        q13
+  h        q14
+  cnot     q14,A8
+  h        q14
+  cnot     q13,A8
+  h        q13
+  cnot     q14,A9
+  cnot     q13,A9
+  cnot     q14,A8

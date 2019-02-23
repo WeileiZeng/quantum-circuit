@@ -1,0 +1,9 @@
+#g1
+  nop      q22
+  cnot     q22,A16
+  h        A17
+  cnot     A17,q21
+  cnot     A17,q22
+  cnot     q23,A16
+  cnot     q21,A16
+  cnot     A17,q23

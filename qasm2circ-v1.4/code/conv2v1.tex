@@ -1,0 +1,110 @@
+% Weilei Zeng
+% A circuit to measure 
+% 
+%   qubit	   q0
+%   qubit	   q1
+%   qubit	   q2
+%   qubit	   q3
+%   qubit	   q4
+%   qubit	   q5
+%   qubit	   A0,0
+% 
+%   h	   A0
+%   cnot	   A0,q0
+%   cnot	   A0,q1
+%   cnot	   A0,q2
+%   cnot	   A0,q3
+%   cnot	   A0,q4
+%   h	   A0
+% 
+%   cnot	   q4,A0
+%   cnot	   q5,A0
+% 
+%   measure  A0
+%  Time 01:
+%    Gate 00 h(A0)
+%  Time 02:
+%    Gate 01 cnot(A0,q0)
+%  Time 03:
+%    Gate 02 cnot(A0,q1)
+%  Time 04:
+%    Gate 03 cnot(A0,q2)
+%  Time 05:
+%    Gate 04 cnot(A0,q3)
+%  Time 06:
+%    Gate 05 cnot(A0,q4)
+%  Time 07:
+%    Gate 06 h(A0)
+%  Time 08:
+%    Gate 07 cnot(q4,A0)
+%  Time 09:
+%    Gate 08 cnot(q5,A0)
+%  Time 10:
+%    Gate 09 measure(A0)
+
+% Qubit circuit matrix:
+%
+% q0: n  , gBxA, n  , n  , n  , n  , n  , n  , n  , n  , n  
+% q1: n  , n  , gCxB, n  , n  , n  , n  , n  , n  , n  , n  
+% q2: n  , n  , n  , gDxC, n  , n  , n  , n  , n  , n  , n  
+% q3: n  , n  , n  , n  , gExD, n  , n  , n  , n  , n  , n  
+% q4: n  , n  , n  , n  , n  , gFxE, n  , gHxE, n  , n  , n  
+% q5: n  , n  , n  , n  , n  , n  , n  , n  , gIxF, n  , n  
+% A0: gAxG, gBxG, gCxG, gDxG, gExG, gFxG, gGxG, gHxG, gIxG, gJxG, N  
+
+\documentclass[11pt]{article}
+\input{xyqcirc.tex}
+
+% definitions for the circuit elements
+
+\def\gAxG{\op{H}\w\A{gAxG}}
+\def\gBxG{\b\w\A{gBxG}}
+\def\gBxA{\o\w\A{gBxA}}
+\def\gCxG{\b\w\A{gCxG}}
+\def\gCxB{\o\w\A{gCxB}}
+\def\gDxG{\b\w\A{gDxG}}
+\def\gDxC{\o\w\A{gDxC}}
+\def\gExG{\b\w\A{gExG}}
+\def\gExD{\o\w\A{gExD}}
+\def\gFxG{\b\w\A{gFxG}}
+\def\gFxE{\o\w\A{gFxE}}
+\def\gGxG{\op{H}\w\A{gGxG}}
+\def\gHxE{\b\w\A{gHxE}}
+\def\gHxG{\o\w\A{gHxG}}
+\def\gIxF{\b\w\A{gIxF}}
+\def\gIxG{\o\w\A{gIxG}}
+\def\gJxG{\meter\w\A{gJxG}}
+
+% definitions for bit labels and initial states
+
+\def\bA{ \q{q_{0}}}
+\def\bB{ \q{q_{1}}}
+\def\bC{ \q{q_{2}}}
+\def\bD{ \q{q_{3}}}
+\def\bE{ \q{q_{4}}}
+\def\bF{ \q{q_{5}}}
+\def\bG{\qv{A_{0}}{0}}
+
+% The quantum circuit as an xymatrix
+
+\xymatrix@R=5pt@C=10pt{
+    \bA & \n   &\gBxA &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bB & \n   &\n   &\gCxB &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bC & \n   &\n   &\n   &\gDxC &\n   &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bD & \n   &\n   &\n   &\n   &\gExD &\n   &\n   &\n   &\n   &\n   &\n  
+\\  \bE & \n   &\n   &\n   &\n   &\n   &\gFxE &\n   &\gHxE &\n   &\n   &\n  
+\\  \bF & \n   &\n   &\n   &\n   &\n   &\n   &\n   &\n   &\gIxF &\n   &\n  
+\\  \bG & \gAxG &\gBxG &\gCxG &\gDxG &\gExG &\gFxG &\gGxG &\gHxG &\gIxG &\gJxG &\N  
+%
+% Vertical lines and other post-xymatrix latex
+%
+\ar@{-}"gBxA";"gBxG"
+\ar@{-}"gCxB";"gCxG"
+\ar@{-}"gDxC";"gDxG"
+\ar@{-}"gExD";"gExG"
+\ar@{-}"gFxE";"gFxG"
+\ar@{-}"gHxG";"gHxE"
+\ar@{-}"gIxG";"gIxF"
+}
+
+\end{document}

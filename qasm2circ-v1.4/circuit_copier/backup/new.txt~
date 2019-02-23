@@ -1,0 +1,17 @@
+  cnot     q9,A5
+  cnot     A6,q40
+  cnot     A6,q9
+  h        A6
+  h        q40
+  nop      q41
+  nop      q41
+  nop      q41
+  nop      q41
+  h        q41
+  cnot     q41,A5
+  h        q41
+  cnot     q40,A5
+  h        q40
+  cnot     q41,A6
+  cnot     q40,A6
+  cnot     q41,A5

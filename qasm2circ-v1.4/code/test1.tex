@@ -1,0 +1,81 @@
+% 
+% File:   test1.qasm
+% Date:   22-Mar-04
+% Author: I. Chuang <ichuang@mit.edu>
+%
+% Sample qasm input file - EPR creation
+%
+%         qubit 	q0
+%         qubit 	q1
+% 	qubit	q2
+% 	qubit	q3
+% 	qubit	q4
+% 	
+% 	cnot	q1,q0
+% 	cnot	q2,q4
+% 	cnot	q2,q0
+% 	cnot	q3,q4
+% 
+% 	measure	q0
+% 	measure q4
+
+%  Time 01:
+%    Gate 00 cnot(q1,q0)
+%    Gate 01 cnot(q2,q4)
+%  Time 02:
+%    Gate 02 cnot(q2,q0)
+%    Gate 03 cnot(q3,q4)
+%  Time 03:
+%    Gate 04 measure(q0)
+%    Gate 05 measure(q4)
+
+% Qubit circuit matrix:
+%
+% q0: gAxA, gBxA, gCxA, N  
+% q1: gAxB, n  , n  , n  
+% q2: gAxC, gBxC, n  , n  
+% q3: n  , gBxD, n  , n  
+% q4: gAxE, gBxE, gCxE, N  
+
+\documentclass[11pt]{article}
+\input{xyqcirc.tex}
+
+% definitions for the circuit elements
+
+\def\gAxB{\b\w\A{gAxB}}
+\def\gAxA{\o\w\A{gAxA}}
+\def\gAxC{\b\w\A{gAxC}}
+\def\gAxE{\o\w\A{gAxE}}
+\def\gBxC{\b\w\A{gBxC}}
+\def\gBxA{\o\w\A{gBxA}}
+\def\gBxD{\b\w\A{gBxD}}
+\def\gBxE{\o\w\A{gBxE}}
+\def\gCxA{\meter\w\A{gCxA}}
+\def\gCxE{\meter\w\A{gCxE}}
+
+% definitions for bit labels and initial states
+
+\def\bA{ \q{q_{0}}}
+\def\bB{ \q{q_{1}}}
+\def\bC{ \q{q_{2}}}
+\def\bD{ \q{q_{3}}}
+\def\bE{ \q{q_{4}}}
+
+% The quantum circuit as an xymatrix
+
+\xymatrix@R=5pt@C=10pt{
+    \bA & \gAxA &\gBxA &\gCxA &\N  
+\\  \bB & \gAxB &\n   &\n   &\n  
+\\  \bC & \gAxC &\gBxC &\n   &\n  
+\\  \bD & \n   &\gBxD &\n   &\n  
+\\  \bE & \gAxE &\gBxE &\gCxE &\N  
+%
+% Vertical lines and other post-xymatrix latex
+%
+\ar@{-}"gAxA";"gAxB"
+\ar@{-}"gAxE";"gAxC"
+\ar@{-}"gBxA";"gBxC"
+\ar@{-}"gBxE";"gBxD"
+}
+
+\end{document}

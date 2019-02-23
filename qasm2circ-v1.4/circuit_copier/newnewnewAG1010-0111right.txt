@@ -1,0 +1,19 @@
+#right block
+       h        A8
+       h        A9
+       cnot     A9,q17
+       cnot     A8,q16
+       cnot     A9,q16
+       cnot     A8,q17
+       cnot     A9,q14
+       cnot     A8,q13
+       cnot     A8,q14
+       cnot     A9,q12
+       cnot     A9,q11
+       cnot     A9,q10
+       cnot     A9,q9
+       nop      A8
+       nop      A8
+       nop      A8
+       h        A8
+       h        A9

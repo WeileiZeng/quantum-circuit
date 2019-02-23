@@ -1,0 +1,9 @@
+#g1
+  nop      q19
+  cnot     q19,A14
+  h        A15
+  cnot     A15,q18
+  cnot     A15,q19
+  cnot     q20,A14
+  cnot     q18,A14
+  cnot     A15,q20

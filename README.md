@@ -1,5 +1,5 @@
 # quantum-circuit
-Date: Jun 2018 - Feb 2019   Authors: Michael Woolls(UCR), Weilei Zeng(UCR)
+Date: Jun 2018 - Feb 2019.   Authors: Michael Woolls(UCR), Weilei Zeng(UCR)
 
 A quantum circuit simulator, with depolorizing noise channel.
 

@@ -1,5 +1,9 @@
 # quantum-circuit
-A quantum circuit simulator, with random error generated in each time frame
+A quantum circuit simulator, with depolorizing noise channel.
+
+In the level of quantum error corection, all calculation can be classical. Hence, this simulator never touch the wave function or density matrix of the qubit system. It takes the circuit as input, divides all gates into consecutive timesteps(moments), then add depolarizing error in between different timesteps.
+
+Cirq (google's open project) hasnot implemented noise channel. It is planned to add noise in a similar fashion. The same result would be expected for this program and cirq, on the depolarizing channel. Meanwhile, this program is adaptable to other channels.
 
 Dated: Feb 22, 2019
 Authors: Machael Woolls, Weilei Zeng

@@ -19,8 +19,12 @@ Authors: Machael Woolls, Weilei Zeng
   * design the circuit (by hand)
   * write the circuit inthe format .qc
   * use generate_error.cpp to generate errors from this circuit
+  Input: .qc file describe the circuit
+  Output: .mtx (MatrixMarket) files saves the error and syndrome respectively. ( A matlab progam can be used to convert the result into .mat files, which would be 1000x faster for matlab programs to read)
 * visualize the circuit
   * write the circuit in the format .qasm; use qasm2pdf to convert the file into pdf.
   * use qasm2qc to convert the .qasm to .qc autumatically. (300 qubits in total, 200+ is for ancilla qubits)
   * use copier to copy some part of the circuit; useful for enlarge the size of the circuit.
+  Input: .qasm files decribe the circuit
+  Output: .pdf file to visualize the circuit, and .qc file describes the same circuit.
   

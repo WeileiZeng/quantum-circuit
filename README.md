@@ -7,6 +7,8 @@ In the level of quantum error corection, all calculation can be classical. Hence
 
 Cirq (google's open-source project for quantum computer simulators) hasnot implemented noise channel yet. It is planned to add noise in a similar fashion. Hence, our program is a helpful source. Meanwhile, this program is adaptable to other noise channels.
 
+We compare several open-source quantum computer simulators in the sapect of QECC [here](QuantumDeviceSimulators.md)
+
 
 ## package used:
  * c++: Eigen  -linear algebra

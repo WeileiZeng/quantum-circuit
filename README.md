@@ -13,7 +13,7 @@ We compare several open-source quantum computer simulators in the sapect of QECC
 ## package used:
  * c++: Eigen  -linear algebra
  * c++: itpp   -linear algebra
- * [qasm](qasm2circ-v1.4) (not necessary)    -quantum circuit visualization
+ * [qasm](qasm2circ-v1.4) (not necessary)    -visualization of quantum circuit, see its [main page](https://www.media.mit.edu/quanta/qasm2circ/)
  * TeX (not neceaasry)      -visualize the circuit in pdf format
 ## How to use
 * main program

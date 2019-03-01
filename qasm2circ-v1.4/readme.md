@@ -2,6 +2,12 @@ This part is an implementation of the qasm project.
 
 the package for qasm is in pkg/. Following INSTALL to install it. Following README for the grammar of .qasm
 
+How to use:
+
+qasm2pdf - convert .qasm to .pdf
+buildandshow - convert .qasm to .pdf and show it with "Preview.app".
+
+
 ## List of files
 all files is saved in code/
 

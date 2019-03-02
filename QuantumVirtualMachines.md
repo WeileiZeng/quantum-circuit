@@ -1,4 +1,4 @@
-## Review of open-source quantum computer simulators in the aspect of quantum error correction code
+## Review of open-source Quantum Virtual Machines in the aspect of Quantum Error Correction Code
 
 Currently there are many early-stage quantum devices available from Google, IBM, etc. At the same time, a lot of quantum virtual machines(QVM) are available, inlcuding Forest (pyQuil), QISKit, ProjectQ, the Quantum Developer Kit and Cirq. They simulate the quantum computers in the level of density matrix or wave function. These are wonderful platforms, allowing us to test quantum algorithms and preparing us for larger scale quantum computing. A comprehensive review on those platform can be seen here
 [[1]](https://quantumcomputingreport.com/scorecards/review-of-the-cirq-quantum-software-framework/) 
@@ -6,7 +6,7 @@ Currently there are many early-stage quantum devices available from Google, IBM,
 
 However, in the scenario of Quantum Error Correction(QEC), a technique to stabilize the quantum states, one doesn't really need access to the quantum state itself, but rather the errors which can be classified into X,Y,Z type. This means all calculation could be done classically, and a much simpler and faster simulation can be used for QEC. In this sense, our _quantum circuit_ project is sufficient and effcient for QEC simulation. Those simulation can also be done by those full quantum simulators, but in a much slower way. Here we summarize the current status of the capacity of noise channel of several platforms.
 
-updated: March 1, 2019
+This list is updated on March 1, 2019
 * Cirq @Google
 
   noise channel is in process and is currently not avavailable. [[3]](https://github.com/quantumlib/Cirq/issues/730)

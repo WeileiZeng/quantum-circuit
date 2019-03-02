@@ -3,12 +3,9 @@ Date: Jun 2018 - Feb 2019.   Authors: Michael Woolls(UCR), Weilei Zeng(UCR)
 
 [A quantum circuit simulator, with depolorizing noise channel.](ErrorModel.md)
 
-In the level of quantum error corection, all calculation can be classical. Hence, a simulator for quantum error correction could never touch the wave function or density matrix of the qubit system and result in a much faster speed, as it is done in our simulator. It takes the circuit as input, divides all gates into consecutive timesteps(moments), then add depolarizing error in between different timesteps.
+In the level of quantum error corection(QEC), all calculation can be classical. Hence, a simulator for quantum error correction could never touch the wave function or density matrix of the qubit system and result in a much faster speed, as it is done in our simulator. It takes the circuit as input, divides all gates into consecutive timesteps(moments), then add depolarizing error in between different timesteps. Measurement/read-out errors can be added outside of this program.(We may implement this in the future)
 
-Cirq (google's open-source project for quantum computer simulators) hasnot implemented noise channel yet. It is planned to add noise in a similar fashion. Hence, our program is a helpful source. Meanwhile, this program is adaptable to other noise channels.
-
-We compare several open-source quantum computer simulators in the sapect of QECC [here](QuantumDeviceSimulators.md)
-
+Other than our program, there are many powerful quantum simulators available right now. However, since they are full simulator inthe level of density matrix or wave function, they are very slow in speed and provide much more information than QEC's need. Here is a [review](QuantumVirtualMachine.md) of them in the aspect of QEC.
 
 ## package used:
  * c++: Eigen  -linear algebra
